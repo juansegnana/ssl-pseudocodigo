@@ -1,4 +1,10 @@
 import ply.lex as lex   # lexer -> tokens
+import argparse
+# Obtener path de texto por terminal
+argParser = argparse.ArgumentParser(description='Procesa strings a tokens de pseudocodigo.')
+argParser.add_argument('-f', '-pathFile', nargs='?',type=str, help='especificar ruta de archivo de texto de entrada a analizar.')
+argsParser = argParser.parse_args()
+pathFile = argsParser.f
 
 # Terminales
 tokens = [
@@ -64,7 +70,7 @@ def t_PROCESO(t): r'(proceso|PROCESO)'; return t
 #t_PROCESO = r'proceso'
 def t_ESCRIBIR(t): r'(escribir|ESCRIBIR)'; return t 
 #t_ESCRIBIR = r'escribir'
-def t_LEE(t): r'(leer|LEER)'; return t 
+def t_LEER(t): r'(leer|LEER)'; return t 
 #t_LEER = r'leer'
 def t_PARENTESIS_ABIERTO(t): r'\('; return t 
 #t_PARENTESIS_ABIERTO = r'\('
@@ -107,7 +113,7 @@ def t_PARA(t): r'(para|PARA)'; return t
 # t_PARA = r'para'
 def t_FIN_PARA(t): r'(fin_para|FIN_PARA)'; return t
 # t_FIN_PARA = r'fin_para'
-#def t_SUMA(t): r'\+'; return t
+# def t_SUMA(t): r'\+'; return t
 t_SUMA = r'\+'
 #def t_RESTA(t): r'\-'; return t
 t_RESTA = r'\-'
@@ -127,12 +133,12 @@ def t_MAYOR_O_IGUAL_QUE(t): r'>='; return t
 # t_MAYOR_O_IGUAL_QUE = r'>='
 def t_DISTINTO(t): r'<>'; return t
 # t_DISTINTO = r'<>'
-def COMENTARIO_ENCABEZADO(t): r''; return t 
-def COMENTARIO_VARIASLINEAS(t): r''; return t 
-#Probar
-def COMENTARIO_LINEA(t): r'(\/ \/ [w]*\n)'; return t 
+# def COMENTARIO_ENCABEZADO(t): r''; return t 
+# def COMENTARIO_VARIASLINEAS(t): r''; return t 
+# Probar
+# def COMENTARIO_LINEA(t): r'(\/ \/ [w]*\n)'; return t 
 # ply ignorará espacios
-t_ignore = r' '
+t_ignore = ' \n\t'
 
 # Terminos: 
 # w = letras o numeros
@@ -146,41 +152,51 @@ def t_IDENTIFICADOR(t):
     t.type = 'IDENTIFICADOR'
     return t
 
-#def t_CADENA(t):
+def t_CADENA(t):
     r'".*"'
     t.value= t.value.replace('"', '')
     return t
 
-
-
 def t_NUMERICO(t):
-    r'([\d+]|[\d+\,\d+])+'
+    r'([\d]|[\d,.\d])+'
     if t.value.__contains__(','):
         t.value= t.value.replace(",", ".")
+        t.value = float(t.value)
+    if t.value.__contains__('.'): # que acepte punto o coma
         t.value = float(t.value)
     else: 
         t.value = int(t.value)
     return t
 
 def t_error(t):
-    print('Caracter ilegal!')
+    print(f'Caracter ilegal! : \'{t.value[0]}\'.')
+    print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
+    # print(vars(t))
     t.lexer.skip(1)
 
-
-
-
 lexer = lex.lex()
-s = input('>> ')
-lexer.input(s)
 
-## Leer txt
-file = open("01-COMBINADO_InteracionesyCondicional2.txt","r")
-strings = file.read();
-file.close()
-lexer.input(strings)
+if not pathFile:
+    print('Pasa salir escriba: _salir')
+    while True:
+        s = input('>> ')
+        if s == '_salir': break
 
-while True:
-    tok = lexer.token()
-    if not tok:
-        break
-    print(tok)
+        lexer.input(s)
+        while True:
+            tok = lexer.token()
+            if not tok:
+                break
+            print(tok)
+else:
+    ## Leer txt
+    file = open(pathFile,"r")
+    strings = file.read();
+    file.close()
+    lexer.input(strings)
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break
+        print(tok)
+
