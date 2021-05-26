@@ -15,7 +15,7 @@ Declaramos algunas variables
 no hay control de uso de las variables 
 */
 nombre_usuario : CADENA;
-var1 : ENTERO;
+	var1 : ENTERO;
 var2 : REAL;
 VAR_4: ENTERO;
 A: ENTERO;
