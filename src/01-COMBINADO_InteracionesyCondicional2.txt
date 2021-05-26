@@ -2,12 +2,12 @@
         Facultad Regional Resistencia
         Sintaxis y Semantica de los Lenguajes
         Ciclo:2021
-        Autor:
-         
+    	Autor:
+
 Programa basico que combina iteraciones y condicionales
 */
 
-ACCION combinado2 ES
+ACCION combinado2 _ES
 
 AMBIENTE
 /*
@@ -40,11 +40,11 @@ MIENTRAS (contador <> 0) HACER                          @ Abrimos Miestras
 			ESCRIBIR("var1 es igual a var2");
 			SINO SI (A>B _y (A+B)<C _o var1 < B) ENTONCES                    //otro SINO SI
 				ESCRIBIR("var1 es = a B");
-			FIN SI                                                           //Fin SI
-		FIN SI                                                           // Fin SI
-	FIN SI                                                         // Fin SI
+			FIN_SI                                                           //Fin SI
+		FIN_SI                                                           // Fin SI
+	FIN_SI                                                         // Fin SI
 	contador:= contador+1;
-FIN MIENTRAS                                            @ cerramos MIENTRAS
+FIN_MIENTRAS                                            @ cerramos MIENTRAS
 
 PARA A HASTA B HACER                                    @ Abrimos iteraciones PARA
 	A:= A+1;
@@ -52,7 +52,7 @@ PARA A HASTA B HACER                                    @ Abrimos iteraciones PA
 	REPETIR                                                @Abrimos iteraciones REPETIR
 		var1:=var1*A;
 		ESCRIBIR("var1 vale:", var1);
-	HASTA QUE (A=B)                                        @ Cierra REPETIR
-FIN PARA                                                @ Cierra PARA
+	HASTA_QUE (A=B)                                        @ Cierra REPETIR
+FIN_PARA                                                @ Cierra PARA
 
-FIN ACCION
+FIN_ACCION
