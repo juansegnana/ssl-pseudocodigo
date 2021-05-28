@@ -35,6 +35,7 @@ tokens = [
     'OTRO',
     'REPETIR',
     'HASTA_QUE',
+		
     'HASTA',
     'PARA',
     'FIN_PARA',
@@ -68,8 +69,8 @@ tokens = [
 def t_COMENTARIO_ENCABEZADO(t): 
     r'\/\*\*[\s\S]*?\*\/';
     if t.value.__contains__('\n'):
-        t.lexer.lineno += 1
         t.value= t.value.replace('\n', ' ')
+        print('hay un salto linea')
     if t.value.__contains__('\t'):
         t.value= t.value.replace('\t', ' ')
     #formatear
@@ -78,7 +79,6 @@ def t_COMENTARIO_ENCABEZADO(t):
 def t_COMENTARIO_VARIASLINEAS(t): 
     r'\/\*[\s\S]*?\*\/'; 
     if t.value.__contains__('\n'):
-        t.lexer.lineno += 1
         t.value= t.value.replace('\n', ' ')
     #formatear
     return t 
@@ -86,7 +86,6 @@ def t_COMENTARIO_VARIASLINEAS(t):
 def t_COMENTARIO_LINEA(t): 
     r'((\/\/|\@)(\s|\S)*?\n)'; 
     if t.value.__contains__('\n'):
-        t.lexer.lineno += 1
         t.value= t.value.replace('\n', '')
     return t 
 
@@ -164,7 +163,7 @@ t_SEMICOLON = r'\;'
 t_COMA= r'\,'
 
 # ply ignorará espacios
-t_ignore = ' \t'
+t_ignore = ' \n\t'
 
 # Terminos: 
 # w = letras o numeros
@@ -179,8 +178,14 @@ def t_IDENTIFICADOR(t):
     return t
 
 def t_CADENA(t):
-    r'".*"'
-    t.value= t.value.replace('"', '')
+    r'("(?:[^\\"]|\\.)*")|(\\"(?:[^"]|\\.)*\\")'
+    if t.value.__contains__('\\'):
+        t.value = t.value.replace('\\"', '"')
+    if t.value.__contains__('\n'):
+        t.value= t.value.replace('\n', ' ')
+    if t.value.__contains__('\t'):
+        t.value= t.value.replace('\t', ' ')
+    #t.value= t.value.replace('"', '')
     return t
 
 def t_NUMERICO(t): # acepta . o , como decimal.
@@ -195,13 +200,10 @@ def t_NUMERICO(t): # acepta . o , como decimal.
     
     return t
 
-def t_new_line(t):
-    r'\n'
-    t.lexer.lineno += 1
-
 def t_error(t):
     print(f'Caracter ilegal! : \'{t.value[0]}\'.')
     print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
+    # print(vars(t))
     t.lexer.skip(1)
 
 lexer = lex.lex()
@@ -229,4 +231,3 @@ else:
         if not tok:
             break
         print(tok)
-
