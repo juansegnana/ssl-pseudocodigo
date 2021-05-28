@@ -68,8 +68,8 @@ tokens = [
 def t_COMENTARIO_ENCABEZADO(t): 
     r'\/\*\*[\s\S]*?\*\/';
     if t.value.__contains__('\n'):
+        t.lexer.lineno += 1
         t.value= t.value.replace('\n', ' ')
-        print('hay un salto linea')
     if t.value.__contains__('\t'):
         t.value= t.value.replace('\t', ' ')
     #formatear
@@ -78,6 +78,7 @@ def t_COMENTARIO_ENCABEZADO(t):
 def t_COMENTARIO_VARIASLINEAS(t): 
     r'\/\*[\s\S]*?\*\/'; 
     if t.value.__contains__('\n'):
+        t.lexer.lineno += 1
         t.value= t.value.replace('\n', ' ')
     #formatear
     return t 
@@ -85,6 +86,7 @@ def t_COMENTARIO_VARIASLINEAS(t):
 def t_COMENTARIO_LINEA(t): 
     r'((\/\/|\@)(\s|\S)*?\n)'; 
     if t.value.__contains__('\n'):
+        t.lexer.lineno += 1
         t.value= t.value.replace('\n', '')
     return t 
 
@@ -162,7 +164,7 @@ t_SEMICOLON = r'\;'
 t_COMA= r'\,'
 
 # ply ignorará espacios
-t_ignore = ' \n\t'
+t_ignore = ' \t'
 
 # Terminos: 
 # w = letras o numeros
@@ -172,7 +174,7 @@ t_ignore = ' \n\t'
 
 # Como buscamos a los Terminales
 def t_IDENTIFICADOR(t):
-    r'(?!.*__.*)[a-zA-Z][\w]*(?!_)\w*' # V2 (?!.*__.*)[a-zA-Z][\w]*(?!_)\w*
+    r'[a-zA-Z]+(?!.*__.*)(?!.*_(\s|[\n\r]|$))\w*'
     t.type = 'IDENTIFICADOR'
     return t
 
@@ -182,7 +184,7 @@ def t_CADENA(t):
     return t
 
 def t_NUMERICO(t): # acepta . o , como decimal.
-    r'([\d]+(,|\.)[\d]+|[\d]+)' #V2 ([\d]+[,.]?[\d]+) # HILEl: ([\d]+|[\d]+(,|.)[\d]+
+    r'([\d]+(,|\.)[\d]+|[\d]+)'
     if t.value.__contains__(','):
         t.value= t.value.replace(",", ".")
         t.value = float(t.value)
@@ -193,10 +195,13 @@ def t_NUMERICO(t): # acepta . o , como decimal.
     
     return t
 
+def t_new_line(t):
+    r'\n'
+    t.lexer.lineno += 1
+
 def t_error(t):
     print(f'Caracter ilegal! : \'{t.value[0]}\'.')
     print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
-    # print(vars(t))
     t.lexer.skip(1)
 
 lexer = lex.lex()
