@@ -26,16 +26,15 @@ tokens = [
     'FIN_SI',
     'SINO',
     'NO',
+    #
     'HACER',
     'SEGUN',
-    #
     'FIN_SEGUN',
     'MIENTRAS',
     'FIN_MIENTRAS',
     'OTRO',
     'REPETIR',
     'HASTA_QUE',
-		
     'HASTA',
     'PARA',
     'FIN_PARA',
@@ -64,13 +63,19 @@ tokens = [
     'COMENTARIO_LINEA'
 ]
 
-# ply detecta variables que empiecen con 't_'   .
+# ply detecta variables que empiecen con 't_'
+# Terminos: 
+# w = letras o numeros
+# s = todo lo que sea espacios.
+# S = contrario a 's'.
+# d = digitos.
+# * = 0 o más.
+# + = 1 o más.
 
 def t_COMENTARIO_ENCABEZADO(t): 
     r'\/\*\*[\s\S]*?\*\/';
     if t.value.__contains__('\n'):
         t.value= t.value.replace('\n', ' ')
-        print('hay un salto linea')
     if t.value.__contains__('\t'):
         t.value= t.value.replace('\t', ' ')
     #formatear
@@ -162,16 +167,9 @@ t_DOS_PUNTOS = r'\:'
 t_SEMICOLON = r'\;'
 t_COMA= r'\,'
 
-# ply ignorará espacios
+# ply ignorará espacios, saltos de lineas y tabs.
 t_ignore = ' \n\t'
 
-# Terminos: 
-# w = letras o numeros
-# d = digitos.
-# + = 1 o más.
-# * = 0 o más.
-
-# Como buscamos a los Terminales
 def t_IDENTIFICADOR(t):
     r'[a-zA-Z]+(?!.*__.*)(?!.*_(\s|[\n\r]|$))\w*'
     t.type = 'IDENTIFICADOR'
@@ -179,13 +177,13 @@ def t_IDENTIFICADOR(t):
 
 def t_CADENA(t):
     r'("(?:[^\\"]|\\.)*")|(\\"(?:[^"]|\\.)*\\")'
+    t.value= t.value.replace('"', '')
     if t.value.__contains__('\\'):
-        t.value = t.value.replace('\\"', '"')
+        t.value = t.value.replace('\\', '"')
     if t.value.__contains__('\n'):
         t.value= t.value.replace('\n', ' ')
     if t.value.__contains__('\t'):
         t.value= t.value.replace('\t', ' ')
-    #t.value= t.value.replace('"', '')
     return t
 
 def t_NUMERICO(t): # acepta . o , como decimal.
@@ -197,37 +195,37 @@ def t_NUMERICO(t): # acepta . o , como decimal.
         t.value = float(t.value)
     else:
         t.value = int(t.value)
-    
     return t
 
 def t_error(t):
     print(f'Caracter ilegal! : \'{t.value[0]}\'.')
     print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
-    # print(vars(t))
     t.lexer.skip(1)
 
 lexer = lex.lex()
 
-if not pathFile:
-    print('Pasa salir escriba: _salir')
+def analizarTokens():
     while True:
-        s = input('>> ')
-        if s == '_salir': break
-
-        lexer.input(s)
-        while True:
             tok = lexer.token()
             if not tok:
                 break
             print(tok)
-else:
-    # Leer txt
-    file = open(pathFile,"r")
-    strings = file.read()
-    file.close()
-    lexer.input(strings)
+
+if not pathFile:
+    # Ejecución "normal"
+    print('Pasa salir escriba: _salir')
     while True:
-        tok = lexer.token()
-        if not tok:
-            break
-        print(tok)
+        s = input('>> ')
+        if s == '_salir': break
+        lexer.input(s)
+        analizarTokens()
+else:
+    # Ejecución "analisis de texto"
+    try:
+        file = open(pathFile,"r")
+        strings = file.read()
+        file.close()
+        lexer.input(strings)
+        analizarTokens()
+    except IOError:
+        print('Ocurrió un error leyendo archivo:', pathFile)
