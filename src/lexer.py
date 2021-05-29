@@ -179,7 +179,7 @@ def t_IDENTIFICADOR(t):
     return t
 
 def t_CADENA(t):
-    r'("(?:[^\\"]|\\.)*")|(\\"(?:[^"]|\\.)*\\")'
+    r'"(?:[^"\\]|\\.)*"'
     t.value= t.value.replace('"', '')
     if t.value.__contains__('\\'):
         t.value = t.value.replace('\\', '"')
