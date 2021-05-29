@@ -1,7 +1,7 @@
 import ply.lex as lex   # lexer -> tokens
 import argparse
 
-# Obtener path de texto por terminal
+#Obtener path de texto por terminal
 argParser = argparse.ArgumentParser(description='Procesa strings a tokens de pseudocodigo.')
 argParser.add_argument('-f', '-pathFile', nargs='?',type=str, help='especificar ruta de archivo de texto de entrada a analizar.')
 argsParser = argParser.parse_args()
@@ -241,9 +241,10 @@ def exportarTokens(arrAnalizar):
     f.close()
     print('(!) Se exportó un .txt con los tokens analizados.')
 
+
 if not pathFile:
     # Ejecución "normal"
-    print('Pasa salir escriba: _salir')
+    print('Pasa salir pulse: [ctrl] + [C] | O escriba _salir')
     while True:
         s = input('>> ')
         if s == '_salir': break

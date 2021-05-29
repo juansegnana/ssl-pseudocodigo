@@ -1,4 +1,0 @@
-escribir("hey")
-escribir("ho 
-as\" a")
-escribir("este tiene que tirar error\")
