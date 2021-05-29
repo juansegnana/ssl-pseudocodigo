@@ -1,10 +1,13 @@
 import ply.lex as lex   # lexer -> tokens
 import argparse
+
 # Obtener path de texto por terminal
 argParser = argparse.ArgumentParser(description='Procesa strings a tokens de pseudocodigo.')
 argParser.add_argument('-f', '-pathFile', nargs='?',type=str, help='especificar ruta de archivo de texto de entrada a analizar.')
 argsParser = argParser.parse_args()
 pathFile = argsParser.f
+
+contadorErrores = 0
 
 # Terminales
 tokens = [
@@ -196,20 +199,47 @@ def t_NUMERICO(t): # acepta . o , como decimal.
     else:
         t.value = int(t.value)
     return t
+    
 
 def t_error(t):
+    global contadorErrores
     print(f'Caracter ilegal! : \'{t.value[0]}\'.')
     print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
+    contadorErrores += 1
     t.lexer.skip(1)
 
 lexer = lex.lex()
 
-def analizarTokens():
+
+def analizarTokens(modoEjecucion):
+    exportArray = []
     while True:
             tok = lexer.token()
             if not tok:
+                if (modoEjecucion == 'archivo'):
+                    exportarTokens(exportArray)
                 break
             print(tok)
+            if (modoEjecucion == 'archivo'):
+                exportArray.append([tok.type,tok.value]);
+
+def exportarTokens(arrAnalizar):
+    # Exportar a un txt
+    global contadorErrores
+    with open('tokens-analizados.txt', 'w', encoding='UTF8') as f:
+        f.write('TOKEN | VALOR\n')
+        f.write('-------------\n')
+        contador = 0
+        for line in arrAnalizar:
+            contador += 1
+            f.write(f'{contador}- {line[0]}: {line[1]}')
+            f.write('\n')
+        f.write('-------------\n')
+        f.write(f'Total de tokens válidos analizados: {contador}.\n')
+        if (contadorErrores > 0):
+            f.write(f'Total de tokens NO válidos: {contadorErrores}.')
+    f.close()
+    print('(!) Se exportó un .txt con los tokens analizados.')
 
 if not pathFile:
     # Ejecución "normal"
@@ -218,14 +248,14 @@ if not pathFile:
         s = input('>> ')
         if s == '_salir': break
         lexer.input(s)
-        analizarTokens()
+        analizarTokens('normal')
 else:
-    # Ejecución "analisis de texto"
+    # Ejecución "analisis de archivo de texto"
     try:
         file = open(pathFile,"r")
         strings = file.read()
         file.close()
         lexer.input(strings)
-        analizarTokens()
+        analizarTokens('archivo')
     except IOError:
         print('Ocurrió un error leyendo archivo:', pathFile)
