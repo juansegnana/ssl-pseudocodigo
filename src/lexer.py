@@ -1,4 +1,5 @@
 import ply.lex as lex   # lexer -> tokens
+import re
 import argparse
 
 #Obtener path de texto por terminal
@@ -90,18 +91,16 @@ def t_COMENTARIO_ENCABEZADO(t):
         t.value= t.value.replace('\n', ' ')
     if t.value.__contains__('\t'):
         t.value= t.value.replace('\t', ' ')
-    #formatear
     return t 
 
 def t_COMENTARIO_VARIASLINEAS(t): 
     r'\/\*[\s\S]*?\*\/'; 
     if t.value.__contains__('\n'):
         t.value= t.value.replace('\n', ' ')
-    #formatear
     return t 
 
 def t_COMENTARIO_LINEA(t): 
-    r'((\/\/|\@)(\s|\S)*?\n)'; 
+    r'((\/\/|\@)(\s|\S)*?(.*))'; 
     if t.value.__contains__('\n'):
         t.value= t.value.replace('\n', '')
     return t 
@@ -182,9 +181,20 @@ def t_MAYOR_O_IGUAL_QUE(t): r'>='; return t
 
 def t_DISTINTO(t): r'<>'; return t
 
+def t_TD_NUMERICO(t): r'(entero|numero|numerico|real)'; return t 
+
+def t_TD_ALFANUMERICO(t): r'(cadena|alfanumerico)'; return t 
+
+def t_TD_LOGICO(t): r'(logico|booleano)'; return t
+
+def t_MODULO(t): r'(_mod)'; return t
+
+def t_DIVISION_ENTERA(t): r'(_div)'; return t
+
 t_SUMA = r'\+'
 t_RESTA = r'\-'
 t_MULTIPLICACION = r'\*'
+t_POTENCIA = r'\*\*'
 t_DIVISION = r'\/'
 t_IGUAL = r'\='
 t_MENOR_QUE = r'\<'
@@ -197,20 +207,37 @@ t_COMA= r'\,'
 t_ignore = ' \n\t'
 
 def t_IDENTIFICADOR(t):
-    r'[a-zA-Z]+(?!.*__.*)(?!.*_(\s|[\n\r]|$))\w*'
+    r'[_a-zA-Z][_a-zA-Z0-9]*'
     t.type = 'IDENTIFICADOR'
-    return t
+    if not(t.value[0].__contains__('_')) and not(t.value[-1].__contains__('_')) and not(t.value.__contains__('__')) and not(t.value.__contains__('"')):
+        return t
+    else: 
+        print(f'Identificador ilegal! : \'{t.value}\'.')
+        global contadorErrores
+        contadorErrores += 1
+
+def t_error(t):
+    global contadorErrores
+    print(f'Caracter ilegal! : \'{t.value[0]}\'.')
+    print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
+    contadorErrores += 1
+    t.lexer.skip(1)
 
 def t_CADENA(t):
-    r'"(?:[^"\\]|\\.)*"'
-    t.value= t.value.replace('"', '')
-    if t.value.__contains__('\\'):
-        t.value = t.value.replace('\\', '"')
-    if t.value.__contains__('\n'):
-        t.value= t.value.replace('\n', ' ')
-    if t.value.__contains__('\t'):
-        t.value= t.value.replace('\t', ' ')
-    return t
+    r'\\?"(?:[^"\\]|\\.)*"?'
+    if not(t.value[-1] == '"') or (t.value[0] == '\\') or (t.value[-2] == '\\'):
+        print(f'Cadena ilegal! : \'{t.value}\'.')
+        global contadorErrores
+        contadorErrores += 1
+    else:
+        t.value= t.value.replace('"', '')
+        if t.value.__contains__('\\'):
+            t.value = t.value.replace('\\', '"')
+        if t.value.__contains__('\n'):
+            t.value= t.value.replace('\n', ' ')
+        if t.value.__contains__('\t'):
+            t.value= t.value.replace('\t', ' ')
+        return t
 
 def t_NUMERICO(t): # acepta . o , como decimal.
     r'([\d]+(,|\.)[\d]+|[\d]+)'
@@ -222,17 +249,8 @@ def t_NUMERICO(t): # acepta . o , como decimal.
     else:
         t.value = int(t.value)
     return t
-    
 
-def t_error(t):
-    global contadorErrores
-    print(f'Caracter ilegal! : \'{t.value[0]}\'.')
-    print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
-    contadorErrores += 1
-    t.lexer.skip(1)
-
-lexer = lex.lex()
-
+lexer = lex.lex(reflags=re.IGNORECASE) # Bandera para que ignore mayuscula/minuscula
 
 def analizarTokens(modoEjecucion):
     exportArray = []
@@ -246,8 +264,8 @@ def analizarTokens(modoEjecucion):
             if (modoEjecucion == 'archivo'):
                 exportArray.append([tok.type,tok.value]);
 
+# Exportar a un txt 
 def exportarTokens(arrAnalizar):
-    # Exportar a un txt
     global contadorErrores
     with open('tokens-analizados.txt', 'w', encoding='UTF8') as f:
         f.write('TOKEN | VALOR\n')
@@ -264,7 +282,6 @@ def exportarTokens(arrAnalizar):
     f.close()
     print('(!) Se exportó un .txt con los tokens analizados.')
 
-
 if not pathFile:
     # Ejecución "normal"
     print('Pasa salir pulse: [ctrl] + [C] | O escriba _salir')
@@ -276,7 +293,7 @@ if not pathFile:
 else:
     # Ejecución "analisis de archivo de texto"
     try:
-        file = open(pathFile,"r")
+        file = open(pathFile,"r",encoding='utf8')
         strings = file.read()
         file.close()
         lexer.input(strings)
