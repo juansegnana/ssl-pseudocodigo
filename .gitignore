@@ -1,0 +1,5 @@
+build/
+dist/
+tokens-analizados.txt
+lexer.spec
+__pycache__/
