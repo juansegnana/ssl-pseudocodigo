@@ -66,10 +66,6 @@ tokens = [
     #tipos de llaves
     'PARENTESIS_ABIERTO',
     'PARENTESIS_CERRADO',
-    'LLAVE_ABIERTA',
-    'LLAVE_CERRADA',
-    'CORCHETE ABIERTO',
-    'CORCHETE CERRADO',
     #tipos de datos
     'TD_NUMERICO',
     'TD_ALFANUMERICO',
@@ -113,12 +109,6 @@ def t_FIN_ACCION(t): r'(fin_accion|FIN_ACCION)'; return t
 
 def t_AMBIENTE(t): r'(ambiente|AMBIENTE)'; return t 
 
-def t_TD_NUMERICO(t): r'(entero|numero|numerico|ENTERO|NUMERO|NUMERICO)'; return t 
-
-def t_TD_ALFANUMERICO(t): r'(cadena|alfanumerico|CADENA|ALFANUMERICO)'; return t 
-
-def t_TD_LOGICO(t): r'(logico|booleano|LOGICO|BOOLEANO)'; return t 
-
 def t_PROCESO(t): r'(proceso|PROCESO)'; return t 
 
 def t_ESCRIBIR(t): r'(escribir|ESCRIBIR)'; return t 
@@ -128,14 +118,6 @@ def t_LEER(t): r'(leer|LEER)'; return t
 def t_PARENTESIS_ABIERTO(t): r'\('; return t 
 
 def t_PARENTESIS_CERRADO(t): r'\)'; return t 
-
-def t_CORCHETE_ABIERTO(t): r'\['; return t 
-
-def t_CORCHETE_CERRADO(t): r'\]'; return t 
-
-def t_LLAVE_ABIERTA(t): r'\{'; return t 
-
-def t_LLAVE_CERRADA(t): r'\}'; return t 
 
 def t_ASIGNACION(t): r':='; return t 
 
