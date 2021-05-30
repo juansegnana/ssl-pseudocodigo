@@ -174,9 +174,20 @@ t_COMA= r'\,'
 t_ignore = ' \n\t'
 
 def t_IDENTIFICADOR(t):
-    r'[a-zA-Z]+(?!.*__.*)(?!.*_(\s|[\n\r]|$))\w*'
+    r'[_a-zA-Z]+[^\n\r\:]*'
     t.type = 'IDENTIFICADOR'
-    return t
+    if not(t.value[0].__contains__('_')) and not(t.value.__contains__('__')) and not(t.value.__contains__('"')):
+        return t
+    else: 
+        print(f'Caracter ilegal! : \'{t.value}\'.')
+        
+
+def t_error(t):
+    global contadorErrores
+    print(f'Caracter ilegal! : \'{t.value[0]}\'.')
+    print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
+    contadorErrores += 1
+    t.lexer.skip(1)
 
 def t_CADENA(t):
     r'"(?:[^"\\]|\\.)*"'
@@ -201,12 +212,7 @@ def t_NUMERICO(t): # acepta . o , como decimal.
     return t
     
 
-def t_error(t):
-    global contadorErrores
-    print(f'Caracter ilegal! : \'{t.value[0]}\'.')
-    print(f'En linea: {t.lineno}. Posición: {t.lexpos}')
-    contadorErrores += 1
-    t.lexer.skip(1)
+
 
 lexer = lex.lex()
 
