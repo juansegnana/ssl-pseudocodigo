@@ -2,21 +2,18 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    ACCION
-    ES
-    FIN_ACCION
     NUMERICO
     SEMICOLON
 
 Grammar
 
 Rule 0     S' -> sigma
-Rule 1     sigma -> COMENTARIO_ENCABEZADO accion IDENTIFICADOR _es AMBIENTE fin_accion
-Rule 2     sigma -> accion IDENTIFICADOR _es AMBIENTE fin_accion
+Rule 1     sigma -> COMENTARIO_ENCABEZADO ACCION IDENTIFICADOR ES ambiente FIN_ACCION
+Rule 2     sigma -> ACCION IDENTIFICADOR ES ambiente FIN_ACCION
 Rule 3     comentario_vl_l -> COMENTARIO_VARIASLINEAS
 Rule 4     comentario_vl_l -> COMENTARIO_LINEA
-Rule 5     ambiente -> AMBIENTE bloque_ambiente PROCESO
-Rule 6     ambiente -> AMBIENTE comentario_vl_l bloque_ambiente PROCESO
+Rule 5     ambiente -> AMBIENTE bloque_ambiente proceso
+Rule 6     ambiente -> AMBIENTE comentario_vl_l bloque_ambiente proceso
 Rule 7     bloque_ambiente -> variable_comentario_vl_l
 Rule 8     bloque_ambiente -> constante comentario_vl_l
 Rule 9     bloque_ambiente -> variable comentario_vl_l bloque ambiente
@@ -27,192 +24,191 @@ Rule 13    bloque_ambiente -> variable bloque_ambiente
 Rule 14    bloque_ambiente -> constante bloque_ambiente
 Rule 15    bloque_ambiente -> variable
 Rule 16    bloque_ambiente -> constante
-Rule 17    variable -> IDENTIFICADOR DOS_PUNTOS tipo_dato
+Rule 17    variable -> IDENTIFICADOR DOS_PUNTOS ftd_amb
 Rule 18    constante -> IDENTIFICADOR IGUAL tipo_dato
-Rule 19    tipo_dato -> TD_ALFANUMERICO
-Rule 20    tipo_dato -> TD_NUMERICO
-Rule 21    tipo_dato -> TD_LOGICO
-Rule 22    proceso -> PROCESO comentario_vl_l conj_sentencia
-Rule 23    proceso -> PROCESO conj_sentencia
-Rule 24    conj_sentencia -> s_escribir conj_sentencia
-Rule 25    conj_sentencia -> s_escribir comentario_vl_l conj_sentencia
-Rule 26    conj_sentencia -> s_leer conj_sentencia
-Rule 27    conj_sentencia -> s_leer comentario_vl_l conj_sentencia
-Rule 28    conj_sentencia -> s_si conj_sentencia
-Rule 29    conj_sentencia -> s_si comentario_vl_l conj_sentencia
-Rule 30    conj_sentencia -> s_ciclos conj_sentencia
-Rule 31    conj_sentencia -> s_ciclos comentario_vl_l conj_sentencia
-Rule 32    conj_sentencia -> sentencia conj_sentencia
-Rule 33    conj_sentencia -> sentencia comentario_vl_l conj_sentencia
-Rule 34    conj_sentencia -> comentario_vl_l conj_sentencia
-Rule 35    conj_sentencia -> s_escribir comentario_vl_l
-Rule 36    conj_sentencia -> s_leer comentario_vl_l
-Rule 37    conj_sentencia -> s_si comentario_vl_l
-Rule 38    conj_sentencia -> s_ciclos comentario_vl_l
-Rule 39    conj_sentencia -> sentencia comentario_vl_l
-Rule 40    conj_sentencia -> s_escribir
-Rule 41    conj_sentencia -> s_leer
-Rule 42    conj_sentencia -> s_si
-Rule 43    conj_sentencia -> s_ciclos
-Rule 44    conj_sentencia -> sentencia
-Rule 45    conj_sentencia -> comentario_vl_l
-Rule 46    s_escribir -> ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO
-Rule 47    salida_esc -> IDENTIFICADOR
-Rule 48    salida_esc -> CADENA
-Rule 49    salida_esc -> IDENTIFICADOR COMA salida_esc
-Rule 50    salida_esc -> CADENA COMA salida_esc
-Rule 51    s_leer -> LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
-Rule 52    entrada_leer -> IDENTIFICADOR
-Rule 53    sentencia -> IDENTIFICADOR ASIGNACION tipo_dato
-Rule 54    sentencia -> IDENTIFICADOR ASIGNACION op_aritmetica
-Rule 55    id_tipodato -> IDENTIFICADOR
-Rule 56    id_tipodato -> tipo_dato
-Rule 57    conj_operaciones -> op_aritmetica
-Rule 58    conj_operaciones -> relacionales
-Rule 59    op_aritmetica -> id_tipodato t_op_aritmetico id_tipodato
-Rule 60    op_aritmetica -> id_tipodato t_op_aritmetico
-Rule 61    t_op_aritmetico -> SUMA
-Rule 62    t_op_aritmetico -> RESTA
-Rule 63    t_op_aritmetico -> DIVISION
-Rule 64    t_op_aritmetico -> MULTIPLICACION
-Rule 65    t_op_aritmetico -> DIVISION_ENTERA
-Rule 66    t_op_aritmetico -> MODULO
-Rule 67    t_op_aritmetico -> POTENCIA
-Rule 68    relacionales -> id_tipodato t_relacional id_tipodato
-Rule 69    relacionales -> id_tipodato t_relacional id_tipodato relacionales
-Rule 70    t_relacional -> MENOR_QUE
-Rule 71    t_relacional -> MAYOR_QUE
-Rule 72    t_relacional -> MENOR_O_IGUAL_QUE
-Rule 73    t_relacional -> MAYOR_O_IGUAL_QUE
-Rule 74    t_relacional -> IGUAL
-Rule 75    t_relacional -> DISTINTO
-Rule 76    op_logico -> O
-Rule 77    op_logico -> Y
-Rule 78    s_si -> SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-Rule 79    conj_s_si -> conj_sentencia
-Rule 80    conj_s_si -> conj_sentencia SINO conj_s_si
-Rule 81    conj_condiciones -> condicion
-Rule 82    conj_condiciones -> condicion t_op_logico conj_condiciones
-Rule 83    condicion -> expresion t_relacional expresion
-Rule 84    condicion -> NO expresion
-Rule 85    expresion -> id_tipodato
-Rule 86    expresion -> id_tipodato t_op_aritmetico id_tipodato
-Rule 87    expresion -> id_tipodato t_op_aritmetico expresion
-Rule 88    s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-Rule 89    conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia
-Rule 90    conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
-Rule 91    conj_cond_segun -> OTRO DOS_PUNTOS conj_sentencia
-Rule 92    s_ciclo -> c_para
-Rule 93    s_ciclo -> c_mientras
-Rule 94    s_ciclo -> c_repetir
-Rule 95    s_ciclo -> conj_sentencia
-Rule 96    c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-Rule 97    c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
-Rule 98    para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-Rule 99    para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA HACER conj_sentencia FIN_PARA
-Rule 100   idt_para -> IDENTIFICADOR ASIGNACION id_tipodato
-Rule 101   idt_para -> IDENTIFICADOR
-Rule 102   empty -> <empty>
+Rule 19    ftd_amb -> TD_ALFANUMERICO
+Rule 20    ftd_amb -> TD_NUMERICO
+Rule 21    ftd_amb -> TD_LOGICO
+Rule 22    tipo_dato -> <empty>
+Rule 23    proceso -> PROCESO comentario_vl_l conj_sentencia
+Rule 24    proceso -> PROCESO conj_sentencia
+Rule 25    conj_sentencia -> s_escribir conj_sentencia
+Rule 26    conj_sentencia -> s_escribir comentario_vl_l conj_sentencia
+Rule 27    conj_sentencia -> s_leer conj_sentencia
+Rule 28    conj_sentencia -> s_leer comentario_vl_l conj_sentencia
+Rule 29    conj_sentencia -> s_si conj_sentencia
+Rule 30    conj_sentencia -> s_si comentario_vl_l conj_sentencia
+Rule 31    conj_sentencia -> s_ciclos conj_sentencia
+Rule 32    conj_sentencia -> s_ciclos comentario_vl_l conj_sentencia
+Rule 33    conj_sentencia -> sentencia conj_sentencia
+Rule 34    conj_sentencia -> sentencia comentario_vl_l conj_sentencia
+Rule 35    conj_sentencia -> comentario_vl_l conj_sentencia
+Rule 36    conj_sentencia -> s_escribir comentario_vl_l
+Rule 37    conj_sentencia -> s_leer comentario_vl_l
+Rule 38    conj_sentencia -> s_si comentario_vl_l
+Rule 39    conj_sentencia -> s_ciclos comentario_vl_l
+Rule 40    conj_sentencia -> sentencia comentario_vl_l
+Rule 41    conj_sentencia -> s_escribir
+Rule 42    conj_sentencia -> s_leer
+Rule 43    conj_sentencia -> s_si
+Rule 44    conj_sentencia -> s_ciclos
+Rule 45    conj_sentencia -> sentencia
+Rule 46    conj_sentencia -> comentario_vl_l
+Rule 47    s_escribir -> ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO
+Rule 48    salida_esc -> IDENTIFICADOR
+Rule 49    salida_esc -> CADENA
+Rule 50    salida_esc -> IDENTIFICADOR COMA salida_esc
+Rule 51    salida_esc -> CADENA COMA salida_esc
+Rule 52    s_leer -> LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
+Rule 53    entrada_leer -> IDENTIFICADOR
+Rule 54    sentencia -> IDENTIFICADOR ASIGNACION tipo_dato
+Rule 55    sentencia -> IDENTIFICADOR ASIGNACION op_aritmetica
+Rule 56    id_tipodato -> IDENTIFICADOR
+Rule 57    id_tipodato -> tipo_dato
+Rule 58    conj_operaciones -> op_aritmetica
+Rule 59    conj_operaciones -> relacionales
+Rule 60    op_aritmetica -> id_tipodato t_op_aritmetico id_tipodato
+Rule 61    op_aritmetica -> id_tipodato t_op_aritmetico
+Rule 62    t_op_aritmetico -> SUMA
+Rule 63    t_op_aritmetico -> RESTA
+Rule 64    t_op_aritmetico -> DIVISION
+Rule 65    t_op_aritmetico -> MULTIPLICACION
+Rule 66    t_op_aritmetico -> DIVISION_ENTERA
+Rule 67    t_op_aritmetico -> MODULO
+Rule 68    t_op_aritmetico -> POTENCIA
+Rule 69    relacionales -> id_tipodato t_relacional id_tipodato
+Rule 70    relacionales -> id_tipodato t_relacional id_tipodato relacionales
+Rule 71    t_relacional -> MENOR_QUE
+Rule 72    t_relacional -> MAYOR_QUE
+Rule 73    t_relacional -> MENOR_O_IGUAL_QUE
+Rule 74    t_relacional -> MAYOR_O_IGUAL_QUE
+Rule 75    t_relacional -> IGUAL
+Rule 76    t_relacional -> DISTINTO
+Rule 77    op_logico -> O
+Rule 78    op_logico -> Y
+Rule 79    s_si -> SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+Rule 80    conj_s_si -> conj_sentencia
+Rule 81    conj_s_si -> conj_sentencia SINO conj_s_si
+Rule 82    conj_condiciones -> condicion
+Rule 83    conj_condiciones -> condicion t_op_logico conj_condiciones
+Rule 84    condicion -> expresion t_relacional expresion
+Rule 85    condicion -> NO expresion
+Rule 86    expresion -> id_tipodato
+Rule 87    expresion -> id_tipodato t_op_aritmetico id_tipodato
+Rule 88    expresion -> id_tipodato t_op_aritmetico expresion
+Rule 89    s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+Rule 90    conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia
+Rule 91    conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
+Rule 92    conj_cond_segun -> OTRO DOS_PUNTOS conj_sentencia
+Rule 93    s_ciclo -> c_para
+Rule 94    s_ciclo -> c_mientras
+Rule 95    s_ciclo -> c_repetir
+Rule 96    s_ciclo -> conj_sentencia
+Rule 97    c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+Rule 98    c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+Rule 99    para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+Rule 100   para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA HACER conj_sentencia FIN_PARA
+Rule 101   idt_para -> IDENTIFICADOR ASIGNACION id_tipodato
+Rule 102   idt_para -> IDENTIFICADOR
+Rule 103   empty -> <empty>
 
 Terminals, with rules where they appear
 
-ACCION               : 
-AMBIENTE             : 1 2 5 6
-ASIGNACION           : 53 54 100
-CADENA               : 48 50
-COMA                 : 49 50 98 99
+ACCION               : 1 2
+AMBIENTE             : 5 6
+ASIGNACION           : 54 55 101
+CADENA               : 49 51
+COMA                 : 50 51 99 100
 COMENTARIO_ENCABEZADO : 1
 COMENTARIO_LINEA     : 4
 COMENTARIO_VARIASLINEAS : 3
-DISTINTO             : 75
-DIVISION             : 63
-DIVISION_ENTERA      : 65
-DOS_PUNTOS           : 17 89 90 91
-ENTONCES             : 78
-ES                   : 
-ESCRIBIR             : 46
-FIN_ACCION           : 
-FIN_MIENTRAS         : 96
-FIN_PARA             : 98 99
-FIN_SEGUN            : 88
-FIN_SI               : 78
-HACER                : 88 96 98 99
-HASTA                : 98 99
-HASTA_QUE            : 97
-IDENTIFICADOR        : 1 2 17 18 47 49 52 53 54 55 88 100 101
-IGUAL                : 18 74
-LEER                 : 51
-MAYOR_O_IGUAL_QUE    : 73
-MAYOR_QUE            : 71
-MENOR_O_IGUAL_QUE    : 72
-MENOR_QUE            : 70
-MIENTRAS             : 96
-MODULO               : 66
-MULTIPLICACION       : 64
-NO                   : 84
+DISTINTO             : 76
+DIVISION             : 64
+DIVISION_ENTERA      : 66
+DOS_PUNTOS           : 17 90 91 92
+ENTONCES             : 79
+ES                   : 1 2
+ESCRIBIR             : 47
+FIN_ACCION           : 1 2
+FIN_MIENTRAS         : 97
+FIN_PARA             : 99 100
+FIN_SEGUN            : 89
+FIN_SI               : 79
+HACER                : 89 97 99 100
+HASTA                : 99 100
+HASTA_QUE            : 98
+IDENTIFICADOR        : 1 2 17 18 48 50 53 54 55 56 89 101 102
+IGUAL                : 18 75
+LEER                 : 52
+MAYOR_O_IGUAL_QUE    : 74
+MAYOR_QUE            : 72
+MENOR_O_IGUAL_QUE    : 73
+MENOR_QUE            : 71
+MIENTRAS             : 97
+MODULO               : 67
+MULTIPLICACION       : 65
+NO                   : 85
 NUMERICO             : 
-O                    : 76
-OTRO                 : 91
-PARA                 : 98 99
-PARENTESIS_ABIERTO   : 46 51 78 88 96 97 98 99
-PARENTESIS_CERRADO   : 46 51 78 88 96 97 98 99
-POTENCIA             : 67
-PROCESO              : 5 6 22 23
-REPETIR              : 97
-RESTA                : 62
-SEGUN                : 88
+O                    : 77
+OTRO                 : 92
+PARA                 : 99 100
+PARENTESIS_ABIERTO   : 47 52 79 89 97 98 99 100
+PARENTESIS_CERRADO   : 47 52 79 89 97 98 99 100
+POTENCIA             : 68
+PROCESO              : 23 24
+REPETIR              : 98
+RESTA                : 63
+SEGUN                : 89
 SEMICOLON            : 
-SI                   : 78
-SINO                 : 80
-SUMA                 : 61
+SI                   : 79
+SINO                 : 81
+SUMA                 : 62
 TD_ALFANUMERICO      : 19
 TD_LOGICO            : 21
 TD_NUMERICO          : 20
-Y                    : 77
+Y                    : 78
 error                : 
 
 Nonterminals, with rules where they appear
 
-_es                  : 1 2
-accion               : 1 2
-ambiente             : 9 12
+ambiente             : 1 2 9 12
 bloque               : 9 12
 bloque_ambiente      : 5 6 10 13 14
-c_mientras           : 93
-c_para               : 92
-c_repetir            : 94
-comentario_vl_l      : 6 8 9 10 11 12 22 25 27 29 31 33 34 35 36 37 38 39 45
-condicion            : 81 82
-conj_cond_segun      : 88 90
-conj_condiciones     : 78 82 96 97
+c_mientras           : 94
+c_para               : 93
+c_repetir            : 95
+comentario_vl_l      : 6 8 9 10 11 12 23 26 28 30 32 34 35 36 37 38 39 40 46
+condicion            : 82 83
+conj_cond_segun      : 89 91
+conj_condiciones     : 79 83 97 98
 conj_operaciones     : 
-conj_s_si            : 78 80
-conj_sentencia       : 22 23 24 25 26 27 28 29 30 31 32 33 34 79 80 89 90 91 95 96 97 98 99
+conj_s_si            : 79 81
+conj_sentencia       : 23 24 25 26 27 28 29 30 31 32 33 34 35 80 81 90 91 92 96 97 98 99 100
 constante            : 8 10 14 16
 empty                : 
-entrada_leer         : 51
-expresion            : 83 83 84 87
-fin_accion           : 1 2
-id_tipodato          : 59 59 60 68 68 69 69 85 86 86 87 89 90 98 98 99 100
-idt_para             : 98 99
-op_aritmetica        : 54 57
+entrada_leer         : 52
+expresion            : 84 84 85 88
+ftd_amb              : 17
+id_tipodato          : 60 60 61 69 69 70 70 86 87 87 88 90 91 99 99 100 101
+idt_para             : 99 100
+op_aritmetica        : 55 58
 op_logico            : 
 para                 : 
-proceso              : 
-relacionales         : 58 69
+proceso              : 5 6
+relacionales         : 59 70
 s_ciclo              : 
-s_ciclos             : 30 31 38 43
-s_escribir           : 24 25 35 40
-s_leer               : 26 27 36 41
+s_ciclos             : 31 32 39 44
+s_escribir           : 25 26 36 41
+s_leer               : 27 28 37 42
 s_segun              : 
-s_si                 : 28 29 37 42
-salida_esc           : 46 49 50
-sentencia            : 32 33 39 44
+s_si                 : 29 30 38 43
+salida_esc           : 47 50 51
+sentencia            : 33 34 40 45
 sigma                : 0
-t_op_aritmetico      : 59 60 86 87
-t_op_logico          : 82
-t_relacional         : 68 69 83 89 90
-tipo_dato            : 17 18 53 56
+t_op_aritmetico      : 60 61 87 88
+t_op_logico          : 83
+t_relacional         : 69 70 84 90 91
+tipo_dato            : 18 54 57
 variable             : 9 13 15
 variable_comentario_vl_l : 7
 

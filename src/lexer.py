@@ -234,51 +234,53 @@ def t_NUMERICO(t): # acepta . o , como decimal.
 
 lexer = lex.lex(reflags=re.IGNORECASE) # Bandera para que ignore mayuscula/minuscula
 
-# def analizarTokens(modoEjecucion):
-#     exportArray = []
-#     while True:
-#             tok = lexer.token()
-#             if not tok:
-#                 if (modoEjecucion == 'archivo'):
-#                     exportarTokens(exportArray)
-#                 break
-#             print(tok)
-#             if (modoEjecucion == 'archivo'):
-#                 exportArray.append([tok.type,tok.value]);
+# Solo si se ejecuta desde lexer.py hacer...
+if __name__ == "__main__":
+    def analizarTokens(modoEjecucion):
+        exportArray = []
+        while True:
+                tok = lexer.token()
+                if not tok:
+                    if (modoEjecucion == 'archivo'):
+                        exportarTokens(exportArray)
+                    break
+                print(tok)
+                if (modoEjecucion == 'archivo'):
+                    exportArray.append([tok.type,tok.value]);
 
-# # Exportar a un txt 
-# def exportarTokens(arrAnalizar):
-#     global contadorErrores
-#     with open('tokens-analizados.txt', 'w', encoding='UTF8') as f:
-#         f.write('TOKEN | VALOR\n')
-#         f.write('-------------\n')
-#         contador = 0
-#         for line in arrAnalizar:
-#             contador += 1
-#             f.write(f'{contador}- {line[0]}: {line[1]}')
-#             f.write('\n')
-#         f.write('-------------\n')
-#         f.write(f'Total de tokens válidos analizados: {contador}.\n')
-#         if (contadorErrores > 0):
-#             f.write(f'Total de tokens NO válidos: {contadorErrores}.')
-#     f.close()
-#     print('(!) Se exportó un .txt con los tokens analizados.')
+    # Exportar a un txt 
+    def exportarTokens(arrAnalizar):
+        global contadorErrores
+        with open('tokens-analizados.txt', 'w', encoding='UTF8') as f:
+            f.write('TOKEN | VALOR\n')
+            f.write('-------------\n')
+            contador = 0
+            for line in arrAnalizar:
+                contador += 1
+                f.write(f'{contador}- {line[0]}: {line[1]}')
+                f.write('\n')
+            f.write('-------------\n')
+            f.write(f'Total de tokens válidos analizados: {contador}.\n')
+            if (contadorErrores > 0):
+                f.write(f'Total de tokens NO válidos: {contadorErrores}.')
+        f.close()
+        print('(!) Se exportó un .txt con los tokens analizados.')
 
-# if not pathFile:
-#     # Ejecución "normal"
-#     print('Pasa salir pulse: [ctrl] + [C] | O escriba _salir')
-#     while True:
-#         s = input('>> ')
-#         if s == '_salir': break
-#         lexer.input(s)
-#         analizarTokens('normal')
-# else:
-#     # Ejecución "analisis de archivo de texto"
-#     try:
-#         file = open(pathFile,"r",encoding='utf8')
-#         strings = file.read()
-#         file.close()
-#         lexer.input(strings)
-#         analizarTokens('archivo')
-#     except IOError:
-#         print('Ocurrió un error leyendo archivo:', pathFile)
+    if not pathFile:
+        # Ejecución "normal"
+        print('Pasa salir pulse: [ctrl] + [C] | O escriba _salir')
+        while True:
+            s = input('>> ')
+            if s == '_salir': break
+            lexer.input(s)
+            analizarTokens('normal')
+    else:
+        # Ejecución "analisis de archivo de texto"
+        try:
+            file = open(pathFile,"r",encoding='utf8')
+            strings = file.read()
+            file.close()
+            lexer.input(strings)
+            analizarTokens('archivo')
+        except IOError:
+            print('Ocurrió un error leyendo archivo:', pathFile)
