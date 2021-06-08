@@ -22,4 +22,4 @@ Proceso
 	escribir("Hola Mundo") 	// Imprimir por pantalla
 	escribir("Bienvenido al super lexer y parser del pseudocodigo", nombre_usuario)
 	// Imprimir por pantalla
-fin_accion 	//Fin de programa
+fin_accion 	// Fin de programa
