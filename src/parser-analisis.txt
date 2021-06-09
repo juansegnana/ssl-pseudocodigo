@@ -4,23 +4,23 @@ Resultados parser
 -------------
 2) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ A comentario ',1,66)]
 -------------
-3) Prod. ftd_amb --> | [ftd_amb, LexToken(TD_ALFANUMERICO,'cadena',1,96)]
+3) Prod. ftd_amb --> | [ftd_amb, LexToken(TD_ALFANUMERICO,'cadena',1,98)]
 -------------
-4) Prod. Variable --> | [variable, LexToken(IDENTIFICADOR,'variable',1,86), LexToken(DOS_PUNTOS,':',1,94), ftd_amb]
+4) Prod. Variable --> | [variable, LexToken(IDENTIFICADOR,'variableXA',1,86), LexToken(DOS_PUNTOS,':',1,96), ftd_amb]
 -------------
-5) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ B comentario',1,103)]
+5) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ B comentario',1,105)]
 -------------
-6) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@comentario ',1,122)]
+6) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@comentario ',1,124)]
 -------------
-7) Prod. ftd_amb --> | [ftd_amb, LexToken(TD_ALFANUMERICO,'cadena',1,150)]
+7) Prod. tipo_dato --> | [tipo_dato, LexToken(CADENA,'hola',1,155)]
 -------------
-8) Prod. Variable --> | [variable, LexToken(IDENTIFICADOR,'constante',1,139), LexToken(DOS_PUNTOS,':',1,148), ftd_amb]
+8) Prod. Constante --> | [constante, LexToken(IDENTIFICADOR,'constanteCB',1,141), LexToken(IGUAL,'=',1,153), tipo_dato]
 -------------
-9) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ C comentario',1,157)]
+9) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ C comentario',1,162)]
 -------------
 10) Prod. Bloque ambiente_sr --> | [bloque_ambiente, comentario_vl_l]
 -------------
-11) Prod. Bloque ambiente_cr --> | [bloque_ambiente, variable, bloque_ambiente]
+11) Prod. Bloque ambiente_cr --> | [bloque_ambiente, constante, bloque_ambiente]
 -------------
 12) Prod. Bloque ambiente_cr --> | [bloque_ambiente, comentario_vl_l, bloque_ambiente]
 -------------
@@ -30,43 +30,141 @@ Resultados parser
 -------------
 15) Prod. Ambiente --> | [ambiente, LexToken(AMBIENTE,'ambiente',1,57), comentario_vl_l, bloque_ambiente]
 -------------
-16) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ D comentario ',1,180)]
+16) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ D comentario ',1,185)]
 -------------
-17) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ E comentario ',1,200)]
+17) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ E comentario ',1,205)]
 -------------
-18) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,5,1,232)]
+18) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,5,1,237)]
 -------------
 19) Prod. id_tipodato --> | [id_tipodato, tipo_dato]
 -------------
-20) Prod. t_op_aritmetico --> | [t_op_aritmetico, LexToken(POTENCIA,'**',1,233)]
+20) Prod. t_op_aritmetico --> | [t_op_aritmetico, LexToken(POTENCIA,'**',1,238)]
 -------------
-21) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,2,1,235)]
+21) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,2,1,240)]
 -------------
 22) Prod. id_tipodato --> | [id_tipodato, tipo_dato]
 -------------
 23) Prod. opAritmetica --> | [op_aritmetica, id_tipodato, t_op_aritmetico, id_tipodato]
 -------------
-24) Prod. sentencia --> | [sentencia, LexToken(IDENTIFICADOR,'potencia',1,220), LexToken(ASIGNACION,':=',1,229), op_aritmetica]
+24) Prod. sentencia --> | [sentencia, LexToken(IDENTIFICADOR,'potencia',1,225), LexToken(ASIGNACION,':=',1,234), op_aritmetica]
 -------------
-25) Prod. salida_esc --> | [salida_esc, LexToken(IDENTIFICADOR,'hola',1,251)]
+25) Prod. salida_esc --> | [salida_esc, LexToken(IDENTIFICADOR,'hola',1,256)]
 -------------
-26) Prod. s_escribir --> | [s_escribir, LexToken(ESCRIBIR,'escribir',1,241), LexToken(PARENTESIS_ABIERTO,'(',1,250), salida_esc, LexToken(PARENTESIS_CERRADO,')',1,255)]
+26) Prod. s_escribir --> | [s_escribir, LexToken(ESCRIBIR,'escribir',1,246), LexToken(PARENTESIS_ABIERTO,'(',1,255), salida_esc, LexToken(PARENTESIS_CERRADO,')',1,260)]
 -------------
-27) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ F comentario',1,257)]
+27) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ F comentario',1,262)]
 -------------
-28) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ G comentario',1,276)]
+28) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ G comentario',1,281)]
 -------------
-29) Prod. entrada_leer --> | [entrada_leer, LexToken(IDENTIFICADOR,'h',1,300)]
+29) Prod. entrada_leer --> | [entrada_leer, LexToken(IDENTIFICADOR,'h',1,305)]
 -------------
-30) Prod. leer --> | [s_leer, LexToken(LEER,'leer',1,295), LexToken(PARENTESIS_ABIERTO,'(',1,299), entrada_leer, LexToken(PARENTESIS_CERRADO,')',1,301)]
+30) Prod. leer --> | [s_leer, LexToken(LEER,'leer',1,300), LexToken(PARENTESIS_ABIERTO,'(',1,304), entrada_leer, LexToken(PARENTESIS_CERRADO,')',1,306)]
 -------------
-31) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ H comentario',1,303)]
+31) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ H comentario',1,308)]
 -------------
-32) Prod. id_tipodato --> | [id_tipodato, LexToken(IDENTIFICADOR,'ALGO',1,326)]
+32) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ I comentario',1,346)]
 -------------
-33) Prod. expresion --> | [expresion, id_tipodato]
+33) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,5,1,372)]
 -------------
-34) Error parser --> | LexToken(PARENTESIS_CERRADO,')',1,330)
+34) Prod. id_tipodato --> | [id_tipodato, tipo_dato]
+-------------
+35) Prod. t_op_aritmetico --> | [t_op_aritmetico, LexToken(SUMA,'+',1,373)]
+-------------
+36) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,5,1,374)]
+-------------
+37) Prod. id_tipodato --> | [id_tipodato, tipo_dato]
+-------------
+38) Prod. opAritmetica --> | [op_aritmetica, id_tipodato, t_op_aritmetico, id_tipodato]
+-------------
+39) Prod. sentencia --> | [sentencia, LexToken(IDENTIFICADOR,'h',1,369), LexToken(ASIGNACION,':=',1,370), op_aritmetica]
+-------------
+40) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ J comentario',1,376)]
+-------------
+41) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l]
+-------------
+42) Prod. Conjunto de sentencias --> | [conj_sentencia, sentencia, conj_sentencia]
+-------------
+43) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l, conj_sentencia]
+-------------
+44) Prod. sentencias del SI --> | [conj_s_si, conj_sentencia]
+-------------
+45) Prod. SI --> | [s_si, LexToken(SI,'si',1,327), LexToken(PARENTESIS_ABIERTO,'(',1,330), LexToken(IDENTIFICADOR,'ALGO',1,331), LexToken(PARENTESIS_CERRADO,')',1,335), LexToken(ENTONCES,'entonces',1,337), conj_s_si, LexToken(FIN_SI,'fin_si',1,395)]
+-------------
+46) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ K comentario',1,402)]
+-------------
+47) Prod. id_tipodato --> | [id_tipodato, LexToken(IDENTIFICADOR,'ALGOB',1,431)]
+-------------
+48) Prod. expresion --> | [expresion, id_tipodato]
+-------------
+49) Prod. t_relacional --> | [t_relacional, LexToken(MENOR_O_IGUAL_QUE,'<=',1,436)]
+-------------
+50) Prod. id_tipodato --> | [id_tipodato, LexToken(IDENTIFICADOR,'B',1,438)]
+-------------
+51) Prod. expresion --> | [expresion, id_tipodato]
+-------------
+52) Prod. condicion --> | [condicion, expresion, t_relacional, expresion]
+-------------
+53) Prod. conj de condiciones --> | [conj_condiciones, condicion]
+-------------
+54) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_VARIASLINEAS,'/* L comentario */',1,447)]
+-------------
+55) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,5,1,477)]
+-------------
+56) Prod. id_tipodato --> | [id_tipodato, tipo_dato]
+-------------
+57) Prod. t_op_aritmetico --> | [t_op_aritmetico, LexToken(SUMA,'+',1,478)]
+-------------
+58) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,5,1,479)]
+-------------
+59) Prod. id_tipodato --> | [id_tipodato, tipo_dato]
+-------------
+60) Prod. opAritmetica --> | [op_aritmetica, id_tipodato, t_op_aritmetico, id_tipodato]
+-------------
+61) Prod. sentencia --> | [sentencia, LexToken(IDENTIFICADOR,'h',1,474), LexToken(ASIGNACION,':=',1,475), op_aritmetica]
+-------------
+62) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ M comentario',1,481)]
+-------------
+63) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l]
+-------------
+64) Prod. Conjunto de sentencias --> | [conj_sentencia, sentencia, conj_sentencia]
+-------------
+65) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l, conj_sentencia]
+-------------
+66) Prod. c_mientras --> | [c_mientras, LexToken(MIENTRAS,'mientras',1,421), LexToken(PARENTESIS_ABIERTO,'(',1,430), conj_condiciones, LexToken(PARENTESIS_CERRADO,')',1,439), LexToken(HACER,'hacer',1,441), conj_sentencia, LexToken(FIN_MIENTRAS,'fin_mientras',1,500)]
+-------------
+67) Prod. ciclos --> | [s_ciclos, c_mientras]
+-------------
+68) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ N comentario',1,513)]
+-------------
+69) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l]
+-------------
+70) Prod. Conjunto de sentencias --> | [conj_sentencia, s_ciclos, conj_sentencia]
+-------------
+71) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l, conj_sentencia]
+-------------
+72) Prod. Conjunto de sentencias --> | [conj_sentencia, s_si, conj_sentencia]
+-------------
+73) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l, conj_sentencia]
+-------------
+74) Prod. Conjunto de sentencias --> | [conj_sentencia, s_leer, conj_sentencia]
+-------------
+75) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l, conj_sentencia]
+-------------
+76) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l, conj_sentencia]
+-------------
+77) Prod. Conjunto de sentencias --> | [conj_sentencia, s_escribir, conj_sentencia]
+-------------
+78) Prod. Conjunto de sentencias --> | [conj_sentencia, sentencia, conj_sentencia]
+-------------
+79) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l, conj_sentencia]
+-------------
+80) Prod. Conjunto de sentencias --> | [conj_sentencia, comentario_vl_l, conj_sentencia]
+-------------
+81) Prod. proceso --> | [proceso, LexToken(PROCESO,'proceso',1,177), conj_sentencia]
+-------------
+82) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ Ñ comentario',1,539)]
+-------------
+83) Prod. Ejecucion --> | [ejecucion, LexToken(COMENTARIO_ENCABEZADO,'/**  comentario      encabezado      */',1,0), nombre, bloque, LexToken(FIN_ACCION,'fin_accion',1,528), comentario_vl_l]
 -------------
 -------------
-Total de tokens analizados: 34.
+Total de tokens analizados: 83.

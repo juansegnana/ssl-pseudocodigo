@@ -1,5 +1,5 @@
 import ply.yacc as yacc # parser 
-from lexer import tokens
+from lexer import tokens, arregloHtml
 import argparse
 
 #Obtener path de texto por terminal
@@ -9,27 +9,12 @@ argsParser = argParser.parse_args()
 pathFile = argsParser.f
 # Corregir ambiguedad  --> http://www.dabeaz.com/ply/ply.html#ply_nn27 
 
-# precedence = (
-#     ('nonassoc', 'MENOR_QUE', 'MENOR_O_IGUAL_QUE', 'MAYOR_QUE', 'MAYOR_O_IGUAL_QUE'),  # Nonassociative operators -> NO PERMITE a < b < c
-#     ('left', 'PROCESO', 'IDENTIFICADOR'),
-#     ('left', 'ASIGNACION'),
-#     ('left', 'SUMA', 'RESTA'),
-#     ('left', 'MULTIPLICACION', 'DIVISION', 'DIVISION_ENTERA', 'MODULO', 'POTENCIA'),
-#     ('left', 'PARENTESIS_ABIERTO', 'PARENTESIS_CERRADO')
-# )
-
-exportarTxt = []
+exportarTxt = list()
+contadorErrores = 0
 
 precedence = (
-    ('right','COMENTARIO_ENCABEZADO'),
-    ('right','IDENTIFICADOR','PROCESO','SI','MIENTRAS', 'REPETIR', 'FIN_ACCION'),
-    ('right','ASIGNACION'),
-    ('right','IGUAL'),
-    ('left','DISTINTO'),
-    ('left','MENOR_QUE','MENOR_O_IGUAL_QUE','MAYOR_QUE','MAYOR_O_IGUAL_QUE'),
     ('left','SUMA','RESTA'),
     ('left','MULTIPLICACION','DIVISION'),
-    ('left','PARENTESIS_ABIERTO','PARENTESIS_CERRADO'),
 )
 
 #MINUSCULA PRODUCCIONES
@@ -39,7 +24,6 @@ def p_sigma (p):
     ''' sigma : ejecucion '''
     print("SIGMA")
     print("Terminó todo bien!")
-    
 
 def p_ejecucion (p):
     '''ejecucion : COMENTARIO_ENCABEZADO nombre bloque FIN_ACCION
@@ -49,12 +33,6 @@ def p_ejecucion (p):
     '''
     print('Prod. Ejecucion -->', p.slice)
     exportarTxt.append(['Prod. Ejecucion -->', p.slice])
-
-
-
-
-
-
 
 def p_nombre(p): 
     '''nombre : ACCION IDENTIFICADOR ES'''
@@ -128,36 +106,6 @@ def p_proceso (p):
     '''
     print('Prod. proceso -->', p.slice)
     exportarTxt.append(['Prod. proceso -->', p.slice])
-
-
-#def p_conj_sentencia (p):
-#    '''conj_sentencia : sentencia conj_sentencia
-#                    | sentencia
-#    '''
-#
-#def p_sentencia_asig (p):
-#        '''sentencia : IDENTIFICADOR ASIGNACION tipo_dato
-#                | IDENTIFICADOR ASIGNACION op_aritmetica
-#        '''
-#
-#def p_sentencia_leer (p):
-#    '''sentencia : LEER PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO'''
-#
-#def p_sentencia_escribir (p):
-#    '''sentencia : ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO'''
-#
-#def p_sentencia_si (p):
-#    '''sentencia : SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI'''
-#    
-#def p_sentencia_mientras (p):
-#    '''sentencia : MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS'''
-#
-#def p_sentencia_repetir (p):
-#    '''sentencia : REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO'''
-#
-#def p_sentencia_para (p):
-#    ''' sentencia : PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-#            | PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA HACER conj_sentencia FIN_PARA'''
 
 def p_conj_sentencia (p):
     '''conj_sentencia : s_escribir
@@ -239,13 +187,6 @@ def p_t_op_aritmetico (p):
     print('Prod. t_op_aritmetico -->', p.slice)
     exportarTxt.append(['Prod. t_op_aritmetico -->', p.slice])
     
-#def p_relacionales (p):
-#    '''
-#        relacionales : id_tipodato t_relacional id_tipodato
-#                | id_tipodato t_relacional id_tipodato relacionales
-#    '''
-#    print('Prod. relacionales')
-    
 def p_t_relacional (p):
     '''
         t_relacional : MENOR_QUE
@@ -267,7 +208,9 @@ def p_t_op_logico (p):
     exportarTxt.append(['Prod. t_op_logico -->', p.slice])
 
 def p_s_si (p):
-    '''s_si : SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI'''
+    '''s_si : SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+            | SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+    '''
     print('Prod. SI -->', p.slice)
     exportarTxt.append(['Prod. SI -->', p.slice])
     
@@ -292,7 +235,8 @@ def p_condicion (p):
 def p_expresion (p):
     '''expresion : id_tipodato 
                 | id_tipodato t_op_aritmetico id_tipodato 
-                | id_tipodato t_op_aritmetico expresion'''
+                | id_tipodato t_op_aritmetico expresion
+    '''
     print('Prod. expresion -->', p.slice)
     exportarTxt.append(['Prod. expresion -->', p.slice])
     
@@ -315,8 +259,6 @@ def p_s_ciclos (p):
     '''
     print('Prod. de ciclos -->', p.slice)
     exportarTxt.append(['Prod. ciclos -->', p.slice])
-
-
 
 def p_c_mientras (p):
     '''
@@ -349,28 +291,42 @@ def p_error (p):
     print('Error parser -->', p)
     exportarTxt.append(['Error parser -->', p])
 
-#def p_empty(p):
-#    '''
-#        empty :
-#    '''
-#    # p[0] = None
-#    print('Prod empty')
-        
 parser = yacc.yacc()
-# print('Parser pseudocodigo.')
-# while True:
-#     try:
-#         s = input('>> ')
-#     except ValueError as e:
-#         print(e)
-#     except EOFError:
-#         break
-#     result = parser.parse(s)
-#     print(result)
 
 
-# VER DESPUÉS DE ARREGLAR ERRORES
+def exportarHtml (arregloHtml):
+    base = [
+        f"""
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{pathFile}</title>
+    </head>
+    <body>
+"""
+    ]
+    for line in arregloHtml:
+        # valor = line['valor']
+        if line[0] == 'encabezado':
+            base.append('\t<h2>'+line[1]+'</h2>\n')
+            # arregloHtml.append(f'<h2>{valor}</h2>')
+        if line[0] == 'linea':
+            base.append('\t<p>'+line[1]+'</p>\n')
+        if line[0] == 'bloque':
+            base.append('\t<h4>'+line[1]+'</h4>\n')
 
+    base.append(
+        '''
+    </body>
+</html>'''
+    )
+    # arregloHtml = base + arregloHtml           
+    with open(f'{pathFile}.html', 'w', encoding='UTF8') as f:
+        for line in base:
+            f.write(line)
+    f.close()
+# fin de función exportar
 
 if not pathFile:
     # Ejecución "normal"
@@ -388,9 +344,7 @@ else:
         strings = file.read()
         file.close()
         result = parser.parse(strings)
-        print(result)
-        # global exportarTxt
-        # Exportar a txt
+
         with open('parser-analisis.txt', 'w', encoding='UTF8') as f:
             f.write('Resultados parser\n-----------------\n')
             contador = 0
@@ -401,6 +355,11 @@ else:
             f.write('-------------\n')
             f.write(f'Total de tokens analizados: {contador}.\n')
         f.close()
-        print('(!) Se exportó un .txt')
+        if contadorErrores > 0:
+            print('(!) Ocurrió un error semántico.')
+        else:
+            exportarHtml(arregloHtml)
+        print('(!) Se exportó un .txt con los tokens analizados.')
     except IOError:
         print('Ocurrió un error leyendo archivo:', pathFile)
+        

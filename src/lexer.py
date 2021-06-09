@@ -9,6 +9,7 @@ argsParser = argParser.parse_args()
 pathFile = argsParser.f
 
 contadorErrores = 0
+arregloHtml = []
 
 # Terminales
 tokens = [
@@ -87,18 +88,31 @@ def t_COMENTARIO_ENCABEZADO(t):
         t.value= t.value.replace('\n', ' ')
     if t.value.__contains__('\t'):
         t.value= t.value.replace('\t', ' ')
+    cambio= t.value.replace('/**', '')
+    cambio= cambio.replace('*/','')
+    print("t.value: ",t.value)
+    arregloHtml.append(['encabezado', cambio])
     return t 
 
 def t_COMENTARIO_VARIASLINEAS(t): 
     r'\/\*[\s\S]*?\*\/'; 
     if t.value.__contains__('\n'):
         t.value= t.value.replace('\n', ' ')
+    cambio= t.value.replace('/*', '')
+    cambio= cambio.replace('*/','')
+    arregloHtml.append(['bloque', cambio])
     return t 
 
 def t_COMENTARIO_LINEA(t): 
-    r'((\/\/|\@)(\s|\S)*?(.*))'; 
+    r'((\/\/|\@)(\s|\S)*?(.*))';
     if t.value.__contains__('\n'):
         t.value= t.value.replace('\n', '')
+    if t.value.__contains__('@'):
+        cambio= t.value.replace('@', '')
+    else:
+        if t.value.__contains__('//'):
+            cambio= t.value.replace('//','')
+    arregloHtml.append(['linea', cambio])
     return t 
 
 def t_ACCION(t): r'(accion|ACCION)'; return t 
