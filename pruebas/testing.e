@@ -1,22 +1,22 @@
-/*  comentario 
+/**  comentario 
     encabezado 
     */
 accion hola _es 
-ambiente @comentario 
-    variable: cadena @comentario
+ambiente @ A comentario 
+    variable: cadena @ B comentario
+    @comentario 
+    constante: cadena @ C comentario
+proceso @ D comentario 
+    @ E comentario 
     potencia := 5**2
-    @comentario 
-    constante: cadena @comentario
-proceso @comentario 
-    @comentario 
-    escribir (hola) @comentario
-    @comentario
-    leer(h) @comentario
-    si ALGO entonces @comentario
-        blablabla @comentario
-    fin_si @comentario
-    mientras ALGOB hacer @comentario
-        blablabla @comentario
-    fin_mientras @comentario
+    escribir (hola) @ F comentario
+    @ G comentario
+    leer(h) @ H comentario
+    si (ALGO) entonces @ I comentario
+        blablabla @ J comentario
+    fin_si @ K comentario
+    mientras (ALGOB) hacer @ L comentario
+        blablabla @ M comentario
+    fin_mientras @ N comentario
 fin_accion
-@comentario
+@ Ñ comentario
