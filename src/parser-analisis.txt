@@ -1,58 +1,72 @@
 Resultados parser
 -----------------
-1) Prod. nombre accion --> | [nombre, LexToken(ACCION,'ACCION',1,171), LexToken(IDENTIFICADOR,'HolaMundo',1,178), LexToken(ES,'_es',1,188)]
+1) Prod. nombre accion --> | [nombre, LexToken(ACCION,'accion',1,40), LexToken(IDENTIFICADOR,'hola',1,47), LexToken(ES,'_es',1,52)]
 -------------
-2) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_VARIASLINEAS,'/* Definimos el ambiente  variables que usamos  */',1,204)]
+2) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ A comentario ',1,66)]
 -------------
-3) Prod. ftd_amb --> | [ftd_amb, LexToken(TD_ALFANUMERICO,'cadena',1,273)]
+3) Prod. ftd_amb --> | [ftd_amb, LexToken(TD_ALFANUMERICO,'cadena',1,96)]
 -------------
-4) Prod. Variable --> | [variable, LexToken(IDENTIFICADOR,'nombre_usuario',1,256), LexToken(DOS_PUNTOS,':',1,271), ftd_amb]
+4) Prod. Variable --> | [variable, LexToken(IDENTIFICADOR,'variable',1,86), LexToken(DOS_PUNTOS,':',1,94), ftd_amb]
 -------------
-5) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ clasico algoritmo de Hola Mundo',1,281)]
+5) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ B comentario',1,103)]
 -------------
-6) Prod. Bloque ambiente_sr --> | [bloque_ambiente, variable, comentario_vl_l]
+6) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@comentario ',1,122)]
 -------------
-7) Prod. Ambiente --> | [ambiente, LexToken(AMBIENTE,'Ambiente',1,193), comentario_vl_l, bloque_ambiente]
+7) Prod. ftd_amb --> | [ftd_amb, LexToken(TD_ALFANUMERICO,'cadena',1,150)]
 -------------
-8) Prod. salida_esc --> | [salida_esc, LexToken(CADENA,'Ingrese su nombre de usuario:',1,334)]
+8) Prod. Variable --> | [variable, LexToken(IDENTIFICADOR,'constante',1,139), LexToken(DOS_PUNTOS,':',1,148), ftd_amb]
 -------------
-9) Prod. s_escribir --> | [s_escribir, LexToken(ESCRIBIR,'escribir',1,325), LexToken(PARENTESIS_ABIERTO,'(',1,333), salida_esc, LexToken(PARENTESIS_CERRADO,')',1,365)]
+9) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ C comentario',1,157)]
 -------------
-10) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'// Imprimir por pantalla',1,367)]
+10) Prod. Bloque ambiente_sr --> | [bloque_ambiente, comentario_vl_l]
 -------------
-11) Prod. entrada_leer --> | [entrada_leer, LexToken(IDENTIFICADOR,'nombre_usuario',1,398)]
+11) Prod. Bloque ambiente_cr --> | [bloque_ambiente, variable, bloque_ambiente]
 -------------
-12) Prod. leer --> | [s_leer, LexToken(LEER,'leer',1,393), LexToken(PARENTESIS_ABIERTO,'(',1,397), entrada_leer, LexToken(PARENTESIS_CERRADO,')',1,412)]
+12) Prod. Bloque ambiente_cr --> | [bloque_ambiente, comentario_vl_l, bloque_ambiente]
 -------------
-13) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'// Leer nombre usuario',1,416)]
+13) Prod. Bloque ambiente_cr --> | [bloque_ambiente, comentario_vl_l, bloque_ambiente]
 -------------
-14) Prod. salida_esc --> | [salida_esc, LexToken(CADENA,'Hola Mundo',1,449)]
+14) Prod. Bloque ambiente_cr --> | [bloque_ambiente, variable, bloque_ambiente]
 -------------
-15) Prod. s_escribir --> | [s_escribir, LexToken(ESCRIBIR,'escribir',1,440), LexToken(PARENTESIS_ABIERTO,'(',1,448), salida_esc, LexToken(PARENTESIS_CERRADO,')',1,461)]
+15) Prod. Ambiente --> | [ambiente, LexToken(AMBIENTE,'ambiente',1,57), comentario_vl_l, bloque_ambiente]
 -------------
-16) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'// Imprimir por pantalla',1,464)]
+16) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ D comentario ',1,180)]
 -------------
-17) Prod. salida_esc --> | [salida_esc, LexToken(IDENTIFICADOR,'nombre_usuario',1,554)]
+17) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ E comentario ',1,200)]
 -------------
-18) Prod. salida_esc --> | [salida_esc, LexToken(CADENA,'Bienvenido al super lexer y parser del pseudocodigo',1,499), LexToken(COMA,',',1,552), salida_esc]
+18) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,5,1,232)]
 -------------
-19) Prod. s_escribir --> | [s_escribir, LexToken(ESCRIBIR,'escribir',1,490), LexToken(PARENTESIS_ABIERTO,'(',1,498), salida_esc, LexToken(PARENTESIS_CERRADO,')',1,568)]
+19) Prod. id_tipodato --> | [id_tipodato, tipo_dato]
 -------------
-20) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'// Imprimir por pantalla',1,571)]
+20) Prod. t_op_aritmetico --> | [t_op_aritmetico, LexToken(POTENCIA,'**',1,233)]
 -------------
-21) Prod. Conjunto de sentencias --> | [conj_sentencia, s_escribir, comentario_vl_l]
+21) Prod. tipo_dato --> | [tipo_dato, LexToken(NUMERICO,2,1,235)]
 -------------
-22) Prod. Conjunto de sentencias --> | [conj_sentencia, s_escribir, comentario_vl_l, conj_sentencia]
+22) Prod. id_tipodato --> | [id_tipodato, tipo_dato]
 -------------
-23) Prod. Conjunto de sentencias --> | [conj_sentencia, s_leer, comentario_vl_l, conj_sentencia]
+23) Prod. opAritmetica --> | [op_aritmetica, id_tipodato, t_op_aritmetico, id_tipodato]
 -------------
-24) Prod. Conjunto de sentencias --> | [conj_sentencia, s_escribir, comentario_vl_l, conj_sentencia]
+24) Prod. sentencia --> | [sentencia, LexToken(IDENTIFICADOR,'potencia',1,220), LexToken(ASIGNACION,':=',1,229), op_aritmetica]
 -------------
-25) Prod. proceso --> | [proceso, LexToken(PROCESO,'Proceso',1,316), conj_sentencia]
+25) Prod. salida_esc --> | [salida_esc, LexToken(IDENTIFICADOR,'hola',1,251)]
 -------------
-26) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'// Fin de programa',1,608)]
+26) Prod. s_escribir --> | [s_escribir, LexToken(ESCRIBIR,'escribir',1,241), LexToken(PARENTESIS_ABIERTO,'(',1,250), salida_esc, LexToken(PARENTESIS_CERRADO,')',1,255)]
 -------------
-27) Prod. Ejecucion --> | [ejecucion, LexToken(COMENTARIO_ENCABEZADO,'/** Universidad Tecnologica Nacional  Facultad Regional Resistencia  Sintaxis y Semantica de los Lenguajes  Ciclo:2021  Autor:   Programa basico que imprime hola mundo */',1,0), nombre, bloque, LexToken(FIN_ACCION,'fin_accion',1,596), comentario_vl_l]
+27) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ F comentario',1,257)]
+-------------
+28) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ G comentario',1,276)]
+-------------
+29) Prod. entrada_leer --> | [entrada_leer, LexToken(IDENTIFICADOR,'h',1,300)]
+-------------
+30) Prod. leer --> | [s_leer, LexToken(LEER,'leer',1,295), LexToken(PARENTESIS_ABIERTO,'(',1,299), entrada_leer, LexToken(PARENTESIS_CERRADO,')',1,301)]
+-------------
+31) Prod. Comentario VL L --> | [comentario_vl_l, LexToken(COMENTARIO_LINEA,'@ H comentario',1,303)]
+-------------
+32) Prod. id_tipodato --> | [id_tipodato, LexToken(IDENTIFICADOR,'ALGO',1,326)]
+-------------
+33) Prod. expresion --> | [expresion, id_tipodato]
+-------------
+34) Error parser --> | LexToken(PARENTESIS_CERRADO,')',1,330)
 -------------
 -------------
-Total de tokens analizados: 27.
+Total de tokens analizados: 34.

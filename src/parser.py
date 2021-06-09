@@ -76,27 +76,24 @@ def p_bloque(p):
 def p_ambiente (p):
     '''ambiente : AMBIENTE bloque_ambiente
                 | AMBIENTE comentario_vl_l bloque_ambiente
+                | AMBIENTE bloque_ambiente comentario_vl_l
     '''
     print('Prod Ambiente -->', p.slice)
     exportarTxt.append(['Prod. Ambiente -->', p.slice])
 
 def p_bloque_ambiente_scr (p):
     '''
-        bloque_ambiente : variable comentario_vl_l
-                    | constante comentario_vl_l
-                    | comentario_vl_l
-                    | variable
+        bloque_ambiente : variable
                     | constante
+                    | comentario_vl_l
     '''
     print('Prod. Bloque ambiente_sr -->', p.slice)
     exportarTxt.append(['Prod. Bloque ambiente_sr -->', p.slice])
 
 def p_bloque_ambiente_cc (p):
-    ''' bloque_ambiente : variable comentario_vl_l bloque_ambiente
-                    | constante comentario_vl_l bloque_ambiente
+    ''' bloque_ambiente : variable bloque_ambiente
+                    | constante bloque_ambiente
                     | comentario_vl_l bloque_ambiente
-                    | variable bloque_ambiente
-                    | constante bloque_ambiente 
     '''
     print('Prod. Bloque ambiente_cr -->', p.slice)
     exportarTxt.append(['Prod. Bloque ambiente_cr -->', p.slice])
@@ -127,11 +124,11 @@ def p_tipo_dato (p):
 
 def p_proceso (p):
     '''
-        proceso : PROCESO comentario_vl_l conj_sentencia
-            | PROCESO conj_sentencia
+        proceso : PROCESO conj_sentencia
     '''
     print('Prod. proceso -->', p.slice)
     exportarTxt.append(['Prod. proceso -->', p.slice])
+
 
 #def p_conj_sentencia (p):
 #    '''conj_sentencia : sentencia conj_sentencia
@@ -163,32 +160,20 @@ def p_proceso (p):
 #            | PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA HACER conj_sentencia FIN_PARA'''
 
 def p_conj_sentencia (p):
-    '''conj_sentencia : s_escribir conj_sentencia 
-                    | s_escribir comentario_vl_l conj_sentencia
-                    | s_leer conj_sentencia 
-                    | s_leer comentario_vl_l conj_sentencia 
-                    | s_si conj_sentencia 
-                    | s_si comentario_vl_l conj_sentencia 
-                    | s_segun conj_sentencia
-                    | s_segun comentario_vl_l conj_sentencia
-                    | s_ciclos conj_sentencia 
-                    | s_ciclos comentario_vl_l conj_sentencia 
-                    | sentencia conj_sentencia 
-                    | sentencia comentario_vl_l conj_sentencia 
-                    | comentario_vl_l conj_sentencia 
-                    | s_escribir comentario_vl_l 
-                    | s_leer comentario_vl_l 
-                    | s_si comentario_vl_l
-                    | s_segun comentario_vl_l
-                    | s_ciclos comentario_vl_l 
-                    | sentencia comentario_vl_l 
-                    | s_escribir 
+    '''conj_sentencia : s_escribir
                     | s_leer 
-                    | s_si 
+                    | s_si
                     | s_segun
-                    | s_ciclos 
-                    | sentencia 
+                    | s_ciclos
+                    | sentencia
                     | comentario_vl_l
+                    | s_escribir conj_sentencia
+                    | s_leer conj_sentencia
+                    | s_si conj_sentencia
+                    | s_segun conj_sentencia
+                    | s_ciclos conj_sentencia
+                    | sentencia conj_sentencia
+                    | comentario_vl_l conj_sentencia
     '''
     print('Prod. Conjunto de sentencias -->', p.slice)
     exportarTxt.append(['Prod. Conjunto de sentencias -->', p.slice])
@@ -317,7 +302,7 @@ def p_s_segun (p):
     exportarTxt.append(['Prod. s_segun -->', p.slice])
 
 def p_conj_cond_segun (p):
-    '''conj_cond_segun : t_relacional id_tipodato DOS_PUNTOS conj_sentencia 
+    '''conj_cond_segun : t_relacional id_tipodato DOS_PUNTOS conj_sentencia
                     | t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun 
                     | OTRO DOS_PUNTOS conj_sentencia'''
     print('Prod. conj. cond. segun -->', p.slice)
@@ -326,8 +311,8 @@ def p_conj_cond_segun (p):
 def p_s_ciclos (p):
     '''s_ciclos : c_para 
             | c_mientras 
-            | c_repetir 
-            | conj_sentencia'''
+            | c_repetir
+    '''
     print('Prod. de ciclos -->', p.slice)
     exportarTxt.append(['Prod. ciclos -->', p.slice])
 
