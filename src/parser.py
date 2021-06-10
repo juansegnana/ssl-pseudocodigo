@@ -126,7 +126,6 @@ def p_conj_sentencia (p):
     print('Prod. Conjunto de sentencias -->', p.slice)
     exportarTxt.append(['Prod. Conjunto de sentencias -->', p.slice])
 
-
 def p_s_escribir (p):
     '''s_escribir : ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO'''
     print('Prod. s_escribir -->', p.slice)
@@ -173,6 +172,8 @@ def p_op_aritmetica (p):
     '''
     print('Prod. opAritmetica -->', p.slice)
     exportarTxt.append(['Prod. opAritmetica -->', p.slice])
+
+## 
 
 def p_t_op_aritmetico (p):
     '''
@@ -309,20 +310,22 @@ def exportarHtml (arregloHtml):
     for line in arregloHtml:
         # valor = line['valor']
         if line[0] == 'encabezado':
-            base.append('\t<h2>'+line[1]+'</h2>\n')
+            base.append('\t\t<h2>'+line[1]+'</h2>\n')
             # arregloHtml.append(f'<h2>{valor}</h2>')
         if line[0] == 'linea':
-            base.append('\t<p>'+line[1]+'</p>\n')
+            base.append('\t\t<p>'+line[1]+'</p>\n')
         if line[0] == 'bloque':
-            base.append('\t<h4>'+line[1]+'</h4>\n')
+            base.append('\t\t<h4>'+line[1]+'</h4>\n')
 
     base.append(
         '''
     </body>
 </html>'''
     )
-    # arregloHtml = base + arregloHtml           
-    with open(f'{pathFile}.html', 'w', encoding='UTF8') as f:
+    # arregloHtml = base + arregloHtml    
+    nombre = pathFile
+    nombre = nombre.replace('.e', '')       
+    with open(f'{nombre}.html', 'w', encoding='UTF8') as f:
         for line in base:
             f.write(line)
     f.close()

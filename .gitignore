@@ -3,3 +3,6 @@ dist/
 tokens-analizados.txt
 lexer.spec
 __pycache__/
+.vscode/
+env/
+parsetab.py

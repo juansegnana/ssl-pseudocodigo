@@ -3,9 +3,9 @@
     */
 accion hola _es 
 ambiente @ A comentario 
-    variable: cadena @ B comentario
+    variableXA: cadena @ B comentario
     @comentario 
-    constante: cadena @ C comentario
+    constanteCB = "hola" @ C comentario
 proceso @ D comentario 
     @ E comentario 
     potencia := 5**2
@@ -13,10 +13,10 @@ proceso @ D comentario
     @ G comentario
     leer(h) @ H comentario
     si (ALGO) entonces @ I comentario
-        blablabla @ J comentario
+        h:=5+5 @ J comentario
     fin_si @ K comentario
-    mientras (ALGOB) hacer @ L comentario
-        blablabla @ M comentario
+    mientras (ALGOB<=B) hacer /* L comentario */
+        h:=5+5 @ M comentario
     fin_mientras @ N comentario
 fin_accion
 @ Ñ comentario
