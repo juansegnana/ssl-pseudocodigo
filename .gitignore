@@ -1,8 +1,9 @@
 build/
 dist/
-tokens-analizados.txt
+*.txt
 lexer.spec
-__pycache__/
+__pycache__
+ply
 .vscode/
 env/
 parsetab.py

@@ -289,42 +289,30 @@ def p_idt_para (p):
     exportarTxt.append(['Prod. Para -->', p.slice])
 
 def p_error (p):
+    global contadorErrores
     print('Error parser -->', p)
+    contadorErrores += 1
     exportarTxt.append(['Error parser -->', p])
 
 parser = yacc.yacc()
 
 
 def exportarHtml (arregloHtml):
+    nombre = pathFile
+    nombre = nombre.replace('.e', '')    
     base = [
-        f"""
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>{pathFile}</title>
-    </head>
-    <body>
-"""
+        f'''<!DOCTYPE html>\n<html>\n<head>\n\t<meta charset="utf-8">\n\t<title>{nombre.split('/')[-1]}</title>\n</head>\n<body>'''
     ]
     for line in arregloHtml:
-        # valor = line['valor']
+        line[1] = line[1].strip()
         if line[0] == 'encabezado':
-            base.append('\t\t<h2>'+line[1]+'</h2>\n')
-            # arregloHtml.append(f'<h2>{valor}</h2>')
+            base.append('\n\t\t<h2>'+line[1]+'</h2>')
         if line[0] == 'linea':
-            base.append('\t\t<p>'+line[1]+'</p>\n')
+            base.append('\n\t\t<p>'+line[1]+'</p>')
         if line[0] == 'bloque':
-            base.append('\t\t<h4>'+line[1]+'</h4>\n')
+            base.append('\n\t\t<h4>'+line[1]+'</h4>')
 
-    base.append(
-        '''
-    </body>
-</html>'''
-    )
-    # arregloHtml = base + arregloHtml    
-    nombre = pathFile
-    nombre = nombre.replace('.e', '')       
+    base.append('\n</body>\n</html>')
     with open(f'{nombre}.html', 'w', encoding='UTF8') as f:
         for line in base:
             f.write(line)
@@ -362,6 +350,7 @@ else:
             print('(!) Ocurrió un error semántico.')
         else:
             exportarHtml(arregloHtml)
+            print('(!) Se exportó un .html con los comentarios.')
         print('(!) Se exportó un .txt con los tokens analizados.')
     except IOError:
         print('Ocurrió un error leyendo archivo:', pathFile)

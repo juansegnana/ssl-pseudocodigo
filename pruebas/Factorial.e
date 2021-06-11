@@ -17,7 +17,7 @@ y calcula cual es su factorial
 finaliza imprimiendo el resultado
 #*/
 Proceso 
-	escribir("Ingrese numero a calcular su factorial:");
+	escribir("Ingrese numero a calcular su factorial:")
 	leer(nro_calculo);
 	res_factorial := 1;
 	mientras (nro_calculo <> 0) hacer;
