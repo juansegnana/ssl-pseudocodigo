@@ -150,7 +150,10 @@ def p_id_tipodato (p):
 def p_op_aritmetica (p):
     '''
         op_aritmetica : id_tipodato t_op_aritmetico id_tipodato
-                    | id_tipodato t_op_aritmetico
+                    | id_tipodato t_op_aritmetico op_aritmetica
+                    | id_tipodato
+                    | PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO t_op_aritmetico op_aritmetica
+                    | PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO
     '''
     exportarTxt.append(['Prod. opAritmetica -->', p.slice])
 
@@ -263,15 +266,25 @@ def p_error (p):
     contadorErrores += 1
     exportarTxt.append(['Error parser -->', p])
 
-parser = yacc.yacc()
+parser = yacc.yacc(errorlog=yacc.NullLogger()) # Ignorar warnings.
 
 
 def exportarHtml (arregloHtml):
+
     nombre = pathFile
-    nombre = nombre.replace('.e', '')    
+    nombre = nombre.replace('.e', '')
+    
+    nombreRecortado = ''
+    if nombre.__contains__('/'):
+        nombreRecortado = nombre.split('/')[-1]
+    elif nombre.__contains__('\\'):
+        nombreRecortado = nombre.split('\\')[-1]
+    else: nombreRecortado = nombre;
+
     base = [
-        f'''<!DOCTYPE html>\n<html>\n<head>\n\t<meta charset="utf-8">\n\t<title>{nombre.split('/')[-1]}</title>\n</head>\n<body>'''
+        f'''<!DOCTYPE html>\n<html>\n<head>\n\t<meta charset="utf-8">\n\t<title>{nombreRecortado}</title>\n</head>\n<body>'''
     ]
+
     for line in arregloHtml:
         line[1] = line[1].strip()
         if line[0] == 'encabezado':

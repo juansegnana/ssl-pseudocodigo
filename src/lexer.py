@@ -113,19 +113,19 @@ def t_COMENTARIO_LINEA(t):
     arregloHtml.append(['linea', cambio])
     return t 
 
-def t_ACCION(t): r'(acci[oó]n)'; return t 
+def t_ACCION(t): r'\b(?:acci[oó]n)\b'; return t 
 
-def t_ES(t): r'(_es)'; return t 
+def t_ES(t): r'\b(?:_es)\b'; return t 
 
-def t_FIN_ACCION(t): r'(fin_acci[oó]n)'; return t 
+def t_FIN_ACCION(t): r'\b(?:fin_acci[oó]n)\b'; return t 
 
-def t_AMBIENTE(t): r'(ambiente)'; return t 
+def t_AMBIENTE(t): r'\b(?:ambiente)\b'; return t 
 
-def t_PROCESO(t): r'(proceso)'; return t 
+def t_PROCESO(t): r'\b(?:proceso)\b'; return t 
 
-def t_ESCRIBIR(t): r'(escribir)'; return t 
+def t_ESCRIBIR(t): r'\b(?:escribir)\b'; return t 
 
-def t_LEER(t): r'(leer)'; return t 
+def t_LEER(t): r'\b(?:leer)\b'; return t 
 
 def t_PARENTESIS_ABIERTO(t): r'\('; return t 
 
@@ -133,41 +133,41 @@ def t_PARENTESIS_CERRADO(t): r'\)'; return t
 
 def t_ASIGNACION(t): r':='; return t 
 
-def t_O(t): r'(_o)'; return t
+def t_O(t): r'\b(?:_o)\b'; return t
 
-def t_Y(t): r'(_y)'; return t
+def t_Y(t): r'\b(?:_y)\b'; return t
 
-def t_SINO(t): r'(sino)'; return t
+def t_SINO(t): r'\b(?:sino)\b'; return t
 
-def t_FIN_SI(t): r'(fin_si)'; return t
+def t_FIN_SI(t): r'\b(?:fin_si)\b'; return t
 
-def t_SI(t): r'(si|SI)'; return t
+def t_SI(t): r'\b(?:si)\b'; return t
 
-def t_ENTONCES(t): r'(entonces)'; return t
+def t_ENTONCES(t): r'\b(?:entonces)\b'; return t
 
-def t_NO(t): r'(_no)'; return t
+def t_NO(t): r'\b(?:_no)\b'; return t
 
-def t_HACER(t): r'(hacer)'; return t
+def t_HACER(t): r'\b(?:hacer)\b'; return t
 
-def t_SEGUN(t): r'(segun)'; return t
+def t_SEGUN(t): r'\b(?:segun)\b'; return t
 
-def t_FIN_SEGUN(t): r'(fin_segun)'; return t
+def t_FIN_SEGUN(t): r'\b(?:fin_segun)\b'; return t
 
-def t_MIENTRAS(t): r'(mientras)'; return t
+def t_MIENTRAS(t): r'\b(?:mientras)\b'; return t
 
-def t_FIN_MIENTRAS(t): r'(fin_mientras)'; return t
+def t_FIN_MIENTRAS(t): r'\b(?:fin_mientras)\b'; return t
 
-def t_OTRO(t): r'(_otro)'; return t
+def t_OTRO(t): r'\b(?:_otro)\b'; return t
 
-def t_REPETIR(t): r'(repetir)'; return t
+def t_REPETIR(t): r'\b(?:repetir)\b'; return t
 
-def t_HASTA_QUE(t): r'(hasta_que)'; return t
+def t_HASTA_QUE(t): r'\b(?:hasta_que)\b'; return t
 
-def t_PARA(t): r'(para)'; return t
+def t_PARA(t): r'\b(?:para)\b'; return t
 
-def t_HASTA(t): r'(hasta)'; return t
+def t_HASTA(t): r'\b(?:hasta)\b'; return t
 
-def t_FIN_PARA(t): r'(fin_para)'; return t
+def t_FIN_PARA(t): r'\b(?:fin_para)\b'; return t
 
 def t_MENOR_O_IGUAL_QUE(t): r'<='; return t
 
@@ -175,11 +175,11 @@ def t_MAYOR_O_IGUAL_QUE(t): r'>='; return t
 
 def t_DISTINTO(t): r'<>'; return t
 
-def t_TD_NUMERICO(t): r'(entero|numero|numerico|real)'; return t 
+def t_TD_NUMERICO(t): r'\b(?:num[eé]rico|n[uú]mero|entero|real)\b'; return t 
 
-def t_TD_ALFANUMERICO(t): r'(cadena|alfanumerico)'; return t 
+def t_TD_ALFANUMERICO(t): r'\b(?:cadena|alfanum[eé]rico)\b'; return t 
 
-def t_TD_LOGICO(t): r'(logico|booleano)'; return t
+def t_TD_LOGICO(t): r'\b(?:l[oó]gico|booleano)\b'; return t
 
 def t_MODULO(t): r'(_mod)'; return t
 
@@ -257,9 +257,9 @@ if __name__ == "__main__":
                     if (modoEjecucion == 'archivo'):
                         exportarTokens(exportArray)
                     break
-                # print(tok)
                 if (modoEjecucion == 'archivo'):
                     exportArray.append([tok.type,tok.value]);
+                else: print(f'Tipo: {tok.type} | Valor: {tok.value}')
 
     # Exportar a un txt 
     def exportarTokens(arrAnalizar):

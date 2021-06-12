@@ -3,7 +3,7 @@
 */
 ACCION porcentaje _ES
 AMBIENTE
-    total: numerico
+    total: real
     cantidad: numerico
     porcentaje: numerico
 PROCESO
@@ -13,6 +13,6 @@ PROCESO
     leer(cantidad)
 
     porcentaje:= (cantidad*100)/porcentaje
-    escribir("El porcentaje es de", porcentaje, "%")
+    escribir("El porcentaje es de", porcentaAje, "%")
 
 FIN_ACCION
