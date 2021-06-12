@@ -38,7 +38,7 @@ MIENTRAS (contador <> 0) HACER                          @ Abrimos Miestras
 		
 		SINO SI (var2=var1) ENTONCES                                     // SINO SI
 			ESCRIBIR("var1 es igual a var2");
-			SINO SI (A>B _y (A+B)<C _o var1 < B) ENTONCES                    //otro SINO SI
+			SINO SI (hey>B _y (A+B)<C _o var1 < B) ENTONCES                    //otro SINO SI
 				ESCRIBIR("var1 es = a B");
 			FIN_SI                                                           //Fin SI
 		FIN_SI                                                           // Fin SI

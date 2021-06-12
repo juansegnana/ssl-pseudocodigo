@@ -8,7 +8,8 @@ Programa que calcula si un numero ingresado es un numero primos .
 */
 ACCION NumerosPrimos _es
 Ambiente
-nro_ingresado : numero
+// hey
+nro_ingresado : numerico 
 bool : numero
 aux : numero
 Proceso 

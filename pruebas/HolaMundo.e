@@ -15,11 +15,12 @@ Ambiente
 	nombre_usuario : cadena
 
 @ clasico algoritmo de Hola Mundo
+	nombre_usuario : cadena
 
 Proceso
 	escribir("Ingrese su nombre de usuario:") // Imprimir por pantalla
-	leer(nombre_usuario) 		// Leer nombre usuario
-	escribir("Hola Mundo") 	// Imprimir por pantalla
-	escribir("Bienvenido al super lexer y parser del pseudocodigo", nombre_usuario)
+	leer(nombre_usuario); 		// Leer nombre usuario
+	escribir("Hola Mundo"); 	// Imprimir por pantalla
+	;escribir("Bienvenido al super lexer y parser del pseudocodigo", nombre_usuario)
 	// Imprimir por pantalla
-fin_accion 	// Fin de programa
+fin_accion; 	// Fin de programa

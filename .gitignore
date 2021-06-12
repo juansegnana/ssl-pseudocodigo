@@ -6,4 +6,3 @@ __pycache__
 ply
 .vscode/
 env/
-parsetab.py

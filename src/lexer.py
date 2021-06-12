@@ -59,7 +59,6 @@ tokens = [
     'DOS_PUNTOS',
     'ASIGNACION',
     'COMA',
-    'SEMICOLON',
     #comentarios abajo
     'COMENTARIO_ENCABEZADO',
     'COMENTARIO_VARIASLINEAS',
@@ -90,7 +89,6 @@ def t_COMENTARIO_ENCABEZADO(t):
         t.value= t.value.replace('\t', ' ')
     cambio= t.value.replace('/**', '')
     cambio= cambio.replace('*/','')
-    print("t.value: ",t.value)
     arregloHtml.append(['encabezado', cambio])
     return t 
 
@@ -115,19 +113,19 @@ def t_COMENTARIO_LINEA(t):
     arregloHtml.append(['linea', cambio])
     return t 
 
-def t_ACCION(t): r'(accion|ACCION)'; return t 
+def t_ACCION(t): r'(acci[oó]n)'; return t 
 
-def t_ES(t): r'(_es|_ES)'; return t 
+def t_ES(t): r'(_es)'; return t 
 
-def t_FIN_ACCION(t): r'(fin_accion|FIN_ACCION)'; return t 
+def t_FIN_ACCION(t): r'(fin_acci[oó]n)'; return t 
 
-def t_AMBIENTE(t): r'(ambiente|AMBIENTE)'; return t 
+def t_AMBIENTE(t): r'(ambiente)'; return t 
 
-def t_PROCESO(t): r'(proceso|PROCESO)'; return t 
+def t_PROCESO(t): r'(proceso)'; return t 
 
-def t_ESCRIBIR(t): r'(escribir|ESCRIBIR)'; return t 
+def t_ESCRIBIR(t): r'(escribir)'; return t 
 
-def t_LEER(t): r'(leer|LEER)'; return t 
+def t_LEER(t): r'(leer)'; return t 
 
 def t_PARENTESIS_ABIERTO(t): r'\('; return t 
 
@@ -135,41 +133,41 @@ def t_PARENTESIS_CERRADO(t): r'\)'; return t
 
 def t_ASIGNACION(t): r':='; return t 
 
-def t_O(t): r'(_o|_O)'; return t
+def t_O(t): r'(_o)'; return t
 
-def t_Y(t): r'(_y|_Y)'; return t
+def t_Y(t): r'(_y)'; return t
 
-def t_SINO(t): r'(sino|SINO)'; return t
+def t_SINO(t): r'(sino)'; return t
 
-def t_FIN_SI(t): r'(fin_si|FIN_SI)'; return t
+def t_FIN_SI(t): r'(fin_si)'; return t
 
 def t_SI(t): r'(si|SI)'; return t
 
-def t_ENTONCES(t): r'(entonces|ENTONCES)'; return t
+def t_ENTONCES(t): r'(entonces)'; return t
 
-def t_NO(t): r'(_no|_NO)'; return t
+def t_NO(t): r'(_no)'; return t
 
-def t_HACER(t): r'(hacer|HACER)'; return t
+def t_HACER(t): r'(hacer)'; return t
 
-def t_SEGUN(t): r'(segun|SEGUN)'; return t
+def t_SEGUN(t): r'(segun)'; return t
 
-def t_FIN_SEGUN(t): r'(fin_segun|FIN_SEGUN)'; return t
+def t_FIN_SEGUN(t): r'(fin_segun)'; return t
 
-def t_MIENTRAS(t): r'(mientras|MIENTRAS)'; return t
+def t_MIENTRAS(t): r'(mientras)'; return t
 
-def t_FIN_MIENTRAS(t): r'(fin_mientras|FIN_MIENTRAS)'; return t
+def t_FIN_MIENTRAS(t): r'(fin_mientras)'; return t
 
-def t_OTRO(t): r'(_otro|_OTRO)'; return t
+def t_OTRO(t): r'(_otro)'; return t
 
-def t_REPETIR(t): r'(repetir|REPETIR)'; return t
+def t_REPETIR(t): r'(repetir)'; return t
 
-def t_HASTA_QUE(t): r'(hasta_que|HASTA_QUE)'; return t
+def t_HASTA_QUE(t): r'(hasta_que)'; return t
 
-def t_PARA(t): r'(para|PARA)'; return t
+def t_PARA(t): r'(para)'; return t
 
-def t_HASTA(t): r'(hasta|HASTA)'; return t
+def t_HASTA(t): r'(hasta)'; return t
 
-def t_FIN_PARA(t): r'(fin_para|FIN_PARA)'; return t
+def t_FIN_PARA(t): r'(fin_para)'; return t
 
 def t_MENOR_O_IGUAL_QUE(t): r'<='; return t
 
@@ -196,11 +194,10 @@ t_IGUAL = r'\='
 t_MENOR_QUE = r'\<'
 t_MAYOR_QUE = r'\>'
 t_DOS_PUNTOS = r'\:'
-t_SEMICOLON = r'\;'
 t_COMA= r'\,'
 
 # ply ignorará espacios, saltos de lineas y tabs.
-t_ignore = ' \n\t'
+t_ignore = ' \n\t;'
 
 def t_IDENTIFICADOR(t):
     r'[_a-zA-Z][_a-zA-Z0-9]*'
@@ -250,7 +247,9 @@ lexer = lex.lex(reflags=re.IGNORECASE) # Bandera para que ignore mayuscula/minus
 
 # Solo si se ejecuta desde lexer.py hacer...
 if __name__ == "__main__":
+    print('Lexer Pseudocodigo | Grupo 15. SSL 2021.')
     def analizarTokens(modoEjecucion):
+        global contadorErrores
         exportArray = []
         while True:
                 tok = lexer.token()
@@ -258,7 +257,7 @@ if __name__ == "__main__":
                     if (modoEjecucion == 'archivo'):
                         exportarTokens(exportArray)
                     break
-                print(tok)
+                # print(tok)
                 if (modoEjecucion == 'archivo'):
                     exportArray.append([tok.type,tok.value]);
 
@@ -278,6 +277,10 @@ if __name__ == "__main__":
             if (contadorErrores > 0):
                 f.write(f'Total de tokens NO válidos: {contadorErrores}.')
         f.close()
+        if (contadorErrores > 0):
+            print('(⨉) El lexer NO acepta este archivo.')
+        else:
+            print('(⩗) El lexer ACEPTA este archivo.')
         print('(!) Se exportó un .txt con los tokens analizados.')
 
     if not pathFile:
