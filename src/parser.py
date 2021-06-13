@@ -329,10 +329,10 @@ else:
             f.write(f'Total de tokens analizados: {contador}.\n')
         f.close()
         if contadorErrores > 0:
-            print('(!) Ocurrió un error semántico.')
+            print('(!) Ocurrió un error sintáctico.')
         else:
             exportarHtml(arregloHtml)
-            print('(⩗) Semánticamente correcto. Se exportó un .html con los comentarios.')
+            print('(⩗) Sintácticamente correcto. Se exportó un .html con los comentarios.')
         print('(!) Se exportó un .txt con las producciones analizadas.')
     except IOError:
         print('Ocurrió un error leyendo archivo:', pathFile)
