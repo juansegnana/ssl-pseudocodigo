@@ -80,74 +80,77 @@ Rule 74    conj_s_si -> conj_sentencia
 Rule 75    conj_s_si -> conj_sentencia SINO conj_s_si
 Rule 76    conj_condiciones -> condicion
 Rule 77    conj_condiciones -> condicion t_op_logico conj_condiciones
-Rule 78    condicion -> expresion t_relacional expresion
-Rule 79    condicion -> NO expresion
-Rule 80    expresion -> id_tipodato
-Rule 81    expresion -> id_tipodato t_op_aritmetico id_tipodato
-Rule 82    expresion -> id_tipodato t_op_aritmetico expresion
-Rule 83    expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
-Rule 84    s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-Rule 85    conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia
-Rule 86    conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
-Rule 87    conj_cond_segun -> OTRO DOS_PUNTOS conj_sentencia
-Rule 88    s_ciclos -> c_para
-Rule 89    s_ciclos -> c_mientras
-Rule 90    s_ciclos -> c_repetir
-Rule 91    c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-Rule 92    c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
-Rule 93    c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-Rule 94    c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-Rule 95    c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-Rule 96    idt_para -> IDENTIFICADOR ASIGNACION id_tipodato
-Rule 97    idt_para -> IDENTIFICADOR
+Rule 78    conj_condiciones -> NO condicion
+Rule 79    conj_condiciones -> PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+Rule 80    condicion -> expresion t_relacional expresion
+Rule 81    condicion -> NO expresion
+Rule 82    condicion -> PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO
+Rule 83    expresion -> id_tipodato
+Rule 84    expresion -> id_tipodato t_op_aritmetico id_tipodato
+Rule 85    expresion -> id_tipodato t_op_aritmetico expresion
+Rule 86    expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+Rule 87    s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+Rule 88    conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia
+Rule 89    conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
+Rule 90    conj_cond_segun -> OTRO DOS_PUNTOS conj_sentencia
+Rule 91    s_ciclos -> c_para
+Rule 92    s_ciclos -> c_mientras
+Rule 93    s_ciclos -> c_repetir
+Rule 94    c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+Rule 95    c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+Rule 96    c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+Rule 97    c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+Rule 98    c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+Rule 99    idt_para -> IDENTIFICADOR ASIGNACION id_tipodato
+Rule 100   idt_para -> IDENTIFICADOR
 
 Terminals, with rules where they appear
 
 ACCION               : 6
 AMBIENTE             : 10 11 12
-ASIGNACION           : 48 49 96
+ASIGNACION           : 48 49 99
 CADENA               : 24 43 45
-COMA                 : 44 45 93
+COMA                 : 44 45 96
 COMENTARIO_ENCABEZADO : 2 3
 COMENTARIO_LINEA     : 8
 COMENTARIO_VARIASLINEAS : 7
 DISTINTO             : 69
 DIVISION             : 59
 DIVISION_ENTERA      : 61
-DOS_PUNTOS           : 19 85 86 87
+DOS_PUNTOS           : 19 88 89 90
 ENTONCES             : 72 73
 ES                   : 6
 ESCRIBIR             : 41
 FIN_ACCION           : 2 3 4 5
-FIN_MIENTRAS         : 91
-FIN_PARA             : 93 94 95
-FIN_SEGUN            : 84
+FIN_MIENTRAS         : 94
+FIN_PARA             : 96 97 98
+FIN_SEGUN            : 87
 FIN_SI               : 72 73
-HACER                : 84 91 93 94 95
-HASTA                : 93 94 95
-HASTA_QUE            : 92
-IDENTIFICADOR        : 6 19 20 42 44 47 48 49 50 73 84 96 97
+HACER                : 87 94 96 97 98
+HASTA                : 96 97 98
+HASTA_QUE            : 95
+IDENTIFICADOR        : 6 19 20 42 44 47 48 49 50 73 87 99 100
 IGUAL                : 20 68
 LEER                 : 46
 MAYOR_O_IGUAL_QUE    : 67
 MAYOR_QUE            : 65
 MENOR_O_IGUAL_QUE    : 66
 MENOR_QUE            : 64
-MIENTRAS             : 91
+MIENTRAS             : 94
 MODULO               : 62
 MULTIPLICACION       : 60
-NO                   : 79
+NO                   : 78 81
 NUMERICO             : 25
 O                    : 70
-OTRO                 : 87
-PARA                 : 93 94 95
-PARENTESIS_ABIERTO   : 41 46 55 56 72 73 83 84 91 92 93 94
-PARENTESIS_CERRADO   : 41 46 55 56 72 73 83 84 91 92 93 94
+OTRO                 : 90
+PARA                 : 96 97 98
+PARENTESIS_ABIERTO   : 41 46 55 56 72 73 79 82 86 87 94 95 96 97
+PARENTESIS_CERRADO   : 41 46 55 56 72 73 79 82 86 87 94 95 96 97
 POTENCIA             : 63
 PROCESO              : 26
-REPETIR              : 92
+REPETIR              : 95
 RESTA                : 58
-SEGUN                : 84
+SEGUN                : 87
 SI                   : 72 73
 SINO                 : 75
 SUMA                 : 57
@@ -162,22 +165,22 @@ Nonterminals, with rules where they appear
 ambiente             : 9
 bloque               : 2 3 4 5
 bloque_ambiente      : 10 11 12 16 17 18
-c_mientras           : 89
-c_para               : 88
-c_repetir            : 90
+c_mientras           : 92
+c_para               : 91
+c_repetir            : 93
 comentario_vl_l      : 3 4 11 12 15 18 33 40
-condicion            : 76 77
-conj_cond_segun      : 84 86
-conj_condiciones     : 72 77 91 92
+condicion            : 76 77 78 82
+conj_cond_segun      : 87 89
+conj_condiciones     : 72 77 79 94 95
 conj_s_si            : 72 73 75
-conj_sentencia       : 26 34 35 36 37 38 39 40 74 75 85 86 87 91 92 93 94 95
+conj_sentencia       : 26 34 35 36 37 38 39 40 74 75 88 89 90 94 95 96 97 98
 constante            : 14 17
 ejecucion            : 1
 entrada_leer         : 46
-expresion            : 78 78 79 82 83
+expresion            : 80 80 81 85 86
 ftd_amb              : 19
-id_tipodato          : 52 52 53 54 80 81 81 82 85 86 93 93 94 95 96
-idt_para             : 93 94 95
+id_tipodato          : 52 52 53 54 83 84 84 85 88 89 96 96 97 98 99
+idt_para             : 96 97 98
 nombre               : 2 3 4 5
 op_aritmetica        : 49 53 55 55 56
 proceso              : 9
@@ -189,9 +192,9 @@ s_si                 : 29 36
 salida_esc           : 41 44 45
 sentencia            : 32 39
 sigma                : 0
-t_op_aritmetico      : 52 53 55 81 82
+t_op_aritmetico      : 52 53 55 84 85
 t_op_logico          : 77
-t_relacional         : 78 85 86
+t_relacional         : 80 88 89
 tipo_dato            : 20 48 51
 variable             : 13 16
 
@@ -370,19 +373,19 @@ state 14
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     ESCRIBIR        shift and go to state 33
     LEER            shift and go to state 34
@@ -640,19 +643,19 @@ state 26
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     FIN_ACCION      reduce using rule 27 (conj_sentencia -> s_escribir .)
     HASTA_QUE       reduce using rule 27 (conj_sentencia -> s_escribir .)
@@ -713,19 +716,19 @@ state 27
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     FIN_ACCION      reduce using rule 28 (conj_sentencia -> s_leer .)
     HASTA_QUE       reduce using rule 28 (conj_sentencia -> s_leer .)
@@ -786,19 +789,19 @@ state 28
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     FIN_ACCION      reduce using rule 29 (conj_sentencia -> s_si .)
     HASTA_QUE       reduce using rule 29 (conj_sentencia -> s_si .)
@@ -859,19 +862,19 @@ state 29
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     FIN_ACCION      reduce using rule 30 (conj_sentencia -> s_segun .)
     HASTA_QUE       reduce using rule 30 (conj_sentencia -> s_segun .)
@@ -932,19 +935,19 @@ state 30
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     FIN_ACCION      reduce using rule 31 (conj_sentencia -> s_ciclos .)
     HASTA_QUE       reduce using rule 31 (conj_sentencia -> s_ciclos .)
@@ -1005,19 +1008,19 @@ state 31
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     FIN_ACCION      reduce using rule 32 (conj_sentencia -> sentencia .)
     HASTA_QUE       reduce using rule 32 (conj_sentencia -> sentencia .)
@@ -1078,19 +1081,19 @@ state 32
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     FIN_ACCION      reduce using rule 33 (conj_sentencia -> comentario_vl_l .)
     HASTA_QUE       reduce using rule 33 (conj_sentencia -> comentario_vl_l .)
@@ -1161,108 +1164,108 @@ state 36
 
 state 37
 
-    (84) s_segun -> SEGUN . PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (87) s_segun -> SEGUN . PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
 
     PARENTESIS_ABIERTO shift and go to state 63
 
 
 state 38
 
-    (88) s_ciclos -> c_para .
+    (91) s_ciclos -> c_para .
 
-    ESCRIBIR        reduce using rule 88 (s_ciclos -> c_para .)
-    LEER            reduce using rule 88 (s_ciclos -> c_para .)
-    SI              reduce using rule 88 (s_ciclos -> c_para .)
-    SEGUN           reduce using rule 88 (s_ciclos -> c_para .)
-    IDENTIFICADOR   reduce using rule 88 (s_ciclos -> c_para .)
-    COMENTARIO_VARIASLINEAS reduce using rule 88 (s_ciclos -> c_para .)
-    COMENTARIO_LINEA reduce using rule 88 (s_ciclos -> c_para .)
-    PARA            reduce using rule 88 (s_ciclos -> c_para .)
-    MIENTRAS        reduce using rule 88 (s_ciclos -> c_para .)
-    REPETIR         reduce using rule 88 (s_ciclos -> c_para .)
-    FIN_ACCION      reduce using rule 88 (s_ciclos -> c_para .)
-    HASTA_QUE       reduce using rule 88 (s_ciclos -> c_para .)
-    SINO            reduce using rule 88 (s_ciclos -> c_para .)
-    FIN_SI          reduce using rule 88 (s_ciclos -> c_para .)
-    FIN_PARA        reduce using rule 88 (s_ciclos -> c_para .)
-    FIN_MIENTRAS    reduce using rule 88 (s_ciclos -> c_para .)
-    FIN_SEGUN       reduce using rule 88 (s_ciclos -> c_para .)
-    OTRO            reduce using rule 88 (s_ciclos -> c_para .)
-    MENOR_QUE       reduce using rule 88 (s_ciclos -> c_para .)
-    MAYOR_QUE       reduce using rule 88 (s_ciclos -> c_para .)
-    MENOR_O_IGUAL_QUE reduce using rule 88 (s_ciclos -> c_para .)
-    MAYOR_O_IGUAL_QUE reduce using rule 88 (s_ciclos -> c_para .)
-    IGUAL           reduce using rule 88 (s_ciclos -> c_para .)
-    DISTINTO        reduce using rule 88 (s_ciclos -> c_para .)
+    ESCRIBIR        reduce using rule 91 (s_ciclos -> c_para .)
+    LEER            reduce using rule 91 (s_ciclos -> c_para .)
+    SI              reduce using rule 91 (s_ciclos -> c_para .)
+    SEGUN           reduce using rule 91 (s_ciclos -> c_para .)
+    IDENTIFICADOR   reduce using rule 91 (s_ciclos -> c_para .)
+    COMENTARIO_VARIASLINEAS reduce using rule 91 (s_ciclos -> c_para .)
+    COMENTARIO_LINEA reduce using rule 91 (s_ciclos -> c_para .)
+    PARA            reduce using rule 91 (s_ciclos -> c_para .)
+    MIENTRAS        reduce using rule 91 (s_ciclos -> c_para .)
+    REPETIR         reduce using rule 91 (s_ciclos -> c_para .)
+    FIN_ACCION      reduce using rule 91 (s_ciclos -> c_para .)
+    HASTA_QUE       reduce using rule 91 (s_ciclos -> c_para .)
+    SINO            reduce using rule 91 (s_ciclos -> c_para .)
+    FIN_SI          reduce using rule 91 (s_ciclos -> c_para .)
+    FIN_PARA        reduce using rule 91 (s_ciclos -> c_para .)
+    FIN_MIENTRAS    reduce using rule 91 (s_ciclos -> c_para .)
+    FIN_SEGUN       reduce using rule 91 (s_ciclos -> c_para .)
+    OTRO            reduce using rule 91 (s_ciclos -> c_para .)
+    MENOR_QUE       reduce using rule 91 (s_ciclos -> c_para .)
+    MAYOR_QUE       reduce using rule 91 (s_ciclos -> c_para .)
+    MENOR_O_IGUAL_QUE reduce using rule 91 (s_ciclos -> c_para .)
+    MAYOR_O_IGUAL_QUE reduce using rule 91 (s_ciclos -> c_para .)
+    IGUAL           reduce using rule 91 (s_ciclos -> c_para .)
+    DISTINTO        reduce using rule 91 (s_ciclos -> c_para .)
 
 
 state 39
 
-    (89) s_ciclos -> c_mientras .
+    (92) s_ciclos -> c_mientras .
 
-    ESCRIBIR        reduce using rule 89 (s_ciclos -> c_mientras .)
-    LEER            reduce using rule 89 (s_ciclos -> c_mientras .)
-    SI              reduce using rule 89 (s_ciclos -> c_mientras .)
-    SEGUN           reduce using rule 89 (s_ciclos -> c_mientras .)
-    IDENTIFICADOR   reduce using rule 89 (s_ciclos -> c_mientras .)
-    COMENTARIO_VARIASLINEAS reduce using rule 89 (s_ciclos -> c_mientras .)
-    COMENTARIO_LINEA reduce using rule 89 (s_ciclos -> c_mientras .)
-    PARA            reduce using rule 89 (s_ciclos -> c_mientras .)
-    MIENTRAS        reduce using rule 89 (s_ciclos -> c_mientras .)
-    REPETIR         reduce using rule 89 (s_ciclos -> c_mientras .)
-    FIN_ACCION      reduce using rule 89 (s_ciclos -> c_mientras .)
-    HASTA_QUE       reduce using rule 89 (s_ciclos -> c_mientras .)
-    SINO            reduce using rule 89 (s_ciclos -> c_mientras .)
-    FIN_SI          reduce using rule 89 (s_ciclos -> c_mientras .)
-    FIN_PARA        reduce using rule 89 (s_ciclos -> c_mientras .)
-    FIN_MIENTRAS    reduce using rule 89 (s_ciclos -> c_mientras .)
-    FIN_SEGUN       reduce using rule 89 (s_ciclos -> c_mientras .)
-    OTRO            reduce using rule 89 (s_ciclos -> c_mientras .)
-    MENOR_QUE       reduce using rule 89 (s_ciclos -> c_mientras .)
-    MAYOR_QUE       reduce using rule 89 (s_ciclos -> c_mientras .)
-    MENOR_O_IGUAL_QUE reduce using rule 89 (s_ciclos -> c_mientras .)
-    MAYOR_O_IGUAL_QUE reduce using rule 89 (s_ciclos -> c_mientras .)
-    IGUAL           reduce using rule 89 (s_ciclos -> c_mientras .)
-    DISTINTO        reduce using rule 89 (s_ciclos -> c_mientras .)
+    ESCRIBIR        reduce using rule 92 (s_ciclos -> c_mientras .)
+    LEER            reduce using rule 92 (s_ciclos -> c_mientras .)
+    SI              reduce using rule 92 (s_ciclos -> c_mientras .)
+    SEGUN           reduce using rule 92 (s_ciclos -> c_mientras .)
+    IDENTIFICADOR   reduce using rule 92 (s_ciclos -> c_mientras .)
+    COMENTARIO_VARIASLINEAS reduce using rule 92 (s_ciclos -> c_mientras .)
+    COMENTARIO_LINEA reduce using rule 92 (s_ciclos -> c_mientras .)
+    PARA            reduce using rule 92 (s_ciclos -> c_mientras .)
+    MIENTRAS        reduce using rule 92 (s_ciclos -> c_mientras .)
+    REPETIR         reduce using rule 92 (s_ciclos -> c_mientras .)
+    FIN_ACCION      reduce using rule 92 (s_ciclos -> c_mientras .)
+    HASTA_QUE       reduce using rule 92 (s_ciclos -> c_mientras .)
+    SINO            reduce using rule 92 (s_ciclos -> c_mientras .)
+    FIN_SI          reduce using rule 92 (s_ciclos -> c_mientras .)
+    FIN_PARA        reduce using rule 92 (s_ciclos -> c_mientras .)
+    FIN_MIENTRAS    reduce using rule 92 (s_ciclos -> c_mientras .)
+    FIN_SEGUN       reduce using rule 92 (s_ciclos -> c_mientras .)
+    OTRO            reduce using rule 92 (s_ciclos -> c_mientras .)
+    MENOR_QUE       reduce using rule 92 (s_ciclos -> c_mientras .)
+    MAYOR_QUE       reduce using rule 92 (s_ciclos -> c_mientras .)
+    MENOR_O_IGUAL_QUE reduce using rule 92 (s_ciclos -> c_mientras .)
+    MAYOR_O_IGUAL_QUE reduce using rule 92 (s_ciclos -> c_mientras .)
+    IGUAL           reduce using rule 92 (s_ciclos -> c_mientras .)
+    DISTINTO        reduce using rule 92 (s_ciclos -> c_mientras .)
 
 
 state 40
 
-    (90) s_ciclos -> c_repetir .
+    (93) s_ciclos -> c_repetir .
 
-    ESCRIBIR        reduce using rule 90 (s_ciclos -> c_repetir .)
-    LEER            reduce using rule 90 (s_ciclos -> c_repetir .)
-    SI              reduce using rule 90 (s_ciclos -> c_repetir .)
-    SEGUN           reduce using rule 90 (s_ciclos -> c_repetir .)
-    IDENTIFICADOR   reduce using rule 90 (s_ciclos -> c_repetir .)
-    COMENTARIO_VARIASLINEAS reduce using rule 90 (s_ciclos -> c_repetir .)
-    COMENTARIO_LINEA reduce using rule 90 (s_ciclos -> c_repetir .)
-    PARA            reduce using rule 90 (s_ciclos -> c_repetir .)
-    MIENTRAS        reduce using rule 90 (s_ciclos -> c_repetir .)
-    REPETIR         reduce using rule 90 (s_ciclos -> c_repetir .)
-    FIN_ACCION      reduce using rule 90 (s_ciclos -> c_repetir .)
-    HASTA_QUE       reduce using rule 90 (s_ciclos -> c_repetir .)
-    SINO            reduce using rule 90 (s_ciclos -> c_repetir .)
-    FIN_SI          reduce using rule 90 (s_ciclos -> c_repetir .)
-    FIN_PARA        reduce using rule 90 (s_ciclos -> c_repetir .)
-    FIN_MIENTRAS    reduce using rule 90 (s_ciclos -> c_repetir .)
-    FIN_SEGUN       reduce using rule 90 (s_ciclos -> c_repetir .)
-    OTRO            reduce using rule 90 (s_ciclos -> c_repetir .)
-    MENOR_QUE       reduce using rule 90 (s_ciclos -> c_repetir .)
-    MAYOR_QUE       reduce using rule 90 (s_ciclos -> c_repetir .)
-    MENOR_O_IGUAL_QUE reduce using rule 90 (s_ciclos -> c_repetir .)
-    MAYOR_O_IGUAL_QUE reduce using rule 90 (s_ciclos -> c_repetir .)
-    IGUAL           reduce using rule 90 (s_ciclos -> c_repetir .)
-    DISTINTO        reduce using rule 90 (s_ciclos -> c_repetir .)
+    ESCRIBIR        reduce using rule 93 (s_ciclos -> c_repetir .)
+    LEER            reduce using rule 93 (s_ciclos -> c_repetir .)
+    SI              reduce using rule 93 (s_ciclos -> c_repetir .)
+    SEGUN           reduce using rule 93 (s_ciclos -> c_repetir .)
+    IDENTIFICADOR   reduce using rule 93 (s_ciclos -> c_repetir .)
+    COMENTARIO_VARIASLINEAS reduce using rule 93 (s_ciclos -> c_repetir .)
+    COMENTARIO_LINEA reduce using rule 93 (s_ciclos -> c_repetir .)
+    PARA            reduce using rule 93 (s_ciclos -> c_repetir .)
+    MIENTRAS        reduce using rule 93 (s_ciclos -> c_repetir .)
+    REPETIR         reduce using rule 93 (s_ciclos -> c_repetir .)
+    FIN_ACCION      reduce using rule 93 (s_ciclos -> c_repetir .)
+    HASTA_QUE       reduce using rule 93 (s_ciclos -> c_repetir .)
+    SINO            reduce using rule 93 (s_ciclos -> c_repetir .)
+    FIN_SI          reduce using rule 93 (s_ciclos -> c_repetir .)
+    FIN_PARA        reduce using rule 93 (s_ciclos -> c_repetir .)
+    FIN_MIENTRAS    reduce using rule 93 (s_ciclos -> c_repetir .)
+    FIN_SEGUN       reduce using rule 93 (s_ciclos -> c_repetir .)
+    OTRO            reduce using rule 93 (s_ciclos -> c_repetir .)
+    MENOR_QUE       reduce using rule 93 (s_ciclos -> c_repetir .)
+    MAYOR_QUE       reduce using rule 93 (s_ciclos -> c_repetir .)
+    MENOR_O_IGUAL_QUE reduce using rule 93 (s_ciclos -> c_repetir .)
+    MAYOR_O_IGUAL_QUE reduce using rule 93 (s_ciclos -> c_repetir .)
+    IGUAL           reduce using rule 93 (s_ciclos -> c_repetir .)
+    DISTINTO        reduce using rule 93 (s_ciclos -> c_repetir .)
 
 
 state 41
 
-    (93) c_para -> PARA . PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> PARA . PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> PARA . idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (96) idt_para -> . IDENTIFICADOR ASIGNACION id_tipodato
-    (97) idt_para -> . IDENTIFICADOR
+    (96) c_para -> PARA . PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> PARA . PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> PARA . idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (99) idt_para -> . IDENTIFICADOR ASIGNACION id_tipodato
+    (100) idt_para -> . IDENTIFICADOR
 
     PARENTESIS_ABIERTO shift and go to state 64
     IDENTIFICADOR   shift and go to state 66
@@ -1271,14 +1274,14 @@ state 41
 
 state 42
 
-    (91) c_mientras -> MIENTRAS . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (94) c_mientras -> MIENTRAS . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
 
     PARENTESIS_ABIERTO shift and go to state 67
 
 
 state 43
 
-    (92) c_repetir -> REPETIR . conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (95) c_repetir -> REPETIR . conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
     (27) conj_sentencia -> . s_escribir
     (28) conj_sentencia -> . s_leer
     (29) conj_sentencia -> . s_si
@@ -1297,19 +1300,19 @@ state 43
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     ESCRIBIR        shift and go to state 33
     LEER            shift and go to state 34
@@ -1601,26 +1604,29 @@ state 61
     (73) s_si -> SI PARENTESIS_ABIERTO . IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (76) conj_condiciones -> . condicion
     (77) conj_condiciones -> . condicion t_op_logico conj_condiciones
-    (78) condicion -> . expresion t_relacional expresion
-    (79) condicion -> . NO expresion
-    (80) expresion -> . id_tipodato
-    (81) expresion -> . id_tipodato t_op_aritmetico id_tipodato
-    (82) expresion -> . id_tipodato t_op_aritmetico expresion
-    (83) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (78) conj_condiciones -> . NO condicion
+    (79) conj_condiciones -> . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (80) condicion -> . expresion t_relacional expresion
+    (81) condicion -> . NO expresion
+    (82) condicion -> . PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
     (25) tipo_dato -> . NUMERICO
 
     IDENTIFICADOR   shift and go to state 84
-    NO              shift and go to state 87
+    NO              shift and go to state 86
     PARENTESIS_ABIERTO shift and go to state 82
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
     conj_condiciones               shift and go to state 83
     condicion                      shift and go to state 85
-    expresion                      shift and go to state 86
+    expresion                      shift and go to state 87
     id_tipodato                    shift and go to state 88
     tipo_dato                      shift and go to state 89
 
@@ -1649,17 +1655,17 @@ state 62
 
 state 63
 
-    (84) s_segun -> SEGUN PARENTESIS_ABIERTO . IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (87) s_segun -> SEGUN PARENTESIS_ABIERTO . IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
 
     IDENTIFICADOR   shift and go to state 95
 
 
 state 64
 
-    (93) c_para -> PARA PARENTESIS_ABIERTO . idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> PARA PARENTESIS_ABIERTO . idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (96) idt_para -> . IDENTIFICADOR ASIGNACION id_tipodato
-    (97) idt_para -> . IDENTIFICADOR
+    (96) c_para -> PARA PARENTESIS_ABIERTO . idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> PARA PARENTESIS_ABIERTO . idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (99) idt_para -> . IDENTIFICADOR ASIGNACION id_tipodato
+    (100) idt_para -> . IDENTIFICADOR
 
     IDENTIFICADOR   shift and go to state 66
 
@@ -1667,38 +1673,41 @@ state 64
 
 state 65
 
-    (95) c_para -> PARA idt_para . HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> PARA idt_para . HASTA id_tipodato HACER conj_sentencia FIN_PARA
 
     HASTA           shift and go to state 97
 
 
 state 66
 
-    (96) idt_para -> IDENTIFICADOR . ASIGNACION id_tipodato
-    (97) idt_para -> IDENTIFICADOR .
+    (99) idt_para -> IDENTIFICADOR . ASIGNACION id_tipodato
+    (100) idt_para -> IDENTIFICADOR .
 
     ASIGNACION      shift and go to state 98
-    HASTA           reduce using rule 97 (idt_para -> IDENTIFICADOR .)
-    PARENTESIS_CERRADO reduce using rule 97 (idt_para -> IDENTIFICADOR .)
+    HASTA           reduce using rule 100 (idt_para -> IDENTIFICADOR .)
+    PARENTESIS_CERRADO reduce using rule 100 (idt_para -> IDENTIFICADOR .)
 
 
 state 67
 
-    (91) c_mientras -> MIENTRAS PARENTESIS_ABIERTO . conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (94) c_mientras -> MIENTRAS PARENTESIS_ABIERTO . conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
     (76) conj_condiciones -> . condicion
     (77) conj_condiciones -> . condicion t_op_logico conj_condiciones
-    (78) condicion -> . expresion t_relacional expresion
-    (79) condicion -> . NO expresion
-    (80) expresion -> . id_tipodato
-    (81) expresion -> . id_tipodato t_op_aritmetico id_tipodato
-    (82) expresion -> . id_tipodato t_op_aritmetico expresion
-    (83) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (78) conj_condiciones -> . NO condicion
+    (79) conj_condiciones -> . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (80) condicion -> . expresion t_relacional expresion
+    (81) condicion -> . NO expresion
+    (82) condicion -> . PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
     (25) tipo_dato -> . NUMERICO
 
-    NO              shift and go to state 87
+    NO              shift and go to state 86
     PARENTESIS_ABIERTO shift and go to state 82
     IDENTIFICADOR   shift and go to state 90
     CADENA          shift and go to state 75
@@ -1706,13 +1715,13 @@ state 67
 
     conj_condiciones               shift and go to state 99
     condicion                      shift and go to state 85
-    expresion                      shift and go to state 86
+    expresion                      shift and go to state 87
     id_tipodato                    shift and go to state 88
     tipo_dato                      shift and go to state 89
 
 state 68
 
-    (92) c_repetir -> REPETIR conj_sentencia . HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (95) c_repetir -> REPETIR conj_sentencia . HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     HASTA_QUE       shift and go to state 100
 
@@ -1907,22 +1916,34 @@ state 81
 
 state 82
 
-    (83) expresion -> PARENTESIS_ABIERTO . expresion PARENTESIS_CERRADO
-    (80) expresion -> . id_tipodato
-    (81) expresion -> . id_tipodato t_op_aritmetico id_tipodato
-    (82) expresion -> . id_tipodato t_op_aritmetico expresion
-    (83) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (79) conj_condiciones -> PARENTESIS_ABIERTO . conj_condiciones PARENTESIS_CERRADO
+    (82) condicion -> PARENTESIS_ABIERTO . condicion PARENTESIS_CERRADO
+    (86) expresion -> PARENTESIS_ABIERTO . expresion PARENTESIS_CERRADO
+    (76) conj_condiciones -> . condicion
+    (77) conj_condiciones -> . condicion t_op_logico conj_condiciones
+    (78) conj_condiciones -> . NO condicion
+    (79) conj_condiciones -> . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (80) condicion -> . expresion t_relacional expresion
+    (81) condicion -> . NO expresion
+    (82) condicion -> . PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
     (25) tipo_dato -> . NUMERICO
 
+    NO              shift and go to state 86
     PARENTESIS_ABIERTO shift and go to state 82
     IDENTIFICADOR   shift and go to state 90
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    expresion                      shift and go to state 105
+    conj_condiciones               shift and go to state 105
+    condicion                      shift and go to state 106
+    expresion                      shift and go to state 107
     id_tipodato                    shift and go to state 88
     tipo_dato                      shift and go to state 89
 
@@ -1930,7 +1951,7 @@ state 83
 
     (72) s_si -> SI PARENTESIS_ABIERTO conj_condiciones . PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
 
-    PARENTESIS_CERRADO shift and go to state 106
+    PARENTESIS_CERRADO shift and go to state 108
 
 
 state 84
@@ -1938,7 +1959,7 @@ state 84
     (73) s_si -> SI PARENTESIS_ABIERTO IDENTIFICADOR . PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (50) id_tipodato -> IDENTIFICADOR .
 
-    PARENTESIS_CERRADO shift and go to state 107
+    PARENTESIS_CERRADO shift and go to state 109
     SUMA            reduce using rule 50 (id_tipodato -> IDENTIFICADOR .)
     RESTA           reduce using rule 50 (id_tipodato -> IDENTIFICADOR .)
     DIVISION        reduce using rule 50 (id_tipodato -> IDENTIFICADOR .)
@@ -1962,14 +1983,41 @@ state 85
     (71) t_op_logico -> . Y
 
     PARENTESIS_CERRADO reduce using rule 76 (conj_condiciones -> condicion .)
-    O               shift and go to state 109
-    Y               shift and go to state 110
+    O               shift and go to state 111
+    Y               shift and go to state 112
 
-    t_op_logico                    shift and go to state 108
+    t_op_logico                    shift and go to state 110
 
 state 86
 
-    (78) condicion -> expresion . t_relacional expresion
+    (78) conj_condiciones -> NO . condicion
+    (81) condicion -> NO . expresion
+    (80) condicion -> . expresion t_relacional expresion
+    (81) condicion -> . NO expresion
+    (82) condicion -> . PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (50) id_tipodato -> . IDENTIFICADOR
+    (51) id_tipodato -> . tipo_dato
+    (24) tipo_dato -> . CADENA
+    (25) tipo_dato -> . NUMERICO
+
+    NO              shift and go to state 113
+    PARENTESIS_ABIERTO shift and go to state 116
+    IDENTIFICADOR   shift and go to state 90
+    CADENA          shift and go to state 75
+    NUMERICO        shift and go to state 76
+
+    condicion                      shift and go to state 114
+    expresion                      shift and go to state 115
+    id_tipodato                    shift and go to state 88
+    tipo_dato                      shift and go to state 89
+
+state 87
+
+    (80) condicion -> expresion . t_relacional expresion
     (64) t_relacional -> . MENOR_QUE
     (65) t_relacional -> . MAYOR_QUE
     (66) t_relacional -> . MENOR_O_IGUAL_QUE
@@ -1977,41 +2025,20 @@ state 86
     (68) t_relacional -> . IGUAL
     (69) t_relacional -> . DISTINTO
 
-    MENOR_QUE       shift and go to state 112
-    MAYOR_QUE       shift and go to state 113
-    MENOR_O_IGUAL_QUE shift and go to state 114
-    MAYOR_O_IGUAL_QUE shift and go to state 115
-    IGUAL           shift and go to state 116
-    DISTINTO        shift and go to state 117
+    MENOR_QUE       shift and go to state 118
+    MAYOR_QUE       shift and go to state 119
+    MENOR_O_IGUAL_QUE shift and go to state 120
+    MAYOR_O_IGUAL_QUE shift and go to state 121
+    IGUAL           shift and go to state 122
+    DISTINTO        shift and go to state 123
 
-    t_relacional                   shift and go to state 111
-
-state 87
-
-    (79) condicion -> NO . expresion
-    (80) expresion -> . id_tipodato
-    (81) expresion -> . id_tipodato t_op_aritmetico id_tipodato
-    (82) expresion -> . id_tipodato t_op_aritmetico expresion
-    (83) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
-    (50) id_tipodato -> . IDENTIFICADOR
-    (51) id_tipodato -> . tipo_dato
-    (24) tipo_dato -> . CADENA
-    (25) tipo_dato -> . NUMERICO
-
-    PARENTESIS_ABIERTO shift and go to state 82
-    IDENTIFICADOR   shift and go to state 90
-    CADENA          shift and go to state 75
-    NUMERICO        shift and go to state 76
-
-    expresion                      shift and go to state 118
-    id_tipodato                    shift and go to state 88
-    tipo_dato                      shift and go to state 89
+    t_relacional                   shift and go to state 117
 
 state 88
 
-    (80) expresion -> id_tipodato .
-    (81) expresion -> id_tipodato . t_op_aritmetico id_tipodato
-    (82) expresion -> id_tipodato . t_op_aritmetico expresion
+    (83) expresion -> id_tipodato .
+    (84) expresion -> id_tipodato . t_op_aritmetico id_tipodato
+    (85) expresion -> id_tipodato . t_op_aritmetico expresion
     (57) t_op_aritmetico -> . SUMA
     (58) t_op_aritmetico -> . RESTA
     (59) t_op_aritmetico -> . DIVISION
@@ -2020,24 +2047,24 @@ state 88
     (62) t_op_aritmetico -> . MODULO
     (63) t_op_aritmetico -> . POTENCIA
 
-    MENOR_QUE       reduce using rule 80 (expresion -> id_tipodato .)
-    MAYOR_QUE       reduce using rule 80 (expresion -> id_tipodato .)
-    MENOR_O_IGUAL_QUE reduce using rule 80 (expresion -> id_tipodato .)
-    MAYOR_O_IGUAL_QUE reduce using rule 80 (expresion -> id_tipodato .)
-    IGUAL           reduce using rule 80 (expresion -> id_tipodato .)
-    DISTINTO        reduce using rule 80 (expresion -> id_tipodato .)
-    PARENTESIS_CERRADO reduce using rule 80 (expresion -> id_tipodato .)
-    O               reduce using rule 80 (expresion -> id_tipodato .)
-    Y               reduce using rule 80 (expresion -> id_tipodato .)
-    SUMA            shift and go to state 120
-    RESTA           shift and go to state 121
-    DIVISION        shift and go to state 122
-    MULTIPLICACION  shift and go to state 123
-    DIVISION_ENTERA shift and go to state 124
-    MODULO          shift and go to state 125
-    POTENCIA        shift and go to state 126
+    MENOR_QUE       reduce using rule 83 (expresion -> id_tipodato .)
+    MAYOR_QUE       reduce using rule 83 (expresion -> id_tipodato .)
+    MENOR_O_IGUAL_QUE reduce using rule 83 (expresion -> id_tipodato .)
+    MAYOR_O_IGUAL_QUE reduce using rule 83 (expresion -> id_tipodato .)
+    IGUAL           reduce using rule 83 (expresion -> id_tipodato .)
+    DISTINTO        reduce using rule 83 (expresion -> id_tipodato .)
+    PARENTESIS_CERRADO reduce using rule 83 (expresion -> id_tipodato .)
+    O               reduce using rule 83 (expresion -> id_tipodato .)
+    Y               reduce using rule 83 (expresion -> id_tipodato .)
+    SUMA            shift and go to state 125
+    RESTA           shift and go to state 126
+    DIVISION        shift and go to state 127
+    MULTIPLICACION  shift and go to state 128
+    DIVISION_ENTERA shift and go to state 129
+    MODULO          shift and go to state 130
+    POTENCIA        shift and go to state 131
 
-    t_op_aritmetico                shift and go to state 119
+    t_op_aritmetico                shift and go to state 124
 
 state 89
 
@@ -2282,15 +2309,15 @@ state 93
     IGUAL           reduce using rule 54 (op_aritmetica -> id_tipodato .)
     DISTINTO        reduce using rule 54 (op_aritmetica -> id_tipodato .)
     PARENTESIS_CERRADO reduce using rule 54 (op_aritmetica -> id_tipodato .)
-    SUMA            shift and go to state 120
-    RESTA           shift and go to state 121
-    DIVISION        shift and go to state 122
-    MULTIPLICACION  shift and go to state 123
-    DIVISION_ENTERA shift and go to state 124
-    MODULO          shift and go to state 125
-    POTENCIA        shift and go to state 126
+    SUMA            shift and go to state 125
+    RESTA           shift and go to state 126
+    DIVISION        shift and go to state 127
+    MULTIPLICACION  shift and go to state 128
+    DIVISION_ENTERA shift and go to state 129
+    MODULO          shift and go to state 130
+    POTENCIA        shift and go to state 131
 
-    t_op_aritmetico                shift and go to state 127
+    t_op_aritmetico                shift and go to state 132
 
 state 94
 
@@ -2311,28 +2338,28 @@ state 94
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    op_aritmetica                  shift and go to state 128
+    op_aritmetica                  shift and go to state 133
     id_tipodato                    shift and go to state 93
     tipo_dato                      shift and go to state 89
 
 state 95
 
-    (84) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR . PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (87) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR . PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
 
-    PARENTESIS_CERRADO shift and go to state 129
+    PARENTESIS_CERRADO shift and go to state 134
 
 
 state 96
 
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para . PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> PARA PARENTESIS_ABIERTO idt_para . PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para . PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> PARA PARENTESIS_ABIERTO idt_para . PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
 
-    PARENTESIS_CERRADO shift and go to state 130
+    PARENTESIS_CERRADO shift and go to state 135
 
 
 state 97
 
-    (95) c_para -> PARA idt_para HASTA . id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> PARA idt_para HASTA . id_tipodato HACER conj_sentencia FIN_PARA
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
@@ -2342,12 +2369,12 @@ state 97
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    id_tipodato                    shift and go to state 131
+    id_tipodato                    shift and go to state 136
     tipo_dato                      shift and go to state 89
 
 state 98
 
-    (96) idt_para -> IDENTIFICADOR ASIGNACION . id_tipodato
+    (99) idt_para -> IDENTIFICADOR ASIGNACION . id_tipodato
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
@@ -2357,21 +2384,21 @@ state 98
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    id_tipodato                    shift and go to state 132
+    id_tipodato                    shift and go to state 137
     tipo_dato                      shift and go to state 89
 
 state 99
 
-    (91) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones . PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (94) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones . PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
 
-    PARENTESIS_CERRADO shift and go to state 133
+    PARENTESIS_CERRADO shift and go to state 138
 
 
 state 100
 
-    (92) c_repetir -> REPETIR conj_sentencia HASTA_QUE . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (95) c_repetir -> REPETIR conj_sentencia HASTA_QUE . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
-    PARENTESIS_ABIERTO shift and go to state 134
+    PARENTESIS_ABIERTO shift and go to state 139
 
 
 state 101
@@ -2415,7 +2442,7 @@ state 102
     IDENTIFICADOR   shift and go to state 78
     CADENA          shift and go to state 79
 
-    salida_esc                     shift and go to state 135
+    salida_esc                     shift and go to state 140
 
 state 103
 
@@ -2428,7 +2455,7 @@ state 103
     IDENTIFICADOR   shift and go to state 78
     CADENA          shift and go to state 79
 
-    salida_esc                     shift and go to state 136
+    salida_esc                     shift and go to state 141
 
 state 104
 
@@ -2462,54 +2489,95 @@ state 104
 
 state 105
 
-    (83) expresion -> PARENTESIS_ABIERTO expresion . PARENTESIS_CERRADO
+    (79) conj_condiciones -> PARENTESIS_ABIERTO conj_condiciones . PARENTESIS_CERRADO
 
-    PARENTESIS_CERRADO shift and go to state 137
+    PARENTESIS_CERRADO shift and go to state 142
 
 
 state 106
 
-    (72) s_si -> SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO . ENTONCES conj_s_si FIN_SI
+    (82) condicion -> PARENTESIS_ABIERTO condicion . PARENTESIS_CERRADO
+    (76) conj_condiciones -> condicion .
+    (77) conj_condiciones -> condicion . t_op_logico conj_condiciones
+    (70) t_op_logico -> . O
+    (71) t_op_logico -> . Y
 
-    ENTONCES        shift and go to state 138
+  ! shift/reduce conflict for PARENTESIS_CERRADO resolved as shift
+    PARENTESIS_CERRADO shift and go to state 143
+    O               shift and go to state 111
+    Y               shift and go to state 112
 
+  ! PARENTESIS_CERRADO [ reduce using rule 76 (conj_condiciones -> condicion .) ]
+
+    t_op_logico                    shift and go to state 110
 
 state 107
 
-    (73) s_si -> SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO . ENTONCES conj_s_si FIN_SI
+    (86) expresion -> PARENTESIS_ABIERTO expresion . PARENTESIS_CERRADO
+    (80) condicion -> expresion . t_relacional expresion
+    (64) t_relacional -> . MENOR_QUE
+    (65) t_relacional -> . MAYOR_QUE
+    (66) t_relacional -> . MENOR_O_IGUAL_QUE
+    (67) t_relacional -> . MAYOR_O_IGUAL_QUE
+    (68) t_relacional -> . IGUAL
+    (69) t_relacional -> . DISTINTO
 
-    ENTONCES        shift and go to state 139
+    PARENTESIS_CERRADO shift and go to state 144
+    MENOR_QUE       shift and go to state 118
+    MAYOR_QUE       shift and go to state 119
+    MENOR_O_IGUAL_QUE shift and go to state 120
+    MAYOR_O_IGUAL_QUE shift and go to state 121
+    IGUAL           shift and go to state 122
+    DISTINTO        shift and go to state 123
 
+    t_relacional                   shift and go to state 117
 
 state 108
+
+    (72) s_si -> SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO . ENTONCES conj_s_si FIN_SI
+
+    ENTONCES        shift and go to state 145
+
+
+state 109
+
+    (73) s_si -> SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO . ENTONCES conj_s_si FIN_SI
+
+    ENTONCES        shift and go to state 146
+
+
+state 110
 
     (77) conj_condiciones -> condicion t_op_logico . conj_condiciones
     (76) conj_condiciones -> . condicion
     (77) conj_condiciones -> . condicion t_op_logico conj_condiciones
-    (78) condicion -> . expresion t_relacional expresion
-    (79) condicion -> . NO expresion
-    (80) expresion -> . id_tipodato
-    (81) expresion -> . id_tipodato t_op_aritmetico id_tipodato
-    (82) expresion -> . id_tipodato t_op_aritmetico expresion
-    (83) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (78) conj_condiciones -> . NO condicion
+    (79) conj_condiciones -> . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (80) condicion -> . expresion t_relacional expresion
+    (81) condicion -> . NO expresion
+    (82) condicion -> . PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
     (25) tipo_dato -> . NUMERICO
 
-    NO              shift and go to state 87
+    NO              shift and go to state 86
     PARENTESIS_ABIERTO shift and go to state 82
     IDENTIFICADOR   shift and go to state 90
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
     condicion                      shift and go to state 85
-    conj_condiciones               shift and go to state 140
-    expresion                      shift and go to state 86
+    conj_condiciones               shift and go to state 147
+    expresion                      shift and go to state 87
     id_tipodato                    shift and go to state 88
     tipo_dato                      shift and go to state 89
 
-state 109
+state 111
 
     (70) t_op_logico -> O .
 
@@ -2520,7 +2588,7 @@ state 109
     NUMERICO        reduce using rule 70 (t_op_logico -> O .)
 
 
-state 110
+state 112
 
     (71) t_op_logico -> Y .
 
@@ -2531,28 +2599,106 @@ state 110
     NUMERICO        reduce using rule 71 (t_op_logico -> Y .)
 
 
-state 111
+state 113
 
-    (78) condicion -> expresion t_relacional . expresion
-    (80) expresion -> . id_tipodato
-    (81) expresion -> . id_tipodato t_op_aritmetico id_tipodato
-    (82) expresion -> . id_tipodato t_op_aritmetico expresion
-    (83) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (81) condicion -> NO . expresion
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
     (25) tipo_dato -> . NUMERICO
 
-    PARENTESIS_ABIERTO shift and go to state 82
+    PARENTESIS_ABIERTO shift and go to state 149
     IDENTIFICADOR   shift and go to state 90
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    expresion                      shift and go to state 141
+    expresion                      shift and go to state 148
     id_tipodato                    shift and go to state 88
     tipo_dato                      shift and go to state 89
 
-state 112
+state 114
+
+    (78) conj_condiciones -> NO condicion .
+
+    PARENTESIS_CERRADO reduce using rule 78 (conj_condiciones -> NO condicion .)
+
+
+state 115
+
+    (81) condicion -> NO expresion .
+    (80) condicion -> expresion . t_relacional expresion
+    (64) t_relacional -> . MENOR_QUE
+    (65) t_relacional -> . MAYOR_QUE
+    (66) t_relacional -> . MENOR_O_IGUAL_QUE
+    (67) t_relacional -> . MAYOR_O_IGUAL_QUE
+    (68) t_relacional -> . IGUAL
+    (69) t_relacional -> . DISTINTO
+
+    O               reduce using rule 81 (condicion -> NO expresion .)
+    Y               reduce using rule 81 (condicion -> NO expresion .)
+    PARENTESIS_CERRADO reduce using rule 81 (condicion -> NO expresion .)
+    MENOR_QUE       shift and go to state 118
+    MAYOR_QUE       shift and go to state 119
+    MENOR_O_IGUAL_QUE shift and go to state 120
+    MAYOR_O_IGUAL_QUE shift and go to state 121
+    IGUAL           shift and go to state 122
+    DISTINTO        shift and go to state 123
+
+    t_relacional                   shift and go to state 117
+
+state 116
+
+    (82) condicion -> PARENTESIS_ABIERTO . condicion PARENTESIS_CERRADO
+    (86) expresion -> PARENTESIS_ABIERTO . expresion PARENTESIS_CERRADO
+    (80) condicion -> . expresion t_relacional expresion
+    (81) condicion -> . NO expresion
+    (82) condicion -> . PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (50) id_tipodato -> . IDENTIFICADOR
+    (51) id_tipodato -> . tipo_dato
+    (24) tipo_dato -> . CADENA
+    (25) tipo_dato -> . NUMERICO
+
+    NO              shift and go to state 113
+    PARENTESIS_ABIERTO shift and go to state 116
+    IDENTIFICADOR   shift and go to state 90
+    CADENA          shift and go to state 75
+    NUMERICO        shift and go to state 76
+
+    condicion                      shift and go to state 150
+    expresion                      shift and go to state 107
+    id_tipodato                    shift and go to state 88
+    tipo_dato                      shift and go to state 89
+
+state 117
+
+    (80) condicion -> expresion t_relacional . expresion
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (50) id_tipodato -> . IDENTIFICADOR
+    (51) id_tipodato -> . tipo_dato
+    (24) tipo_dato -> . CADENA
+    (25) tipo_dato -> . NUMERICO
+
+    PARENTESIS_ABIERTO shift and go to state 149
+    IDENTIFICADOR   shift and go to state 90
+    CADENA          shift and go to state 75
+    NUMERICO        shift and go to state 76
+
+    expresion                      shift and go to state 151
+    id_tipodato                    shift and go to state 88
+    tipo_dato                      shift and go to state 89
+
+state 118
 
     (64) t_relacional -> MENOR_QUE .
 
@@ -2562,7 +2708,7 @@ state 112
     NUMERICO        reduce using rule 64 (t_relacional -> MENOR_QUE .)
 
 
-state 113
+state 119
 
     (65) t_relacional -> MAYOR_QUE .
 
@@ -2572,7 +2718,7 @@ state 113
     NUMERICO        reduce using rule 65 (t_relacional -> MAYOR_QUE .)
 
 
-state 114
+state 120
 
     (66) t_relacional -> MENOR_O_IGUAL_QUE .
 
@@ -2582,7 +2728,7 @@ state 114
     NUMERICO        reduce using rule 66 (t_relacional -> MENOR_O_IGUAL_QUE .)
 
 
-state 115
+state 121
 
     (67) t_relacional -> MAYOR_O_IGUAL_QUE .
 
@@ -2592,7 +2738,7 @@ state 115
     NUMERICO        reduce using rule 67 (t_relacional -> MAYOR_O_IGUAL_QUE .)
 
 
-state 116
+state 122
 
     (68) t_relacional -> IGUAL .
 
@@ -2602,7 +2748,7 @@ state 116
     NUMERICO        reduce using rule 68 (t_relacional -> IGUAL .)
 
 
-state 117
+state 123
 
     (69) t_relacional -> DISTINTO .
 
@@ -2612,38 +2758,29 @@ state 117
     NUMERICO        reduce using rule 69 (t_relacional -> DISTINTO .)
 
 
-state 118
+state 124
 
-    (79) condicion -> NO expresion .
-
-    O               reduce using rule 79 (condicion -> NO expresion .)
-    Y               reduce using rule 79 (condicion -> NO expresion .)
-    PARENTESIS_CERRADO reduce using rule 79 (condicion -> NO expresion .)
-
-
-state 119
-
-    (81) expresion -> id_tipodato t_op_aritmetico . id_tipodato
-    (82) expresion -> id_tipodato t_op_aritmetico . expresion
+    (84) expresion -> id_tipodato t_op_aritmetico . id_tipodato
+    (85) expresion -> id_tipodato t_op_aritmetico . expresion
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
-    (80) expresion -> . id_tipodato
-    (81) expresion -> . id_tipodato t_op_aritmetico id_tipodato
-    (82) expresion -> . id_tipodato t_op_aritmetico expresion
-    (83) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
     (24) tipo_dato -> . CADENA
     (25) tipo_dato -> . NUMERICO
 
     IDENTIFICADOR   shift and go to state 90
-    PARENTESIS_ABIERTO shift and go to state 82
+    PARENTESIS_ABIERTO shift and go to state 149
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    id_tipodato                    shift and go to state 142
-    expresion                      shift and go to state 143
+    id_tipodato                    shift and go to state 152
+    expresion                      shift and go to state 153
     tipo_dato                      shift and go to state 89
 
-state 120
+state 125
 
     (57) t_op_aritmetico -> SUMA .
 
@@ -2653,7 +2790,7 @@ state 120
     NUMERICO        reduce using rule 57 (t_op_aritmetico -> SUMA .)
 
 
-state 121
+state 126
 
     (58) t_op_aritmetico -> RESTA .
 
@@ -2663,7 +2800,7 @@ state 121
     NUMERICO        reduce using rule 58 (t_op_aritmetico -> RESTA .)
 
 
-state 122
+state 127
 
     (59) t_op_aritmetico -> DIVISION .
 
@@ -2673,7 +2810,7 @@ state 122
     NUMERICO        reduce using rule 59 (t_op_aritmetico -> DIVISION .)
 
 
-state 123
+state 128
 
     (60) t_op_aritmetico -> MULTIPLICACION .
 
@@ -2683,7 +2820,7 @@ state 123
     NUMERICO        reduce using rule 60 (t_op_aritmetico -> MULTIPLICACION .)
 
 
-state 124
+state 129
 
     (61) t_op_aritmetico -> DIVISION_ENTERA .
 
@@ -2693,7 +2830,7 @@ state 124
     NUMERICO        reduce using rule 61 (t_op_aritmetico -> DIVISION_ENTERA .)
 
 
-state 125
+state 130
 
     (62) t_op_aritmetico -> MODULO .
 
@@ -2703,7 +2840,7 @@ state 125
     NUMERICO        reduce using rule 62 (t_op_aritmetico -> MODULO .)
 
 
-state 126
+state 131
 
     (63) t_op_aritmetico -> POTENCIA .
 
@@ -2713,7 +2850,7 @@ state 126
     NUMERICO        reduce using rule 63 (t_op_aritmetico -> POTENCIA .)
 
 
-state 127
+state 132
 
     (52) op_aritmetica -> id_tipodato t_op_aritmetico . id_tipodato
     (53) op_aritmetica -> id_tipodato t_op_aritmetico . op_aritmetica
@@ -2732,113 +2869,132 @@ state 127
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    id_tipodato                    shift and go to state 144
-    op_aritmetica                  shift and go to state 145
+    id_tipodato                    shift and go to state 154
+    op_aritmetica                  shift and go to state 155
     tipo_dato                      shift and go to state 89
 
-state 128
+state 133
 
     (55) op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica . PARENTESIS_CERRADO t_op_aritmetico op_aritmetica
     (56) op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica . PARENTESIS_CERRADO
 
-    PARENTESIS_CERRADO shift and go to state 146
-
-
-state 129
-
-    (84) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO . HACER conj_cond_segun FIN_SEGUN
-
-    HACER           shift and go to state 147
-
-
-state 130
-
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO . HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO . HASTA id_tipodato HACER conj_sentencia FIN_PARA
-
-    HASTA           shift and go to state 148
-
-
-state 131
-
-    (95) c_para -> PARA idt_para HASTA id_tipodato . HACER conj_sentencia FIN_PARA
-
-    HACER           shift and go to state 149
-
-
-state 132
-
-    (96) idt_para -> IDENTIFICADOR ASIGNACION id_tipodato .
-
-    HASTA           reduce using rule 96 (idt_para -> IDENTIFICADOR ASIGNACION id_tipodato .)
-    PARENTESIS_CERRADO reduce using rule 96 (idt_para -> IDENTIFICADOR ASIGNACION id_tipodato .)
-
-
-state 133
-
-    (91) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO . HACER conj_sentencia FIN_MIENTRAS
-
-    HACER           shift and go to state 150
+    PARENTESIS_CERRADO shift and go to state 156
 
 
 state 134
 
-    (92) c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO . conj_condiciones PARENTESIS_CERRADO
+    (87) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO . HACER conj_cond_segun FIN_SEGUN
+
+    HACER           shift and go to state 157
+
+
+state 135
+
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO . HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO . HASTA id_tipodato HACER conj_sentencia FIN_PARA
+
+    HASTA           shift and go to state 158
+
+
+state 136
+
+    (98) c_para -> PARA idt_para HASTA id_tipodato . HACER conj_sentencia FIN_PARA
+
+    HACER           shift and go to state 159
+
+
+state 137
+
+    (99) idt_para -> IDENTIFICADOR ASIGNACION id_tipodato .
+
+    HASTA           reduce using rule 99 (idt_para -> IDENTIFICADOR ASIGNACION id_tipodato .)
+    PARENTESIS_CERRADO reduce using rule 99 (idt_para -> IDENTIFICADOR ASIGNACION id_tipodato .)
+
+
+state 138
+
+    (94) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO . HACER conj_sentencia FIN_MIENTRAS
+
+    HACER           shift and go to state 160
+
+
+state 139
+
+    (95) c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO . conj_condiciones PARENTESIS_CERRADO
     (76) conj_condiciones -> . condicion
     (77) conj_condiciones -> . condicion t_op_logico conj_condiciones
-    (78) condicion -> . expresion t_relacional expresion
-    (79) condicion -> . NO expresion
-    (80) expresion -> . id_tipodato
-    (81) expresion -> . id_tipodato t_op_aritmetico id_tipodato
-    (82) expresion -> . id_tipodato t_op_aritmetico expresion
-    (83) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (78) conj_condiciones -> . NO condicion
+    (79) conj_condiciones -> . PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (80) condicion -> . expresion t_relacional expresion
+    (81) condicion -> . NO expresion
+    (82) condicion -> . PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
     (25) tipo_dato -> . NUMERICO
 
-    NO              shift and go to state 87
+    NO              shift and go to state 86
     PARENTESIS_ABIERTO shift and go to state 82
     IDENTIFICADOR   shift and go to state 90
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    conj_condiciones               shift and go to state 151
+    conj_condiciones               shift and go to state 161
     condicion                      shift and go to state 85
-    expresion                      shift and go to state 86
+    expresion                      shift and go to state 87
     id_tipodato                    shift and go to state 88
     tipo_dato                      shift and go to state 89
 
-state 135
+state 140
 
     (44) salida_esc -> IDENTIFICADOR COMA salida_esc .
 
     PARENTESIS_CERRADO reduce using rule 44 (salida_esc -> IDENTIFICADOR COMA salida_esc .)
 
 
-state 136
+state 141
 
     (45) salida_esc -> CADENA COMA salida_esc .
 
     PARENTESIS_CERRADO reduce using rule 45 (salida_esc -> CADENA COMA salida_esc .)
 
 
-state 137
+state 142
 
-    (83) expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .
+    (79) conj_condiciones -> PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .
 
-    MENOR_QUE       reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
-    MAYOR_QUE       reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
-    MENOR_O_IGUAL_QUE reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
-    MAYOR_O_IGUAL_QUE reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
-    IGUAL           reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
-    DISTINTO        reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
-    PARENTESIS_CERRADO reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
-    O               reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
-    Y               reduce using rule 83 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    PARENTESIS_CERRADO reduce using rule 79 (conj_condiciones -> PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
 
 
-state 138
+state 143
+
+    (82) condicion -> PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO .
+
+    O               reduce using rule 82 (condicion -> PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO .)
+    Y               reduce using rule 82 (condicion -> PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO .)
+    PARENTESIS_CERRADO reduce using rule 82 (condicion -> PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO .)
+
+
+state 144
+
+    (86) expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .
+
+    MENOR_QUE       reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    MAYOR_QUE       reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    MENOR_O_IGUAL_QUE reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    MAYOR_O_IGUAL_QUE reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    IGUAL           reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    DISTINTO        reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    PARENTESIS_CERRADO reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    O               reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+    Y               reduce using rule 86 (expresion -> PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO .)
+
+
+state 145
 
     (72) s_si -> SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES . conj_s_si FIN_SI
     (74) conj_s_si -> . conj_sentencia
@@ -2861,19 +3017,19 @@ state 138
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     ESCRIBIR        shift and go to state 33
     LEER            shift and go to state 34
@@ -2886,8 +3042,8 @@ state 138
     MIENTRAS        shift and go to state 42
     REPETIR         shift and go to state 43
 
-    conj_s_si                      shift and go to state 152
-    conj_sentencia                 shift and go to state 153
+    conj_s_si                      shift and go to state 162
+    conj_sentencia                 shift and go to state 163
     s_escribir                     shift and go to state 26
     s_leer                         shift and go to state 27
     s_si                           shift and go to state 28
@@ -2899,7 +3055,7 @@ state 138
     c_mientras                     shift and go to state 39
     c_repetir                      shift and go to state 40
 
-state 139
+state 146
 
     (73) s_si -> SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES . conj_s_si FIN_SI
     (74) conj_s_si -> . conj_sentencia
@@ -2922,19 +3078,19 @@ state 139
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     ESCRIBIR        shift and go to state 33
     LEER            shift and go to state 34
@@ -2947,8 +3103,8 @@ state 139
     MIENTRAS        shift and go to state 42
     REPETIR         shift and go to state 43
 
-    conj_s_si                      shift and go to state 154
-    conj_sentencia                 shift and go to state 153
+    conj_s_si                      shift and go to state 164
+    conj_sentencia                 shift and go to state 163
     s_escribir                     shift and go to state 26
     s_leer                         shift and go to state 27
     s_si                           shift and go to state 28
@@ -2960,28 +3116,63 @@ state 139
     c_mientras                     shift and go to state 39
     c_repetir                      shift and go to state 40
 
-state 140
+state 147
 
     (77) conj_condiciones -> condicion t_op_logico conj_condiciones .
 
     PARENTESIS_CERRADO reduce using rule 77 (conj_condiciones -> condicion t_op_logico conj_condiciones .)
 
 
-state 141
+state 148
 
-    (78) condicion -> expresion t_relacional expresion .
+    (81) condicion -> NO expresion .
 
-    O               reduce using rule 78 (condicion -> expresion t_relacional expresion .)
-    Y               reduce using rule 78 (condicion -> expresion t_relacional expresion .)
-    PARENTESIS_CERRADO reduce using rule 78 (condicion -> expresion t_relacional expresion .)
+    PARENTESIS_CERRADO reduce using rule 81 (condicion -> NO expresion .)
 
 
-state 142
+state 149
 
-    (81) expresion -> id_tipodato t_op_aritmetico id_tipodato .
-    (80) expresion -> id_tipodato .
-    (81) expresion -> id_tipodato . t_op_aritmetico id_tipodato
-    (82) expresion -> id_tipodato . t_op_aritmetico expresion
+    (86) expresion -> PARENTESIS_ABIERTO . expresion PARENTESIS_CERRADO
+    (83) expresion -> . id_tipodato
+    (84) expresion -> . id_tipodato t_op_aritmetico id_tipodato
+    (85) expresion -> . id_tipodato t_op_aritmetico expresion
+    (86) expresion -> . PARENTESIS_ABIERTO expresion PARENTESIS_CERRADO
+    (50) id_tipodato -> . IDENTIFICADOR
+    (51) id_tipodato -> . tipo_dato
+    (24) tipo_dato -> . CADENA
+    (25) tipo_dato -> . NUMERICO
+
+    PARENTESIS_ABIERTO shift and go to state 149
+    IDENTIFICADOR   shift and go to state 90
+    CADENA          shift and go to state 75
+    NUMERICO        shift and go to state 76
+
+    expresion                      shift and go to state 165
+    id_tipodato                    shift and go to state 88
+    tipo_dato                      shift and go to state 89
+
+state 150
+
+    (82) condicion -> PARENTESIS_ABIERTO condicion . PARENTESIS_CERRADO
+
+    PARENTESIS_CERRADO shift and go to state 143
+
+
+state 151
+
+    (80) condicion -> expresion t_relacional expresion .
+
+    O               reduce using rule 80 (condicion -> expresion t_relacional expresion .)
+    Y               reduce using rule 80 (condicion -> expresion t_relacional expresion .)
+    PARENTESIS_CERRADO reduce using rule 80 (condicion -> expresion t_relacional expresion .)
+
+
+state 152
+
+    (84) expresion -> id_tipodato t_op_aritmetico id_tipodato .
+    (83) expresion -> id_tipodato .
+    (84) expresion -> id_tipodato . t_op_aritmetico id_tipodato
+    (85) expresion -> id_tipodato . t_op_aritmetico expresion
     (57) t_op_aritmetico -> . SUMA
     (58) t_op_aritmetico -> . RESTA
     (59) t_op_aritmetico -> . DIVISION
@@ -2990,60 +3181,60 @@ state 142
     (62) t_op_aritmetico -> . MODULO
     (63) t_op_aritmetico -> . POTENCIA
 
-  ! reduce/reduce conflict for MENOR_QUE resolved using rule 80 (expresion -> id_tipodato .)
-  ! reduce/reduce conflict for MAYOR_QUE resolved using rule 80 (expresion -> id_tipodato .)
-  ! reduce/reduce conflict for MENOR_O_IGUAL_QUE resolved using rule 80 (expresion -> id_tipodato .)
-  ! reduce/reduce conflict for MAYOR_O_IGUAL_QUE resolved using rule 80 (expresion -> id_tipodato .)
-  ! reduce/reduce conflict for IGUAL resolved using rule 80 (expresion -> id_tipodato .)
-  ! reduce/reduce conflict for DISTINTO resolved using rule 80 (expresion -> id_tipodato .)
-  ! reduce/reduce conflict for PARENTESIS_CERRADO resolved using rule 80 (expresion -> id_tipodato .)
-  ! reduce/reduce conflict for O resolved using rule 80 (expresion -> id_tipodato .)
-  ! reduce/reduce conflict for Y resolved using rule 80 (expresion -> id_tipodato .)
-    MENOR_QUE       reduce using rule 80 (expresion -> id_tipodato .)
-    MAYOR_QUE       reduce using rule 80 (expresion -> id_tipodato .)
-    MENOR_O_IGUAL_QUE reduce using rule 80 (expresion -> id_tipodato .)
-    MAYOR_O_IGUAL_QUE reduce using rule 80 (expresion -> id_tipodato .)
-    IGUAL           reduce using rule 80 (expresion -> id_tipodato .)
-    DISTINTO        reduce using rule 80 (expresion -> id_tipodato .)
-    PARENTESIS_CERRADO reduce using rule 80 (expresion -> id_tipodato .)
-    O               reduce using rule 80 (expresion -> id_tipodato .)
-    Y               reduce using rule 80 (expresion -> id_tipodato .)
-    SUMA            shift and go to state 120
-    RESTA           shift and go to state 121
-    DIVISION        shift and go to state 122
-    MULTIPLICACION  shift and go to state 123
-    DIVISION_ENTERA shift and go to state 124
-    MODULO          shift and go to state 125
-    POTENCIA        shift and go to state 126
+  ! reduce/reduce conflict for MENOR_QUE resolved using rule 83 (expresion -> id_tipodato .)
+  ! reduce/reduce conflict for MAYOR_QUE resolved using rule 83 (expresion -> id_tipodato .)
+  ! reduce/reduce conflict for MENOR_O_IGUAL_QUE resolved using rule 83 (expresion -> id_tipodato .)
+  ! reduce/reduce conflict for MAYOR_O_IGUAL_QUE resolved using rule 83 (expresion -> id_tipodato .)
+  ! reduce/reduce conflict for IGUAL resolved using rule 83 (expresion -> id_tipodato .)
+  ! reduce/reduce conflict for DISTINTO resolved using rule 83 (expresion -> id_tipodato .)
+  ! reduce/reduce conflict for PARENTESIS_CERRADO resolved using rule 83 (expresion -> id_tipodato .)
+  ! reduce/reduce conflict for O resolved using rule 83 (expresion -> id_tipodato .)
+  ! reduce/reduce conflict for Y resolved using rule 83 (expresion -> id_tipodato .)
+    MENOR_QUE       reduce using rule 83 (expresion -> id_tipodato .)
+    MAYOR_QUE       reduce using rule 83 (expresion -> id_tipodato .)
+    MENOR_O_IGUAL_QUE reduce using rule 83 (expresion -> id_tipodato .)
+    MAYOR_O_IGUAL_QUE reduce using rule 83 (expresion -> id_tipodato .)
+    IGUAL           reduce using rule 83 (expresion -> id_tipodato .)
+    DISTINTO        reduce using rule 83 (expresion -> id_tipodato .)
+    PARENTESIS_CERRADO reduce using rule 83 (expresion -> id_tipodato .)
+    O               reduce using rule 83 (expresion -> id_tipodato .)
+    Y               reduce using rule 83 (expresion -> id_tipodato .)
+    SUMA            shift and go to state 125
+    RESTA           shift and go to state 126
+    DIVISION        shift and go to state 127
+    MULTIPLICACION  shift and go to state 128
+    DIVISION_ENTERA shift and go to state 129
+    MODULO          shift and go to state 130
+    POTENCIA        shift and go to state 131
 
-  ! MENOR_QUE       [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
-  ! MAYOR_QUE       [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
-  ! MENOR_O_IGUAL_QUE [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
-  ! MAYOR_O_IGUAL_QUE [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
-  ! IGUAL           [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
-  ! DISTINTO        [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
-  ! PARENTESIS_CERRADO [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
-  ! O               [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
-  ! Y               [ reduce using rule 81 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! MENOR_QUE       [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! MAYOR_QUE       [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! MENOR_O_IGUAL_QUE [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! MAYOR_O_IGUAL_QUE [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! IGUAL           [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! DISTINTO        [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! PARENTESIS_CERRADO [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! O               [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
+  ! Y               [ reduce using rule 84 (expresion -> id_tipodato t_op_aritmetico id_tipodato .) ]
 
-    t_op_aritmetico                shift and go to state 119
+    t_op_aritmetico                shift and go to state 124
 
-state 143
+state 153
 
-    (82) expresion -> id_tipodato t_op_aritmetico expresion .
+    (85) expresion -> id_tipodato t_op_aritmetico expresion .
 
-    MENOR_QUE       reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
-    MAYOR_QUE       reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
-    MENOR_O_IGUAL_QUE reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
-    MAYOR_O_IGUAL_QUE reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
-    IGUAL           reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
-    DISTINTO        reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
-    PARENTESIS_CERRADO reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
-    O               reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
-    Y               reduce using rule 82 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    MENOR_QUE       reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    MAYOR_QUE       reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    MENOR_O_IGUAL_QUE reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    MAYOR_O_IGUAL_QUE reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    IGUAL           reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    DISTINTO        reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    PARENTESIS_CERRADO reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    O               reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
+    Y               reduce using rule 85 (expresion -> id_tipodato t_op_aritmetico expresion .)
 
 
-state 144
+state 154
 
     (52) op_aritmetica -> id_tipodato t_op_aritmetico id_tipodato .
     (52) op_aritmetica -> id_tipodato . t_op_aritmetico id_tipodato
@@ -3107,13 +3298,13 @@ state 144
     IGUAL           reduce using rule 52 (op_aritmetica -> id_tipodato t_op_aritmetico id_tipodato .)
     DISTINTO        reduce using rule 52 (op_aritmetica -> id_tipodato t_op_aritmetico id_tipodato .)
     PARENTESIS_CERRADO reduce using rule 52 (op_aritmetica -> id_tipodato t_op_aritmetico id_tipodato .)
-    SUMA            shift and go to state 120
-    RESTA           shift and go to state 121
-    DIVISION        shift and go to state 122
-    MULTIPLICACION  shift and go to state 123
-    DIVISION_ENTERA shift and go to state 124
-    MODULO          shift and go to state 125
-    POTENCIA        shift and go to state 126
+    SUMA            shift and go to state 125
+    RESTA           shift and go to state 126
+    DIVISION        shift and go to state 127
+    MULTIPLICACION  shift and go to state 128
+    DIVISION_ENTERA shift and go to state 129
+    MODULO          shift and go to state 130
+    POTENCIA        shift and go to state 131
 
   ! ESCRIBIR        [ reduce using rule 54 (op_aritmetica -> id_tipodato .) ]
   ! LEER            [ reduce using rule 54 (op_aritmetica -> id_tipodato .) ]
@@ -3141,9 +3332,9 @@ state 144
   ! DISTINTO        [ reduce using rule 54 (op_aritmetica -> id_tipodato .) ]
   ! PARENTESIS_CERRADO [ reduce using rule 54 (op_aritmetica -> id_tipodato .) ]
 
-    t_op_aritmetico                shift and go to state 127
+    t_op_aritmetico                shift and go to state 132
 
-state 145
+state 155
 
     (53) op_aritmetica -> id_tipodato t_op_aritmetico op_aritmetica .
 
@@ -3174,7 +3365,7 @@ state 145
     PARENTESIS_CERRADO reduce using rule 53 (op_aritmetica -> id_tipodato t_op_aritmetico op_aritmetica .)
 
 
-state 146
+state 156
 
     (55) op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO . t_op_aritmetico op_aritmetica
     (56) op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO .
@@ -3211,22 +3402,22 @@ state 146
     IGUAL           reduce using rule 56 (op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO .)
     DISTINTO        reduce using rule 56 (op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO .)
     PARENTESIS_CERRADO reduce using rule 56 (op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO .)
-    SUMA            shift and go to state 120
-    RESTA           shift and go to state 121
-    DIVISION        shift and go to state 122
-    MULTIPLICACION  shift and go to state 123
-    DIVISION_ENTERA shift and go to state 124
-    MODULO          shift and go to state 125
-    POTENCIA        shift and go to state 126
+    SUMA            shift and go to state 125
+    RESTA           shift and go to state 126
+    DIVISION        shift and go to state 127
+    MULTIPLICACION  shift and go to state 128
+    DIVISION_ENTERA shift and go to state 129
+    MODULO          shift and go to state 130
+    POTENCIA        shift and go to state 131
 
-    t_op_aritmetico                shift and go to state 155
+    t_op_aritmetico                shift and go to state 166
 
-state 147
+state 157
 
-    (84) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER . conj_cond_segun FIN_SEGUN
-    (85) conj_cond_segun -> . t_relacional id_tipodato DOS_PUNTOS conj_sentencia
-    (86) conj_cond_segun -> . t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
-    (87) conj_cond_segun -> . OTRO DOS_PUNTOS conj_sentencia
+    (87) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER . conj_cond_segun FIN_SEGUN
+    (88) conj_cond_segun -> . t_relacional id_tipodato DOS_PUNTOS conj_sentencia
+    (89) conj_cond_segun -> . t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
+    (90) conj_cond_segun -> . OTRO DOS_PUNTOS conj_sentencia
     (64) t_relacional -> . MENOR_QUE
     (65) t_relacional -> . MAYOR_QUE
     (66) t_relacional -> . MENOR_O_IGUAL_QUE
@@ -3234,21 +3425,21 @@ state 147
     (68) t_relacional -> . IGUAL
     (69) t_relacional -> . DISTINTO
 
-    OTRO            shift and go to state 158
-    MENOR_QUE       shift and go to state 112
-    MAYOR_QUE       shift and go to state 113
-    MENOR_O_IGUAL_QUE shift and go to state 114
-    MAYOR_O_IGUAL_QUE shift and go to state 115
-    IGUAL           shift and go to state 116
-    DISTINTO        shift and go to state 117
+    OTRO            shift and go to state 169
+    MENOR_QUE       shift and go to state 118
+    MAYOR_QUE       shift and go to state 119
+    MENOR_O_IGUAL_QUE shift and go to state 120
+    MAYOR_O_IGUAL_QUE shift and go to state 121
+    IGUAL           shift and go to state 122
+    DISTINTO        shift and go to state 123
 
-    conj_cond_segun                shift and go to state 156
-    t_relacional                   shift and go to state 157
+    conj_cond_segun                shift and go to state 167
+    t_relacional                   shift and go to state 168
 
-state 148
+state 158
 
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA . id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA . id_tipodato HACER conj_sentencia FIN_PARA
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA . id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA . id_tipodato HACER conj_sentencia FIN_PARA
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
@@ -3258,12 +3449,12 @@ state 148
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    id_tipodato                    shift and go to state 159
+    id_tipodato                    shift and go to state 170
     tipo_dato                      shift and go to state 89
 
-state 149
+state 159
 
-    (95) c_para -> PARA idt_para HASTA id_tipodato HACER . conj_sentencia FIN_PARA
+    (98) c_para -> PARA idt_para HASTA id_tipodato HACER . conj_sentencia FIN_PARA
     (27) conj_sentencia -> . s_escribir
     (28) conj_sentencia -> . s_leer
     (29) conj_sentencia -> . s_si
@@ -3282,19 +3473,19 @@ state 149
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     ESCRIBIR        shift and go to state 33
     LEER            shift and go to state 34
@@ -3307,7 +3498,7 @@ state 149
     MIENTRAS        shift and go to state 42
     REPETIR         shift and go to state 43
 
-    conj_sentencia                 shift and go to state 160
+    conj_sentencia                 shift and go to state 171
     s_escribir                     shift and go to state 26
     s_leer                         shift and go to state 27
     s_si                           shift and go to state 28
@@ -3319,9 +3510,9 @@ state 149
     c_mientras                     shift and go to state 39
     c_repetir                      shift and go to state 40
 
-state 150
+state 160
 
-    (91) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER . conj_sentencia FIN_MIENTRAS
+    (94) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER . conj_sentencia FIN_MIENTRAS
     (27) conj_sentencia -> . s_escribir
     (28) conj_sentencia -> . s_leer
     (29) conj_sentencia -> . s_si
@@ -3340,19 +3531,19 @@ state 150
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     ESCRIBIR        shift and go to state 33
     LEER            shift and go to state 34
@@ -3365,7 +3556,7 @@ state 150
     MIENTRAS        shift and go to state 42
     REPETIR         shift and go to state 43
 
-    conj_sentencia                 shift and go to state 161
+    conj_sentencia                 shift and go to state 172
     s_escribir                     shift and go to state 26
     s_leer                         shift and go to state 27
     s_si                           shift and go to state 28
@@ -3377,37 +3568,44 @@ state 150
     c_mientras                     shift and go to state 39
     c_repetir                      shift and go to state 40
 
-state 151
+state 161
 
-    (92) c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones . PARENTESIS_CERRADO
+    (95) c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones . PARENTESIS_CERRADO
 
-    PARENTESIS_CERRADO shift and go to state 162
+    PARENTESIS_CERRADO shift and go to state 173
 
 
-state 152
+state 162
 
     (72) s_si -> SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si . FIN_SI
 
-    FIN_SI          shift and go to state 163
+    FIN_SI          shift and go to state 174
 
 
-state 153
+state 163
 
     (74) conj_s_si -> conj_sentencia .
     (75) conj_s_si -> conj_sentencia . SINO conj_s_si
 
     FIN_SI          reduce using rule 74 (conj_s_si -> conj_sentencia .)
-    SINO            shift and go to state 164
+    SINO            shift and go to state 175
 
 
-state 154
+state 164
 
     (73) s_si -> SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si . FIN_SI
 
-    FIN_SI          shift and go to state 165
+    FIN_SI          shift and go to state 176
 
 
-state 155
+state 165
+
+    (86) expresion -> PARENTESIS_ABIERTO expresion . PARENTESIS_CERRADO
+
+    PARENTESIS_CERRADO shift and go to state 144
+
+
+state 166
 
     (55) op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO t_op_aritmetico . op_aritmetica
     (52) op_aritmetica -> . id_tipodato t_op_aritmetico id_tipodato
@@ -3425,21 +3623,21 @@ state 155
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    op_aritmetica                  shift and go to state 166
+    op_aritmetica                  shift and go to state 177
     id_tipodato                    shift and go to state 93
     tipo_dato                      shift and go to state 89
 
-state 156
+state 167
 
-    (84) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun . FIN_SEGUN
+    (87) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun . FIN_SEGUN
 
-    FIN_SEGUN       shift and go to state 167
+    FIN_SEGUN       shift and go to state 178
 
 
-state 157
+state 168
 
-    (85) conj_cond_segun -> t_relacional . id_tipodato DOS_PUNTOS conj_sentencia
-    (86) conj_cond_segun -> t_relacional . id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
+    (88) conj_cond_segun -> t_relacional . id_tipodato DOS_PUNTOS conj_sentencia
+    (89) conj_cond_segun -> t_relacional . id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
     (50) id_tipodato -> . IDENTIFICADOR
     (51) id_tipodato -> . tipo_dato
     (24) tipo_dato -> . CADENA
@@ -3449,70 +3647,70 @@ state 157
     CADENA          shift and go to state 75
     NUMERICO        shift and go to state 76
 
-    id_tipodato                    shift and go to state 168
+    id_tipodato                    shift and go to state 179
     tipo_dato                      shift and go to state 89
 
-state 158
+state 169
 
-    (87) conj_cond_segun -> OTRO . DOS_PUNTOS conj_sentencia
+    (90) conj_cond_segun -> OTRO . DOS_PUNTOS conj_sentencia
 
-    DOS_PUNTOS      shift and go to state 169
-
-
-state 159
-
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato . COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato . HACER conj_sentencia FIN_PARA
-
-    COMA            shift and go to state 170
-    HACER           shift and go to state 171
+    DOS_PUNTOS      shift and go to state 180
 
 
-state 160
+state 170
 
-    (95) c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia . FIN_PARA
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato . COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato . HACER conj_sentencia FIN_PARA
 
-    FIN_PARA        shift and go to state 172
-
-
-state 161
-
-    (91) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia . FIN_MIENTRAS
-
-    FIN_MIENTRAS    shift and go to state 173
+    COMA            shift and go to state 181
+    HACER           shift and go to state 182
 
 
-state 162
+state 171
 
-    (92) c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .
+    (98) c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia . FIN_PARA
 
-    ESCRIBIR        reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    LEER            reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    SI              reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    SEGUN           reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    IDENTIFICADOR   reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    COMENTARIO_VARIASLINEAS reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    COMENTARIO_LINEA reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    PARA            reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    MIENTRAS        reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    REPETIR         reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    FIN_ACCION      reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    HASTA_QUE       reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    SINO            reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    FIN_SI          reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    FIN_PARA        reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    FIN_MIENTRAS    reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    FIN_SEGUN       reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    OTRO            reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    MENOR_QUE       reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    MAYOR_QUE       reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    MENOR_O_IGUAL_QUE reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    MAYOR_O_IGUAL_QUE reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    IGUAL           reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
-    DISTINTO        reduce using rule 92 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    FIN_PARA        shift and go to state 183
 
 
-state 163
+state 172
+
+    (94) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia . FIN_MIENTRAS
+
+    FIN_MIENTRAS    shift and go to state 184
+
+
+state 173
+
+    (95) c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .
+
+    ESCRIBIR        reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    LEER            reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    SI              reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    SEGUN           reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    IDENTIFICADOR   reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    COMENTARIO_VARIASLINEAS reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    COMENTARIO_LINEA reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    PARA            reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    MIENTRAS        reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    REPETIR         reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    FIN_ACCION      reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    HASTA_QUE       reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    SINO            reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    FIN_SI          reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    FIN_PARA        reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    FIN_MIENTRAS    reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    FIN_SEGUN       reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    OTRO            reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    MENOR_QUE       reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    MAYOR_QUE       reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    MENOR_O_IGUAL_QUE reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    MAYOR_O_IGUAL_QUE reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    IGUAL           reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+    DISTINTO        reduce using rule 95 (c_repetir -> REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO .)
+
+
+state 174
 
     (72) s_si -> SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI .
 
@@ -3542,7 +3740,7 @@ state 163
     DISTINTO        reduce using rule 72 (s_si -> SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI .)
 
 
-state 164
+state 175
 
     (75) conj_s_si -> conj_sentencia SINO . conj_s_si
     (74) conj_s_si -> . conj_sentencia
@@ -3565,19 +3763,19 @@ state 164
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     ESCRIBIR        shift and go to state 33
     LEER            shift and go to state 34
@@ -3590,8 +3788,8 @@ state 164
     MIENTRAS        shift and go to state 42
     REPETIR         shift and go to state 43
 
-    conj_sentencia                 shift and go to state 153
-    conj_s_si                      shift and go to state 174
+    conj_sentencia                 shift and go to state 163
+    conj_s_si                      shift and go to state 185
     s_escribir                     shift and go to state 26
     s_leer                         shift and go to state 27
     s_si                           shift and go to state 28
@@ -3603,7 +3801,7 @@ state 164
     c_mientras                     shift and go to state 39
     c_repetir                      shift and go to state 40
 
-state 165
+state 176
 
     (73) s_si -> SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI .
 
@@ -3633,7 +3831,7 @@ state 165
     DISTINTO        reduce using rule 73 (s_si -> SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI .)
 
 
-state 166
+state 177
 
     (55) op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO t_op_aritmetico op_aritmetica .
 
@@ -3664,351 +3862,47 @@ state 166
     PARENTESIS_CERRADO reduce using rule 55 (op_aritmetica -> PARENTESIS_ABIERTO op_aritmetica PARENTESIS_CERRADO t_op_aritmetico op_aritmetica .)
 
 
-state 167
-
-    (84) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .
-
-    ESCRIBIR        reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    LEER            reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    SI              reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    SEGUN           reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    IDENTIFICADOR   reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    COMENTARIO_VARIASLINEAS reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    COMENTARIO_LINEA reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    PARA            reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    MIENTRAS        reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    REPETIR         reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    FIN_ACCION      reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    HASTA_QUE       reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    SINO            reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    FIN_SI          reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    FIN_PARA        reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    FIN_MIENTRAS    reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    FIN_SEGUN       reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    OTRO            reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    MENOR_QUE       reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    MAYOR_QUE       reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    MENOR_O_IGUAL_QUE reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    MAYOR_O_IGUAL_QUE reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    IGUAL           reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-    DISTINTO        reduce using rule 84 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
-
-
-state 168
-
-    (85) conj_cond_segun -> t_relacional id_tipodato . DOS_PUNTOS conj_sentencia
-    (86) conj_cond_segun -> t_relacional id_tipodato . DOS_PUNTOS conj_sentencia conj_cond_segun
-
-    DOS_PUNTOS      shift and go to state 175
-
-
-state 169
-
-    (87) conj_cond_segun -> OTRO DOS_PUNTOS . conj_sentencia
-    (27) conj_sentencia -> . s_escribir
-    (28) conj_sentencia -> . s_leer
-    (29) conj_sentencia -> . s_si
-    (30) conj_sentencia -> . s_segun
-    (31) conj_sentencia -> . s_ciclos
-    (32) conj_sentencia -> . sentencia
-    (33) conj_sentencia -> . comentario_vl_l
-    (34) conj_sentencia -> . s_escribir conj_sentencia
-    (35) conj_sentencia -> . s_leer conj_sentencia
-    (36) conj_sentencia -> . s_si conj_sentencia
-    (37) conj_sentencia -> . s_segun conj_sentencia
-    (38) conj_sentencia -> . s_ciclos conj_sentencia
-    (39) conj_sentencia -> . sentencia conj_sentencia
-    (40) conj_sentencia -> . comentario_vl_l conj_sentencia
-    (41) s_escribir -> . ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO
-    (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
-    (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
-    (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
-    (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
-    (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
-    (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
-
-    ESCRIBIR        shift and go to state 33
-    LEER            shift and go to state 34
-    SI              shift and go to state 35
-    SEGUN           shift and go to state 37
-    IDENTIFICADOR   shift and go to state 36
-    COMENTARIO_VARIASLINEAS shift and go to state 19
-    COMENTARIO_LINEA shift and go to state 20
-    PARA            shift and go to state 41
-    MIENTRAS        shift and go to state 42
-    REPETIR         shift and go to state 43
-
-    conj_sentencia                 shift and go to state 176
-    s_escribir                     shift and go to state 26
-    s_leer                         shift and go to state 27
-    s_si                           shift and go to state 28
-    s_segun                        shift and go to state 29
-    s_ciclos                       shift and go to state 30
-    sentencia                      shift and go to state 31
-    comentario_vl_l                shift and go to state 32
-    c_para                         shift and go to state 38
-    c_mientras                     shift and go to state 39
-    c_repetir                      shift and go to state 40
-
-state 170
-
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA . id_tipodato HACER conj_sentencia FIN_PARA
-    (50) id_tipodato -> . IDENTIFICADOR
-    (51) id_tipodato -> . tipo_dato
-    (24) tipo_dato -> . CADENA
-    (25) tipo_dato -> . NUMERICO
-
-    IDENTIFICADOR   shift and go to state 90
-    CADENA          shift and go to state 75
-    NUMERICO        shift and go to state 76
-
-    id_tipodato                    shift and go to state 177
-    tipo_dato                      shift and go to state 89
-
-state 171
-
-    (94) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER . conj_sentencia FIN_PARA
-    (27) conj_sentencia -> . s_escribir
-    (28) conj_sentencia -> . s_leer
-    (29) conj_sentencia -> . s_si
-    (30) conj_sentencia -> . s_segun
-    (31) conj_sentencia -> . s_ciclos
-    (32) conj_sentencia -> . sentencia
-    (33) conj_sentencia -> . comentario_vl_l
-    (34) conj_sentencia -> . s_escribir conj_sentencia
-    (35) conj_sentencia -> . s_leer conj_sentencia
-    (36) conj_sentencia -> . s_si conj_sentencia
-    (37) conj_sentencia -> . s_segun conj_sentencia
-    (38) conj_sentencia -> . s_ciclos conj_sentencia
-    (39) conj_sentencia -> . sentencia conj_sentencia
-    (40) conj_sentencia -> . comentario_vl_l conj_sentencia
-    (41) s_escribir -> . ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO
-    (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
-    (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
-    (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
-    (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
-    (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
-    (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
-
-    ESCRIBIR        shift and go to state 33
-    LEER            shift and go to state 34
-    SI              shift and go to state 35
-    SEGUN           shift and go to state 37
-    IDENTIFICADOR   shift and go to state 36
-    COMENTARIO_VARIASLINEAS shift and go to state 19
-    COMENTARIO_LINEA shift and go to state 20
-    PARA            shift and go to state 41
-    MIENTRAS        shift and go to state 42
-    REPETIR         shift and go to state 43
-
-    conj_sentencia                 shift and go to state 178
-    s_escribir                     shift and go to state 26
-    s_leer                         shift and go to state 27
-    s_si                           shift and go to state 28
-    s_segun                        shift and go to state 29
-    s_ciclos                       shift and go to state 30
-    sentencia                      shift and go to state 31
-    comentario_vl_l                shift and go to state 32
-    c_para                         shift and go to state 38
-    c_mientras                     shift and go to state 39
-    c_repetir                      shift and go to state 40
-
-state 172
-
-    (95) c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .
-
-    ESCRIBIR        reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    LEER            reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SI              reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SEGUN           reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    IDENTIFICADOR   reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    COMENTARIO_VARIASLINEAS reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    COMENTARIO_LINEA reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    PARA            reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MIENTRAS        reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    REPETIR         reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_ACCION      reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    HASTA_QUE       reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SINO            reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_SI          reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_PARA        reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_MIENTRAS    reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_SEGUN       reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    OTRO            reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MENOR_QUE       reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MAYOR_QUE       reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MENOR_O_IGUAL_QUE reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MAYOR_O_IGUAL_QUE reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    IGUAL           reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    DISTINTO        reduce using rule 95 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-
-
-state 173
-
-    (91) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .
-
-    ESCRIBIR        reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    LEER            reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    SI              reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    SEGUN           reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    IDENTIFICADOR   reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    COMENTARIO_VARIASLINEAS reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    COMENTARIO_LINEA reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    PARA            reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    MIENTRAS        reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    REPETIR         reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    FIN_ACCION      reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    HASTA_QUE       reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    SINO            reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    FIN_SI          reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    FIN_PARA        reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    FIN_MIENTRAS    reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    FIN_SEGUN       reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    OTRO            reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    MENOR_QUE       reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    MAYOR_QUE       reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    MENOR_O_IGUAL_QUE reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    MAYOR_O_IGUAL_QUE reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    IGUAL           reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-    DISTINTO        reduce using rule 91 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
-
-
-state 174
-
-    (75) conj_s_si -> conj_sentencia SINO conj_s_si .
-
-    FIN_SI          reduce using rule 75 (conj_s_si -> conj_sentencia SINO conj_s_si .)
-
-
-state 175
-
-    (85) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS . conj_sentencia
-    (86) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS . conj_sentencia conj_cond_segun
-    (27) conj_sentencia -> . s_escribir
-    (28) conj_sentencia -> . s_leer
-    (29) conj_sentencia -> . s_si
-    (30) conj_sentencia -> . s_segun
-    (31) conj_sentencia -> . s_ciclos
-    (32) conj_sentencia -> . sentencia
-    (33) conj_sentencia -> . comentario_vl_l
-    (34) conj_sentencia -> . s_escribir conj_sentencia
-    (35) conj_sentencia -> . s_leer conj_sentencia
-    (36) conj_sentencia -> . s_si conj_sentencia
-    (37) conj_sentencia -> . s_segun conj_sentencia
-    (38) conj_sentencia -> . s_ciclos conj_sentencia
-    (39) conj_sentencia -> . sentencia conj_sentencia
-    (40) conj_sentencia -> . comentario_vl_l conj_sentencia
-    (41) s_escribir -> . ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO
-    (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
-    (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
-    (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
-    (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
-    (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
-    (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
-
-    ESCRIBIR        shift and go to state 33
-    LEER            shift and go to state 34
-    SI              shift and go to state 35
-    SEGUN           shift and go to state 37
-    IDENTIFICADOR   shift and go to state 36
-    COMENTARIO_VARIASLINEAS shift and go to state 19
-    COMENTARIO_LINEA shift and go to state 20
-    PARA            shift and go to state 41
-    MIENTRAS        shift and go to state 42
-    REPETIR         shift and go to state 43
-
-    conj_sentencia                 shift and go to state 179
-    s_escribir                     shift and go to state 26
-    s_leer                         shift and go to state 27
-    s_si                           shift and go to state 28
-    s_segun                        shift and go to state 29
-    s_ciclos                       shift and go to state 30
-    sentencia                      shift and go to state 31
-    comentario_vl_l                shift and go to state 32
-    c_para                         shift and go to state 38
-    c_mientras                     shift and go to state 39
-    c_repetir                      shift and go to state 40
-
-state 176
-
-    (87) conj_cond_segun -> OTRO DOS_PUNTOS conj_sentencia .
-
-    FIN_SEGUN       reduce using rule 87 (conj_cond_segun -> OTRO DOS_PUNTOS conj_sentencia .)
-
-
-state 177
-
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato . HACER conj_sentencia FIN_PARA
-
-    HACER           shift and go to state 180
-
-
 state 178
 
-    (94) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia . FIN_PARA
+    (87) s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .
 
-    FIN_PARA        shift and go to state 181
+    ESCRIBIR        reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    LEER            reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    SI              reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    SEGUN           reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    IDENTIFICADOR   reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    COMENTARIO_VARIASLINEAS reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    COMENTARIO_LINEA reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    PARA            reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    MIENTRAS        reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    REPETIR         reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    FIN_ACCION      reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    HASTA_QUE       reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    SINO            reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    FIN_SI          reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    FIN_PARA        reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    FIN_MIENTRAS    reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    FIN_SEGUN       reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    OTRO            reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    MENOR_QUE       reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    MAYOR_QUE       reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    MENOR_O_IGUAL_QUE reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    MAYOR_O_IGUAL_QUE reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    IGUAL           reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
+    DISTINTO        reduce using rule 87 (s_segun -> SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN .)
 
 
 state 179
 
-    (85) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia .
-    (86) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia . conj_cond_segun
-    (85) conj_cond_segun -> . t_relacional id_tipodato DOS_PUNTOS conj_sentencia
-    (86) conj_cond_segun -> . t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
-    (87) conj_cond_segun -> . OTRO DOS_PUNTOS conj_sentencia
-    (64) t_relacional -> . MENOR_QUE
-    (65) t_relacional -> . MAYOR_QUE
-    (66) t_relacional -> . MENOR_O_IGUAL_QUE
-    (67) t_relacional -> . MAYOR_O_IGUAL_QUE
-    (68) t_relacional -> . IGUAL
-    (69) t_relacional -> . DISTINTO
+    (88) conj_cond_segun -> t_relacional id_tipodato . DOS_PUNTOS conj_sentencia
+    (89) conj_cond_segun -> t_relacional id_tipodato . DOS_PUNTOS conj_sentencia conj_cond_segun
 
-    FIN_SEGUN       reduce using rule 85 (conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia .)
-    OTRO            shift and go to state 158
-    MENOR_QUE       shift and go to state 112
-    MAYOR_QUE       shift and go to state 113
-    MENOR_O_IGUAL_QUE shift and go to state 114
-    MAYOR_O_IGUAL_QUE shift and go to state 115
-    IGUAL           shift and go to state 116
-    DISTINTO        shift and go to state 117
+    DOS_PUNTOS      shift and go to state 186
 
-    t_relacional                   shift and go to state 157
-    conj_cond_segun                shift and go to state 182
 
 state 180
 
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER . conj_sentencia FIN_PARA
+    (90) conj_cond_segun -> OTRO DOS_PUNTOS . conj_sentencia
     (27) conj_sentencia -> . s_escribir
     (28) conj_sentencia -> . s_leer
     (29) conj_sentencia -> . s_si
@@ -4027,19 +3921,19 @@ state 180
     (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
     (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
     (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
-    (84) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
-    (88) s_ciclos -> . c_para
-    (89) s_ciclos -> . c_mientras
-    (90) s_ciclos -> . c_repetir
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
     (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
     (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
     (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
     (8) comentario_vl_l -> . COMENTARIO_LINEA
-    (93) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
-    (94) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (95) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
-    (91) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
-    (92) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
     ESCRIBIR        shift and go to state 33
     LEER            shift and go to state 34
@@ -4052,7 +3946,7 @@ state 180
     MIENTRAS        shift and go to state 42
     REPETIR         shift and go to state 43
 
-    conj_sentencia                 shift and go to state 183
+    conj_sentencia                 shift and go to state 187
     s_escribir                     shift and go to state 26
     s_leer                         shift and go to state 27
     s_si                           shift and go to state 28
@@ -4066,76 +3960,380 @@ state 180
 
 state 181
 
-    (94) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA . id_tipodato HACER conj_sentencia FIN_PARA
+    (50) id_tipodato -> . IDENTIFICADOR
+    (51) id_tipodato -> . tipo_dato
+    (24) tipo_dato -> . CADENA
+    (25) tipo_dato -> . NUMERICO
 
-    ESCRIBIR        reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    LEER            reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SI              reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SEGUN           reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    IDENTIFICADOR   reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    COMENTARIO_VARIASLINEAS reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    COMENTARIO_LINEA reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    PARA            reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MIENTRAS        reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    REPETIR         reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_ACCION      reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    HASTA_QUE       reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SINO            reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_SI          reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_PARA        reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_MIENTRAS    reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_SEGUN       reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    OTRO            reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MENOR_QUE       reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MAYOR_QUE       reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MENOR_O_IGUAL_QUE reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MAYOR_O_IGUAL_QUE reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    IGUAL           reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
-    DISTINTO        reduce using rule 94 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    IDENTIFICADOR   shift and go to state 90
+    CADENA          shift and go to state 75
+    NUMERICO        shift and go to state 76
 
+    id_tipodato                    shift and go to state 188
+    tipo_dato                      shift and go to state 89
 
 state 182
 
-    (86) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun .
+    (97) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER . conj_sentencia FIN_PARA
+    (27) conj_sentencia -> . s_escribir
+    (28) conj_sentencia -> . s_leer
+    (29) conj_sentencia -> . s_si
+    (30) conj_sentencia -> . s_segun
+    (31) conj_sentencia -> . s_ciclos
+    (32) conj_sentencia -> . sentencia
+    (33) conj_sentencia -> . comentario_vl_l
+    (34) conj_sentencia -> . s_escribir conj_sentencia
+    (35) conj_sentencia -> . s_leer conj_sentencia
+    (36) conj_sentencia -> . s_si conj_sentencia
+    (37) conj_sentencia -> . s_segun conj_sentencia
+    (38) conj_sentencia -> . s_ciclos conj_sentencia
+    (39) conj_sentencia -> . sentencia conj_sentencia
+    (40) conj_sentencia -> . comentario_vl_l conj_sentencia
+    (41) s_escribir -> . ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO
+    (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
+    (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+    (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
+    (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
+    (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
+    (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
+    (8) comentario_vl_l -> . COMENTARIO_LINEA
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
 
-    FIN_SEGUN       reduce using rule 86 (conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun .)
+    ESCRIBIR        shift and go to state 33
+    LEER            shift and go to state 34
+    SI              shift and go to state 35
+    SEGUN           shift and go to state 37
+    IDENTIFICADOR   shift and go to state 36
+    COMENTARIO_VARIASLINEAS shift and go to state 19
+    COMENTARIO_LINEA shift and go to state 20
+    PARA            shift and go to state 41
+    MIENTRAS        shift and go to state 42
+    REPETIR         shift and go to state 43
 
+    conj_sentencia                 shift and go to state 189
+    s_escribir                     shift and go to state 26
+    s_leer                         shift and go to state 27
+    s_si                           shift and go to state 28
+    s_segun                        shift and go to state 29
+    s_ciclos                       shift and go to state 30
+    sentencia                      shift and go to state 31
+    comentario_vl_l                shift and go to state 32
+    c_para                         shift and go to state 38
+    c_mientras                     shift and go to state 39
+    c_repetir                      shift and go to state 40
 
 state 183
 
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia . FIN_PARA
+    (98) c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .
 
-    FIN_PARA        shift and go to state 184
+    ESCRIBIR        reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    LEER            reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SI              reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SEGUN           reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    IDENTIFICADOR   reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    COMENTARIO_VARIASLINEAS reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    COMENTARIO_LINEA reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    PARA            reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MIENTRAS        reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    REPETIR         reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_ACCION      reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    HASTA_QUE       reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SINO            reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_SI          reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_PARA        reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_MIENTRAS    reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_SEGUN       reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    OTRO            reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MENOR_QUE       reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MAYOR_QUE       reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MENOR_O_IGUAL_QUE reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MAYOR_O_IGUAL_QUE reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    IGUAL           reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    DISTINTO        reduce using rule 98 (c_para -> PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
 
 
 state 184
 
-    (93) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .
+    (94) c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .
 
-    ESCRIBIR        reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    LEER            reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SI              reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SEGUN           reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    IDENTIFICADOR   reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    COMENTARIO_VARIASLINEAS reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    COMENTARIO_LINEA reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    PARA            reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MIENTRAS        reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    REPETIR         reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_ACCION      reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    HASTA_QUE       reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    SINO            reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_SI          reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_PARA        reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_MIENTRAS    reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    FIN_SEGUN       reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    OTRO            reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MENOR_QUE       reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MAYOR_QUE       reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MENOR_O_IGUAL_QUE reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    MAYOR_O_IGUAL_QUE reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    IGUAL           reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
-    DISTINTO        reduce using rule 93 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    ESCRIBIR        reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    LEER            reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    SI              reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    SEGUN           reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    IDENTIFICADOR   reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    COMENTARIO_VARIASLINEAS reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    COMENTARIO_LINEA reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    PARA            reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    MIENTRAS        reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    REPETIR         reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    FIN_ACCION      reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    HASTA_QUE       reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    SINO            reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    FIN_SI          reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    FIN_PARA        reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    FIN_MIENTRAS    reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    FIN_SEGUN       reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    OTRO            reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    MENOR_QUE       reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    MAYOR_QUE       reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    MENOR_O_IGUAL_QUE reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    MAYOR_O_IGUAL_QUE reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    IGUAL           reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+    DISTINTO        reduce using rule 94 (c_mientras -> MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS .)
+
+
+state 185
+
+    (75) conj_s_si -> conj_sentencia SINO conj_s_si .
+
+    FIN_SI          reduce using rule 75 (conj_s_si -> conj_sentencia SINO conj_s_si .)
+
+
+state 186
+
+    (88) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS . conj_sentencia
+    (89) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS . conj_sentencia conj_cond_segun
+    (27) conj_sentencia -> . s_escribir
+    (28) conj_sentencia -> . s_leer
+    (29) conj_sentencia -> . s_si
+    (30) conj_sentencia -> . s_segun
+    (31) conj_sentencia -> . s_ciclos
+    (32) conj_sentencia -> . sentencia
+    (33) conj_sentencia -> . comentario_vl_l
+    (34) conj_sentencia -> . s_escribir conj_sentencia
+    (35) conj_sentencia -> . s_leer conj_sentencia
+    (36) conj_sentencia -> . s_si conj_sentencia
+    (37) conj_sentencia -> . s_segun conj_sentencia
+    (38) conj_sentencia -> . s_ciclos conj_sentencia
+    (39) conj_sentencia -> . sentencia conj_sentencia
+    (40) conj_sentencia -> . comentario_vl_l conj_sentencia
+    (41) s_escribir -> . ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO
+    (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
+    (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+    (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
+    (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
+    (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
+    (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
+    (8) comentario_vl_l -> . COMENTARIO_LINEA
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+
+    ESCRIBIR        shift and go to state 33
+    LEER            shift and go to state 34
+    SI              shift and go to state 35
+    SEGUN           shift and go to state 37
+    IDENTIFICADOR   shift and go to state 36
+    COMENTARIO_VARIASLINEAS shift and go to state 19
+    COMENTARIO_LINEA shift and go to state 20
+    PARA            shift and go to state 41
+    MIENTRAS        shift and go to state 42
+    REPETIR         shift and go to state 43
+
+    conj_sentencia                 shift and go to state 190
+    s_escribir                     shift and go to state 26
+    s_leer                         shift and go to state 27
+    s_si                           shift and go to state 28
+    s_segun                        shift and go to state 29
+    s_ciclos                       shift and go to state 30
+    sentencia                      shift and go to state 31
+    comentario_vl_l                shift and go to state 32
+    c_para                         shift and go to state 38
+    c_mientras                     shift and go to state 39
+    c_repetir                      shift and go to state 40
+
+state 187
+
+    (90) conj_cond_segun -> OTRO DOS_PUNTOS conj_sentencia .
+
+    FIN_SEGUN       reduce using rule 90 (conj_cond_segun -> OTRO DOS_PUNTOS conj_sentencia .)
+
+
+state 188
+
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato . HACER conj_sentencia FIN_PARA
+
+    HACER           shift and go to state 191
+
+
+state 189
+
+    (97) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia . FIN_PARA
+
+    FIN_PARA        shift and go to state 192
+
+
+state 190
+
+    (88) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia .
+    (89) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia . conj_cond_segun
+    (88) conj_cond_segun -> . t_relacional id_tipodato DOS_PUNTOS conj_sentencia
+    (89) conj_cond_segun -> . t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun
+    (90) conj_cond_segun -> . OTRO DOS_PUNTOS conj_sentencia
+    (64) t_relacional -> . MENOR_QUE
+    (65) t_relacional -> . MAYOR_QUE
+    (66) t_relacional -> . MENOR_O_IGUAL_QUE
+    (67) t_relacional -> . MAYOR_O_IGUAL_QUE
+    (68) t_relacional -> . IGUAL
+    (69) t_relacional -> . DISTINTO
+
+    FIN_SEGUN       reduce using rule 88 (conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia .)
+    OTRO            shift and go to state 169
+    MENOR_QUE       shift and go to state 118
+    MAYOR_QUE       shift and go to state 119
+    MENOR_O_IGUAL_QUE shift and go to state 120
+    MAYOR_O_IGUAL_QUE shift and go to state 121
+    IGUAL           shift and go to state 122
+    DISTINTO        shift and go to state 123
+
+    t_relacional                   shift and go to state 168
+    conj_cond_segun                shift and go to state 193
+
+state 191
+
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER . conj_sentencia FIN_PARA
+    (27) conj_sentencia -> . s_escribir
+    (28) conj_sentencia -> . s_leer
+    (29) conj_sentencia -> . s_si
+    (30) conj_sentencia -> . s_segun
+    (31) conj_sentencia -> . s_ciclos
+    (32) conj_sentencia -> . sentencia
+    (33) conj_sentencia -> . comentario_vl_l
+    (34) conj_sentencia -> . s_escribir conj_sentencia
+    (35) conj_sentencia -> . s_leer conj_sentencia
+    (36) conj_sentencia -> . s_si conj_sentencia
+    (37) conj_sentencia -> . s_segun conj_sentencia
+    (38) conj_sentencia -> . s_ciclos conj_sentencia
+    (39) conj_sentencia -> . sentencia conj_sentencia
+    (40) conj_sentencia -> . comentario_vl_l conj_sentencia
+    (41) s_escribir -> . ESCRIBIR PARENTESIS_ABIERTO salida_esc PARENTESIS_CERRADO
+    (46) s_leer -> . LEER PARENTESIS_ABIERTO entrada_leer PARENTESIS_CERRADO
+    (72) s_si -> . SI PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+    (73) s_si -> . SI PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO ENTONCES conj_s_si FIN_SI
+    (87) s_segun -> . SEGUN PARENTESIS_ABIERTO IDENTIFICADOR PARENTESIS_CERRADO HACER conj_cond_segun FIN_SEGUN
+    (91) s_ciclos -> . c_para
+    (92) s_ciclos -> . c_mientras
+    (93) s_ciclos -> . c_repetir
+    (48) sentencia -> . IDENTIFICADOR ASIGNACION tipo_dato
+    (49) sentencia -> . IDENTIFICADOR ASIGNACION op_aritmetica
+    (7) comentario_vl_l -> . COMENTARIO_VARIASLINEAS
+    (8) comentario_vl_l -> . COMENTARIO_LINEA
+    (96) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA
+    (97) c_para -> . PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (98) c_para -> . PARA idt_para HASTA id_tipodato HACER conj_sentencia FIN_PARA
+    (94) c_mientras -> . MIENTRAS PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO HACER conj_sentencia FIN_MIENTRAS
+    (95) c_repetir -> . REPETIR conj_sentencia HASTA_QUE PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO
+
+    ESCRIBIR        shift and go to state 33
+    LEER            shift and go to state 34
+    SI              shift and go to state 35
+    SEGUN           shift and go to state 37
+    IDENTIFICADOR   shift and go to state 36
+    COMENTARIO_VARIASLINEAS shift and go to state 19
+    COMENTARIO_LINEA shift and go to state 20
+    PARA            shift and go to state 41
+    MIENTRAS        shift and go to state 42
+    REPETIR         shift and go to state 43
+
+    conj_sentencia                 shift and go to state 194
+    s_escribir                     shift and go to state 26
+    s_leer                         shift and go to state 27
+    s_si                           shift and go to state 28
+    s_segun                        shift and go to state 29
+    s_ciclos                       shift and go to state 30
+    sentencia                      shift and go to state 31
+    comentario_vl_l                shift and go to state 32
+    c_para                         shift and go to state 38
+    c_mientras                     shift and go to state 39
+    c_repetir                      shift and go to state 40
+
+state 192
+
+    (97) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .
+
+    ESCRIBIR        reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    LEER            reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SI              reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SEGUN           reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    IDENTIFICADOR   reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    COMENTARIO_VARIASLINEAS reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    COMENTARIO_LINEA reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    PARA            reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MIENTRAS        reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    REPETIR         reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_ACCION      reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    HASTA_QUE       reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SINO            reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_SI          reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_PARA        reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_MIENTRAS    reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_SEGUN       reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    OTRO            reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MENOR_QUE       reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MAYOR_QUE       reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MENOR_O_IGUAL_QUE reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MAYOR_O_IGUAL_QUE reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    IGUAL           reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+    DISTINTO        reduce using rule 97 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato HACER conj_sentencia FIN_PARA .)
+
+
+state 193
+
+    (89) conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun .
+
+    FIN_SEGUN       reduce using rule 89 (conj_cond_segun -> t_relacional id_tipodato DOS_PUNTOS conj_sentencia conj_cond_segun .)
+
+
+state 194
+
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia . FIN_PARA
+
+    FIN_PARA        shift and go to state 195
+
+
+state 195
+
+    (96) c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .
+
+    ESCRIBIR        reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    LEER            reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SI              reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SEGUN           reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    IDENTIFICADOR   reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    COMENTARIO_VARIASLINEAS reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    COMENTARIO_LINEA reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    PARA            reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MIENTRAS        reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    REPETIR         reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_ACCION      reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    HASTA_QUE       reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    SINO            reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_SI          reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_PARA        reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_MIENTRAS    reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    FIN_SEGUN       reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    OTRO            reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MENOR_QUE       reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MAYOR_QUE       reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MENOR_O_IGUAL_QUE reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    MAYOR_O_IGUAL_QUE reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    IGUAL           reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
+    DISTINTO        reduce using rule 96 (c_para -> PARA PARENTESIS_ABIERTO idt_para PARENTESIS_CERRADO HASTA id_tipodato COMA id_tipodato HACER conj_sentencia FIN_PARA .)
 
 WARNING: 
 WARNING: Conflicts:
@@ -4148,12 +4346,13 @@ WARNING: shift/reduce conflict for COMENTARIO_VARIASLINEAS in state 18 resolved 
 WARNING: shift/reduce conflict for COMENTARIO_LINEA in state 18 resolved as shift
 WARNING: shift/reduce conflict for COMENTARIO_VARIASLINEAS in state 45 resolved as shift
 WARNING: shift/reduce conflict for COMENTARIO_LINEA in state 45 resolved as shift
+WARNING: shift/reduce conflict for PARENTESIS_CERRADO in state 106 resolved as shift
 WARNING: reduce/reduce conflict in state 46 resolved using rule (ambiente -> AMBIENTE comentario_vl_l bloque_ambiente)
 WARNING: rejected rule (bloque_ambiente -> comentario_vl_l bloque_ambiente) in state 46
 WARNING: reduce/reduce conflict in state 91 resolved using rule (sentencia -> IDENTIFICADOR ASIGNACION tipo_dato)
 WARNING: rejected rule (id_tipodato -> tipo_dato) in state 91
-WARNING: reduce/reduce conflict in state 142 resolved using rule (expresion -> id_tipodato)
-WARNING: rejected rule (expresion -> id_tipodato t_op_aritmetico id_tipodato) in state 142
-WARNING: reduce/reduce conflict in state 144 resolved using rule (op_aritmetica -> id_tipodato t_op_aritmetico id_tipodato)
-WARNING: rejected rule (op_aritmetica -> id_tipodato) in state 144
+WARNING: reduce/reduce conflict in state 152 resolved using rule (expresion -> id_tipodato)
+WARNING: rejected rule (expresion -> id_tipodato t_op_aritmetico id_tipodato) in state 152
+WARNING: reduce/reduce conflict in state 154 resolved using rule (op_aritmetica -> id_tipodato t_op_aritmetico id_tipodato)
+WARNING: rejected rule (op_aritmetica -> id_tipodato) in state 154
 WARNING: Rule (expresion -> id_tipodato t_op_aritmetico id_tipodato) is never reduced
