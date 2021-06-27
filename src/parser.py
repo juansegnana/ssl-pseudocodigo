@@ -203,12 +203,15 @@ def p_conj_s_si (p):
     
 def p_conj_condiciones (p):
     '''conj_condiciones : condicion 
-                        | condicion t_op_logico conj_condiciones'''
+                        | condicion t_op_logico conj_condiciones
+                        | NO condicion
+                        | PARENTESIS_ABIERTO conj_condiciones PARENTESIS_CERRADO'''
     exportarTxt.append(['Prod. conj de condiciones -->', p.slice])
     
 def p_condicion (p):
-    '''condicion : expresion t_relacional expresion 
-                | NO expresion'''
+    '''condicion : expresion t_relacional expresion
+                | NO expresion
+                | PARENTESIS_ABIERTO condicion PARENTESIS_CERRADO'''
     exportarTxt.append(['Prod. condicion -->', p.slice])
     
 def p_expresion (p):
@@ -267,7 +270,6 @@ def p_error (p):
     exportarTxt.append(['Error parser -->', p])
 
 parser = yacc.yacc(errorlog=yacc.NullLogger()) # Ignorar warnings.
-
 
 def exportarHtml (arregloHtml):
 
