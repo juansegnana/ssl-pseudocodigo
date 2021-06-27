@@ -84,6 +84,7 @@ tokens = [
 def t_COMENTARIO_ENCABEZADO(t): 
     r'\/\*\*[\s\S]*?\*\/';
     if t.value.__contains__('\n'):
+        t.lexer.lineno += t.value.count('\n')
         t.value= t.value.replace('\n', ' ')
     if t.value.__contains__('\t'):
         t.value= t.value.replace('\t', ' ')
@@ -95,6 +96,7 @@ def t_COMENTARIO_ENCABEZADO(t):
 def t_COMENTARIO_VARIASLINEAS(t): 
     r'\/\*[\s\S]*?\*\/'; 
     if t.value.__contains__('\n'):
+        t.lexer.lineno += t.value.count('\n')
         t.value= t.value.replace('\n', ' ')
     cambio= t.value.replace('/*', '')
     cambio= cambio.replace('*/','')
@@ -104,6 +106,7 @@ def t_COMENTARIO_VARIASLINEAS(t):
 def t_COMENTARIO_LINEA(t): 
     r'((\/\/|\@)(\s|\S)*?(.*))';
     if t.value.__contains__('\n'):
+        t.lexer.lineno += t.value.count('\n')
         t.value= t.value.replace('\n', '')
     if t.value.__contains__('@'):
         cambio= t.value.replace('@', '')
@@ -197,7 +200,7 @@ t_DOS_PUNTOS = r'\:'
 t_COMA= r'\,'
 
 # ply ignorará espacios, saltos de lineas y tabs.
-t_ignore = ' \n\t;'
+t_ignore = ' \t;'
 
 def t_IDENTIFICADOR(t):
     r'[_a-zA-Z][_a-zA-Z0-9]*'
@@ -242,6 +245,10 @@ def t_NUMERICO(t): # acepta . o , como decimal.
     else:
         t.value = int(t.value)
     return t
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
 
 lexer = lex.lex(reflags=re.IGNORECASE) # Bandera para que ignore mayuscula/minuscula
 

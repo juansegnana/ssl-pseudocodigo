@@ -264,8 +264,11 @@ def p_idt_para (p):
     exportarTxt.append(['Prod. Para -->', p.slice])
 
 def p_error (p):
+    # p regresa como un objeto del Lexer.
+    # p.__dict__ -> ver propiedades del objeto.
     global contadorErrores
-    print('Error parser -->', p)
+    print(f'Error parser --> Tipo: {p.type} | Valor: {p.value}')
+    print('Error sintáctico en LINEA:', p.lineno)
     contadorErrores += 1
     exportarTxt.append(['Error parser -->', p])
 
@@ -331,7 +334,7 @@ else:
             f.write(f'Total de tokens analizados: {contador}.\n')
         f.close()
         if contadorErrores > 0:
-            print('(!) Ocurrió un error sintáctico.')
+            print('(⨉) Ocurrió un error sintáctico.')
         else:
             exportarHtml(arregloHtml)
             print('(⩗) Sintácticamente correcto. Se exportó un .html con los comentarios.')
