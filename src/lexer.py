@@ -203,7 +203,7 @@ t_COMA= r'\,'
 t_ignore = ' \t;'
 
 def t_IDENTIFICADOR(t):
-    r'[_a-zA-Z][_a-zA-Z0-9]*'
+    r'[_a-zA-Zñ][_a-zA-Zñ0-9]*'
     t.type = 'IDENTIFICADOR'
     if not(t.value[0].__contains__('_')) and not(t.value[-1].__contains__('_')) and not(t.value.__contains__('__')) and not(t.value.__contains__('"')):
         return t

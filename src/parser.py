@@ -267,10 +267,14 @@ def p_error (p):
     # p regresa como un objeto del Lexer.
     # p.__dict__ -> ver propiedades del objeto.
     global contadorErrores
-    print(f'Error parser --> Tipo: {p.type} | Valor: {p.value}')
-    print('Error sintáctico en LINEA:', p.lineno)
+    if (p):
+        print(f'Error parser --> Tipo: {p.type} | Valor: {p.value}')
+        print('Error sintáctico en LINEA:', p.lineno)
+        exportarTxt.append(['Error parser -->', p])
+    else:
+        print("error: falta fin_accion")
+        exportarTxt.append(['Error parser --> falta fin_accion'])
     contadorErrores += 1
-    exportarTxt.append(['Error parser -->', p])
 
 parser = yacc.yacc(errorlog=yacc.NullLogger()) # Ignorar warnings.
 
