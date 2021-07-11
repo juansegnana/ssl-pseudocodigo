@@ -1,0 +1,19 @@
+/**     Programa basico que imprime hola mundo
+*/
+ACCION HolaMundo _es
+Ambiente
+/* Definimos el ambiente
+    variables que usamos
+	
+*/
+nombre_usuario : cadena
+hola_Mundo_2: cadena
+@ otro algoritmo de Hola Mundo
+Proceso
+escriBir("Ingrese su nombre de usuario: ") // Imprimir por pantalla
+leer(nombre_usuario) // Leer nombre usuario
+hola_Mundo_2:= "Hola Mundo"  
+escribir(hola_Mundo)// Imprimir por pantalla
+escribir("HOLA, ", nombre_usuario, "\t Bienvenido al \"super\" lexer y parser del pseudocodigo")
+// Imprimir por pantalla
+fin_accion //Fin de programa

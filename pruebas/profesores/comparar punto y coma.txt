@@ -1,0 +1,23 @@
+
+aCCion comparar_es _es
+AMBIENTE a:NUMERO
+b: numero
+Proceso
+a := 0;
+Mientras (a<10 _o a>100) hacer;
+Escribir ("Introduzca un número entre 10 y 100");
+Leer(a);
+fin_mientras;
+b:=0;
+Repetir
+Escribir ("Introduzca un número entre 2 y 200");
+Leer(b);
+hasta_que (b>=2 _y _no (b>200));
+      SI (a > b) ENTONCES
+       Escribir("El número mayor es a");
+       SInO                                                                                                                              
+	   
+	   Escribir("El número mayor es b");
+             
+       FIN_si;
+Fin_accion
